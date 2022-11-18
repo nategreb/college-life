@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block content %}
+  <main role="main">
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">{{college.college_name}}</h1>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-4">
+            <a href={% url 'colleges:dorms' college.slug %}>
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <h5 class="card-title text-center">
+                    <img src="{% static 'colleges/house.svg' %}" alt="on-campus living"/>
+                    On-Campus Living
+                  </h5>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    </div>                  
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <div class="card-body">                 
+                <h5 class="card-title text-center">
+                  <img src="{% static 'colleges/person.svg' %}" alt="professors"/>
+                  Professors
+                </h5>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">              
+              <div class="card-body">
+                <h5 class="card-title text-center">
+                  <img src="{% static 'colleges/house.svg' %}" alt="dorms"/>
+                  Classes
+                </h5>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+         
+  </main>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>College Life &copy;</p>
+    </div>
+  </footer>
+{% endblock %}
