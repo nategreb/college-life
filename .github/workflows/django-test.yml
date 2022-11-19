@@ -38,7 +38,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python college_living/manage.py test college_living/
+        python college-life/manage.py test college-life/
       env:
         DB_HOST: '0.0.0.0'
         
