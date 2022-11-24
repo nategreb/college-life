@@ -1,0 +1,152 @@
+[
+{
+    "model": "colleges.college",
+    "pk": "bc.edu",
+    "fields": {
+        "college_name": "Boston College",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "boston-college",
+        "is_approved": false,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "bu.edu",
+    "fields": {
+        "college_name": "Boston University",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "boston-university",
+        "is_approved": false,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "harvard.edu",
+    "fields": {
+        "college_name": "Harvard University",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "harvard-university",
+        "is_approved": false,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "massbay.edu",
+    "fields": {
+        "college_name": "Massachusetts Bay Community College",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "massachusetts-bay-community-college",
+        "is_approved": false,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "mit.edu",
+    "fields": {
+        "college_name": "Massachusetts Institute of Technology",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "massachusetts-institute-of-technology",
+        "is_approved": false,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "umassd.edu",
+    "fields": {
+        "college_name": "University of Massachusetts Dartmouth",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "university-of-massachusetts-dartmouth",
+        "is_approved": false,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "umass.edu",
+    "fields": {
+        "college_name": "University of Massachusetts Amherst",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "university-of-massachusetts-amherst",
+        "is_approved": true,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "umb.edu",
+    "fields": {
+        "college_name": "University of Massachusetts Boston",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "university-of-massachusetts-boston",
+        "is_approved": false,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "uml.edu",
+    "fields": {
+        "college_name": "University of Massachusetts Lowell",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "university-of-massachusetts-lowell",
+        "is_approved": false,
+        "departments": []
+    }
+},
+{
+    "model": "colleges.college",
+    "pk": "wpi.edu",
+    "fields": {
+        "college_name": "Worcester Polytechnic Institute",
+        "state_province": "Massachusetts",
+        "country": "US",
+        "nickname": null,
+        "date_created": "2022-11-24",
+        "date_modified": "2022-11-24",
+        "slug": "worcester-polytechnic-institute",
+        "is_approved": false,
+        "departments": []
+    }
+}
+]
