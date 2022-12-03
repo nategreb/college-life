@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
     #third party
     'crispy_forms',
-    'reviews',
     #'moderation.apps.ModerationConfig',
     'allauth_ui',
     'widget_tweaks',
