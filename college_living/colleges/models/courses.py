@@ -10,8 +10,21 @@ from .colleges import College
 class CollegeClasses(models.Model):
     class Meta: 
         #can have same course at different levels
-        constraints = [ 
-            models.UniqueConstraint(fields=['college', 'department', 'class_name', 'class_id'], 
+        constraints = [
+            models.CheckConstraint(
+                name='check_course',
+                check=models.Q(
+                    test_heavy__range=(1, 5),
+                    test_heavy__isnull=False,
+                    usefulness__range=(1, 5),
+                    usefulness__isnull=False,
+                    theoretical__range=(1, 5),
+                    theoretical__isnull=False,
+                    take_again__range=(1, 5),
+                    take_again__isnull=False
+                )
+            ),
+            models.UniqueConstraint(fields=['college', 'department', 'class_name', 'class_id'],
                                     name='college_classes_alt_key')        
         ]
     
@@ -32,3 +45,11 @@ class CollegeClasses(models.Model):
                         max_length = 75,
                         verbose_name = 'name of course'
                     )
+
+    comment = models.CharField(max_length=160, blank=False)
+    test_heavy = models.PositiveSmallIntegerField()
+    usefulness = models.PositiveSmallIntegerField()
+    theoretical = models.PositiveSmallIntegerField()
+    take_again = models.PositiveSmallIntegerField()
+
+

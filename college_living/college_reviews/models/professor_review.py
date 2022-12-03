@@ -1,6 +1,7 @@
 from django.db import models
 from ...colleges.models import Department, Professor
-
+from users.models import User
+from .term import Term
 
 class ProfessorReview(models.Model):
     class Meta:
@@ -19,10 +20,13 @@ class ProfessorReview(models.Model):
             )
         ]
 
+    # Foreign key
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     college = models.ForeignKey(
         Professor,
         on_delete=models.DO_NOTHING
     )
+    term = models.ManyToManyField(Term)
 
     # date
     date_created = models.DateTimeField(auto_now_add=True)
@@ -31,9 +35,6 @@ class ProfessorReview(models.Model):
     # review
     comment = models.CharField(max_length=160, blank=False)
 
-    term = models.ManyToManyField(Term)
-
-    #
     grading_difficulty = models.PositiveSmallIntegerField()
     take_again = models.PositiveSmallIntegerField()
     teaching_quality = models.PositiveSmallIntegerField()
