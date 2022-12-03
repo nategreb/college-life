@@ -11,7 +11,7 @@ class Professor(models.Model):
             models.UniqueConstraint(fields=['college', 'department', 'first_name', 'last_name'], 
                                     name='class_subject_alt_key'),
             models.CheckConstraint(
-                name='check_professor_review',
+                name='check_professor',
                 check=models.Q(
                     grading_difficulty__range=(1, 5),
                     grading_difficulty__isNulll=False,
