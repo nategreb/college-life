@@ -1,0 +1,100 @@
+[
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "1",
+    "fields": {
+      "term": "Fall 2019"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "2",
+    "fields": {
+      "term": "Spring 2020"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "3",
+    "fields": {
+      "term": "Fall 2020"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "4",
+    "fields": {
+      "term": "Spring 2021"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "5",
+    "fields": {
+      "term": "Fall 2021"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "6",
+    "fields": {
+      "term": "Spring 2022"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "7",
+    "fields": {
+      "term": "Fall 2022"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "8",
+    "fields": {
+      "term": "Winter 2023"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "9",
+    "fields": {
+      "term": "Winter 2022"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "10",
+    "fields": {
+      "term": "Winter 2021"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "11",
+    "fields": {
+      "term": "Winter 2020"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "12",
+    "fields": {
+      "term": "Summer 2022"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "13",
+    "fields": {
+      "term": "Summer 2021"
+    }
+  },
+  {
+    "model": "colleges.SemesterYear",
+    "pk": "14",
+    "fields": {
+      "term": "Summer 2020"
+    }
+  }
+]
