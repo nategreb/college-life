@@ -200,7 +200,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 
 #authorized email domains
 ACCOUNT_ADAPTER = 'users.adapter.RestrictEmailAdapter'
-SOCIALACCOUNT_ADAPTER = "users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "users.adapter.SocialAccountAdapter"
 
 #configuration for AllAuth
 ACCOUNT_FORMS = {
