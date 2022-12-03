@@ -14,13 +14,13 @@ class Professor(models.Model):
                 name='check_professor',
                 check=models.Q(
                     grading_difficulty__range=(1, 5),
-                    grading_difficulty__isNulll=False,
+                    grading_difficulty__isnull=False,
                     take_again__range=(1, 5),
-                    take_again__isNull=False,
+                    take_again__isnull=False,
                     teaching_quality__range=(1, 5),
-                    teaching_quality__isNull=False,
+                    teaching_quality__isnull=False,
                     personality__range=(1, 5),
-                    personality__isNull=False
+                    personality__isnull=False
                 )
             )
         ]
@@ -37,7 +37,7 @@ class Professor(models.Model):
     last_name       =   models.CharField(max_length = 20)
     classes         =   models.ManyToManyField(CollegeClasses)
 
-    grading_difficulty = models.PositiveSmallIntegerField()
-    take_again = models.PositiveSmallIntegerField()
-    teaching_quality = models.PositiveSmallIntegerField()
-    personality = models.PositiveSmallIntegerField()
+    grading_difficulty = models.PositiveSmallIntegerField(default=1)
+    take_again = models.PositiveSmallIntegerField(default=1)
+    teaching_quality = models.PositiveSmallIntegerField(default=1)
+    personality = models.PositiveSmallIntegerField(default=1)

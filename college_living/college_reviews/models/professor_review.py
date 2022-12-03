@@ -1,5 +1,5 @@
 from django.db import models
-from ...colleges.models import Department, Professor
+from colleges.models import Department, Professor
 from users.models import User
 from .term import Term
 
@@ -10,7 +10,7 @@ class ProfessorReview(models.Model):
                 name='check_professor_review',
                 check=models.Q(
                     grading_difficulty__range=(1, 5),
-                    grading_difficulty__isnulls=False,
+                    grading_difficulty__isnull=False,
                     take_again__range=(1, 5),
                     take_again__isnull=False,
                     teaching_quality__range=(1, 5),
