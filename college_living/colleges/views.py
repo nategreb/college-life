@@ -22,8 +22,7 @@ def college_on_campus_living(request, college_name, country='US'):
     dorms = []
     for dorm in college.dorms_set.order_by('dorm_name'):
         dorms.append(dorm.dorm_name)
-    
-    #return JsonResponse({'status':200, 'data': dorms})
+
     return render(request,'colleges/CollegeDorms.html', {'college': college, 'dorms': dorms})
 
 

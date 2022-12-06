@@ -16,42 +16,44 @@
   </section>
 
   <div class="row">
-    {% block start %}
-    {% if user.is_authenticated %}
-    <center><h1>welcome back {{user.username}}!</h1></center>
-    {% else %}
-    <center><h1>log in, plz . . .</h1></center>
-    {% endif %}
-    {% endblock %}
+      {% block start %}
+          {% if user.is_authenticated %}
+              <center><h1>welcome back {{ user.username }}!</h1></center>
+          {% else %}
+              <center><h1>log in, plz . . .</h1></center>
+          {% endif %}
+      {% endblock %}
   </div>
 
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <a href={% url 'colleges:college_home' college.slug %}
-              <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-              <div class="card-body">                                     
-                <h5 class="card-title text-center">                
-                  UMass Amherst
-                  {% comment %} TODO: make this dynamic {% endcomment %}
-                </h5>              
-              </div>
-            </a>
-          </div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        {#            <a href={% url 'colleges:college_home' college.slug %}#}
+                        <img class="card-img-top"
+                             data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                UMass Amherst
+                                {% comment %} TODO: make this dynamic {% endcomment %}
+                            </h5>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
 </main>
 
-<footer class="text-muted">
-  <div class="container">
-    <p class="float-right">
-      <a href="#">Back to top</a>
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
     </p>
     <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
     <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
