@@ -1,0 +1,30 @@
+[
+  {
+    "model": "colleges.Department",
+    "pk": "1",
+    "fields": {
+      "name": "Computer Science"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": "2",
+    "fields": {
+      "name": "Mathematics"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": "3",
+    "fields": {
+      "name": "Physics"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": "4",
+    "fields": {
+      "name": "History"
+    }
+  }
+]
