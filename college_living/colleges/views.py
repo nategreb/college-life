@@ -1,7 +1,7 @@
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import render
 
-from colleges.models import College, Dorms, ResidentialArea
+from colleges.models import College, Dorms, ResidentialArea, CollegeClasses
 
 
 def college_home(request, college_name, country='US'):
@@ -32,7 +32,10 @@ def college_classes(request, college_name, country='US'):
     college = College.approved_colleges.get(slug=college_name, country=country)
     classes = []
 
+    for d in college.departments.all():
+        list = CollegeClasses.objects.filter(department=d)
 
+        # NOT DONE
 
     return render(request, 'colleges/CollegeClasses.html', {'college': college, 'classes': classes})
 

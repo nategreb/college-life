@@ -101,7 +101,9 @@
         "date_modified": "2022-11-24",
         "slug": "university-of-massachusetts-amherst",
         "is_approved": true,
-        "departments": []
+        "departments": [
+            1, 2, 3, 4
+        ]
     }
 },
 {
