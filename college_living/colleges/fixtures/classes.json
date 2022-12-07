@@ -8,5 +8,15 @@
       "college_id": "umass.edu",
       "department_id": 1
     }
+  },
+  {
+    "model": "colleges.CollegeClasses",
+    "pk": 2,
+    "fields": {
+      "class_id": "2",
+      "class_name": "COMPSCI 187: Programming with Data Structures",
+      "college_id": "umass.edu",
+      "department_id": 1
+    }
   }
 ]

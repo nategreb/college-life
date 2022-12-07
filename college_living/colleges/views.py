@@ -33,9 +33,9 @@ def college_classes(request, college_name, country='US'):
     classes = []
 
     for d in college.departments.all():
-        list = CollegeClasses.objects.filter(department=d)
-
-        # NOT DONE
+        l = CollegeClasses.objects.filter(department=d)
+        for item in l:
+            classes.append(item.class_name)
 
     return render(request, 'colleges/CollegeClasses.html', {'college': college, 'classes': classes})
 
