@@ -2,7 +2,7 @@ from django.db import models
 
 from colleges.models import CollegeClasses
 from users.models import User
-from .term import Term
+from colleges.models.courses import SemesterYear
 
 
 class CourseReview(models.Model):
@@ -30,7 +30,7 @@ class CourseReview(models.Model):
     # Foreign key
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     course = models.ForeignKey(CollegeClasses, on_delete=models.PROTECT)
-    term = models.ManyToManyField(Term)
+    term = models.ManyToManyField(SemesterYear)
 
     # date
     date_created = models.DateTimeField(auto_now_add=True)

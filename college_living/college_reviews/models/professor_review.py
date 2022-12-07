@@ -1,7 +1,7 @@
 from django.db import models
 from colleges.models import Department, Professor
 from users.models import User
-from .term import Term
+from colleges.models.courses import SemesterYear
 
 class ProfessorReview(models.Model):
     class Meta:
@@ -26,7 +26,7 @@ class ProfessorReview(models.Model):
         Professor,
         on_delete=models.DO_NOTHING
     )
-    term = models.ManyToManyField(Term)
+    term = models.ManyToManyField(SemesterYear)
 
     # date
     date_created = models.DateTimeField(auto_now_add=True)
