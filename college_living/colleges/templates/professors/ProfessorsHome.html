@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
+{% endblock %}
+
+{% load static %}
+{% block content %}
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">{{ college.college_name }}</h1>
+            </div>
+        </section>
+
+        {#  we probably want a list of deparments but also a search based on department and professor#}
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <input type="professorSearch" class="form-control" id="autoComplete" placeholder="Search Professors">
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>College Life &copy;</p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+    <script>
+        const autoCompleteJS = new autoComplete({
+            placeHolder: "Search for Professors",
+            data: {
+                src: {{ professors|safe }},
+                cache: true,
+            },
+            resultItem: {
+                highlight: true
+            },
+            events: {
+                input: {
+                    selection: (event) => {
+                        const selection = event.detail.selection.value;
+                        autoCompleteJS.input.value = selection;
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}
