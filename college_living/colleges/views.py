@@ -25,6 +25,15 @@ def college_on_campus_living(request, college_name, country='US'):
 
     return render(request,'colleges/CollegeDorms.html', {'college': college, 'dorms': dorms})
 
+"""
+    get all classes for the college
+"""
+def college_classes(request, college_name, country='US'):
+    college = College.approved_colleges.get(slug=college_name, country=country)
+    classes = []
+
+    return render(request, 'colleges/CollegeClasses.html', {'college': college, 'classes': classes})
+
 
 def edit_college(request, college_name, country='US'):
     pass

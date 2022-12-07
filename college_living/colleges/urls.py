@@ -7,7 +7,7 @@ urlpatterns = [
     path('<slug:college_name>/', views.college_home, name='college_home'),
     path('<slug:college_name>/dorms', views.college_on_campus_living, name='dorms'),
     path('<slug:college_name>/professors', views.college_home, name='professors'),
-    path('<slug:college_name>/classes', views.college_home, name='classes'),
+    path('<slug:college_name>/classes', views.college_classes, name='classes'),
     
     
     #moderation links

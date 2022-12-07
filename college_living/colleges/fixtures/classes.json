@@ -1,0 +1,11 @@
+[
+  {
+    "model": "colleges.collegeclasses",
+    "pk": 1,
+    "fields": {
+      "class_id": "123456789",
+      "class_name": "Test Course",
+      "college_id": 7
+    }
+  }
+]

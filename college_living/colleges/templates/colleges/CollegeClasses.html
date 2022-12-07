@@ -16,7 +16,7 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-      <input type="dormSearch" class="form-control" id="autoComplete" placeholder="Search Dorm">
+      <input type="classSearch" class="form-control" id="autoComplete" placeholder="Search Classes">
     </div>
   </div
 
@@ -35,7 +35,7 @@
       const autoCompleteJS = new autoComplete({
         placeHolder: "Search for Classes",
         data: {
-            src: {{ dorms|safe }},
+            src: {{ classes|safe }},
             cache: true,
         },
         resultItem: {
