@@ -1,7 +1,7 @@
 from django.db import models
 
 from .colleges import College
-from .courses import CollegeClass
+from .courses import CollegeClasses
 from .departments import Department
 
  
@@ -22,4 +22,4 @@ class Professor(models.Model):
                         )
     first_name      =   models.CharField(max_length = 20)
     last_name       =   models.CharField(max_length = 20)
-    classes         =   models.ManyToManyField(CollegeClass)
+    classes         =   models.ManyToManyField(CollegeClasses)

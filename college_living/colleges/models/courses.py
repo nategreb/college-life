@@ -6,7 +6,7 @@ from .colleges import College
 """
     One to Many relation of Colleges to Courses
 """
-class CollegeClass(models.Model):
+class CollegeClasses(models.Model):
     class Meta:
         # can have same course at different levels
         constraints = [

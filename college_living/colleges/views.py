@@ -32,6 +32,8 @@ def college_classes(request, college_name, country='US'):
     college = College.approved_colleges.get(slug=college_name, country=country)
     classes = []
 
+
+
     return render(request, 'colleges/CollegeClasses.html', {'college': college, 'classes': classes})
 
 

@@ -1,11 +1,12 @@
 [
   {
-    "model": "colleges.collegeclasses",
+    "model": "colleges.CollegeClasses",
     "pk": 1,
     "fields": {
-      "class_id": "123456789",
-      "class_name": "Test Course",
-      "college_id": 7
+      "class_id": "1",
+      "class_name": "COMPSCI 119: Introduction to Programming",
+      "college_id": "umass.edu",
+      "department_id": 1
     }
   }
 ]
