@@ -28,8 +28,8 @@ class CourseReview(models.Model):
         ]
 
     # Foreign key
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
-    course = models.ForeignKey(CollegeClasses, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    course = models.ForeignKey(CollegeClasses, on_delete=models.CASCADE)
     term = models.ManyToManyField(SemesterYear)
 
     # date

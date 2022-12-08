@@ -23,9 +23,9 @@
     "model": "colleges.CollegeClasses",
     "pk": "3",
     "fields": {
-      "college": "bc.edu",
+      "college": "umass.edu",
       "department": "1",
-      "class_id": "COMPSCI 2",
+      "class_id": "COMPSCI 3",
       "class_name": "Test 3"
     }
   }

@@ -21,10 +21,10 @@ class ProfessorReview(models.Model):
         ]
 
     # Foreign key
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
-    college = models.ForeignKey(
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    professor = models.ForeignKey(
         Professor,
-        on_delete=models.DO_NOTHING
+        on_delete=models.CASCADE
     )
     term = models.ManyToManyField(SemesterYear)
 
