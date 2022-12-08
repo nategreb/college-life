@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
     #third party
     'crispy_forms',
-    'reviews',
     #'moderation.apps.ModerationConfig',
     'allauth_ui',
     'widget_tweaks',
@@ -59,7 +58,8 @@ INSTALLED_APPS = [
 
     #own
     'colleges.apps.CollegesConfig',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'college_reviews.apps.CollegeReviewsConfig',
 ]
 
 SITE_ID = 1

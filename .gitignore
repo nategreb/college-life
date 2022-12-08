@@ -153,3 +153,4 @@ yarn-error.log*
 .idea/
 /env.sh
 /google_auth.json
+env.sh
