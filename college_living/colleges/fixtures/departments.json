@@ -10,14 +10,21 @@
     "model": "colleges.Department",
     "pk": "2",
     "fields": {
-      "name": "Business"
+      "name": "Mathematics"
     }
   },
   {
     "model": "colleges.Department",
     "pk": "3",
     "fields": {
-      "name": "Math"
+      "name": "Physics"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": "4",
+    "fields": {
+      "name": "History"
     }
   }
 ]

@@ -1,11 +1,13 @@
+from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.test import TestCase
 from colleges.models import (
     College,
     Department,
-    CollegeClasses,
+    CollegeClass,
     Professor
 )
+
 
 class TestProfessors(TestCase):
     def setUp(self):
@@ -27,14 +29,14 @@ class TestProfessors(TestCase):
 
         self.compsci = Department.objects.create(name='Computer Science')
 
-        self.class1 = CollegeClasses.objects.create(
+        self.class1 = CollegeClass.objects.create(
             college=self.college,
             department=self.compsci,
             class_id='486',
             class_name='Machine Learning'
         )
 
-        self.class2 = CollegeClasses.objects.create(
+        self.class2 = CollegeClass.objects.create(
             college=self.college,
             department=self.compsci,
             class_id='100',
@@ -88,7 +90,7 @@ class TestProfessors(TestCase):
 
         diff.classes.add(self.class2)
         num_profs = Professor.classes.through.objects.filter(
-            collegeclasses_id=self.class1.id
+            collegeclass_id=self.class1.id
         ).count()
 
         self.assertEqual(num_profs, 3)
@@ -167,7 +169,7 @@ class TestProfessors(TestCase):
 
         # query many to many table directly
         num_profs = Professor.classes.through.objects.filter(
-            collegeclasses_id=self.class1.id
+            collegeclass_id=self.class1.id
         ).count()
 
         self.assertEqual(num_profs, 3)
@@ -192,3 +194,40 @@ class TestProfessors(TestCase):
             num_profs = Professor.objects.count()
 
             self.assertEqual(num_profs, 3)
+
+    """
+        test slugfield for a new professor
+    """
+
+    def test_slugfield(self):
+        p1 = Professor.objects.create(
+            college=self.college,
+            department=self.compsci,
+            first_name='test',
+            last_name='test'
+        )
+        self.assertEqual(f'{p1.first_name}-{p1.last_name}', p1.slug)
+
+    """
+        test invalid professor w/out first name 
+    """
+
+    def test_empty_first_name(self):
+        with self.assertRaises(ValidationError):
+            Professor.objects.create(
+                college=self.college,
+                department=self.compsci,
+                first_name='testNew'
+            ).save()
+
+    """
+          test invalid professor w/out last name 
+    """
+
+    def test_empty_last_name(self):
+        with self.assertRaises(ValidationError):
+            Professor.objects.create(
+                college=self.college,
+                department=self.compsci,
+                last_name='testNew'
+            ).save()

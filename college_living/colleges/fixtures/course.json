@@ -1,6 +1,6 @@
 [
   {
-    "model": "colleges.CollegeClasses",
+    "model": "colleges.CollegeClass",
     "pk": "1",
     "fields": {
       "college": "umass.edu",
@@ -10,7 +10,7 @@
     }
   },
   {
-    "model": "colleges.CollegeClasses",
+    "model": "colleges.CollegeClass",
     "pk": "2",
     "fields": {
       "college": "umass.edu",
@@ -20,7 +20,7 @@
     }
   },
   {
-    "model": "colleges.CollegeClasses",
+    "model": "colleges.CollegeClass",
     "pk": "3",
     "fields": {
       "college": "umass.edu",

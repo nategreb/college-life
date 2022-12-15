@@ -4,7 +4,6 @@ from django.core.validators import validate_email
 from django.template.defaultfilters import slugify
 
 from .departments import Department
-
     
 class AllCollegesManager(models.Manager):
     #get college based on email
