@@ -15,7 +15,7 @@ urlpatterns = [
         path('edit/dorms', views.get_moderated_dorms),
 
         # professors
-        path('professors', views.get_professors, name='professors'),
-        path('professors/<int:professor_id>/<slug:professor_slug>', views.get_professor, name='professor'),
+        path('professors', views.get_all_college_professors, name='professors'),
+        path('professors/<int:professor_id>/<slug:professor_slug>', views.get_college_professor, name='professor'),
     ])),
 ]

@@ -4,5 +4,5 @@ from colleges.models import College
 
 # home page of the application
 def home(request):
-    college = College.approved_colleges.all()[:3]
+    college = College.approved_colleges.all()
     return render(request, 'HomePage.html', {'colleges': college})

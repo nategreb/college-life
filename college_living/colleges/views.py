@@ -1,7 +1,7 @@
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import render
 
-from colleges.models import College, Professor, Dorms, ResidentialArea
+from colleges.models import College, CollegeClass, Professor, Dorms, ResidentialArea
 
 
 # TODO: fix requests to ensure they're unique for colleges
@@ -34,14 +34,20 @@ def college_on_campus_living(request, college_name, country='US'):
 """
 def college_classes(request, college_name, country='US'):
     college = College.approved_colleges.get(slug=college_name, country=country)
-    classes = []
+    course_objects = CollegeClass.objects.filter(college=college)
+    course_names = []
+    # TODO: try to make only one query work with javascript
+    for course in course_objects:
+        course_names.append(course.class_name)
 
-    for d in college.departments.all():
-        l = CollegeClasses.objects.filter(department=d)
-        for item in l:
-            classes.append(item.class_name)
-
-    return render(request, 'colleges/CollegeClasses.html', {'college': college, 'classes': classes})
+    return render(
+        request, 'colleges/CollegeCourses.html',
+        {
+            'college': college,
+            'course_objects': course_objects,
+            'course_names': course_names
+        }
+    )
 
 
 def edit_college(request, college_name, country='US'):
@@ -69,18 +75,19 @@ def get_moderated_resAreas(request, college_name, country='US'):
 
 
 # get list of colleges professors
-def get_professors(request, college_name, country='US'):
+def get_all_college_professors(request, college_name, country='US'):
     college = College.approved_colleges.get(slug=college_name, country=country)
 
     arr = []
-    for professor in Professor.objects.filter(college=college):
+    professors = Professor.objects.filter(college=college)
+    for professor in professors:
         arr.append(f'{professor.first_name} {professor.last_name} - {professor.department.name}')
 
     return render(request, 'professors/ProfessorsHome.html', {'college': college, 'professors': arr})
 
 
 # gets the specific professor
-def get_professor(request, college_name, professor_id, professor_slug, country='US'):
+def get_college_professor(request, college_name, professor_id, professor_slug, country='US'):
     try:
         professor = Professor.objects.get(id=professor_id)
         college = College.approved_colleges.get(email_domain=professor.college_id)
