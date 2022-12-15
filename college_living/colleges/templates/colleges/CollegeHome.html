@@ -21,37 +21,39 @@
                     <img src="{% static 'colleges/house.svg' %}" alt="on-campus living"/>
                     On-Campus Living
                   </h5>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                    </div>                  
-                  </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                        </div>
+                    </div>
                 </div>
               </div>
             </a>
           </div>
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-              <div class="card-body">                 
-                <h5 class="card-title text-center">
-                  <img src="{% static 'colleges/person.svg' %}" alt="professors"/>
-                  Professors
-                </h5>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                  </div>                  
-                </div>
-              </div>
+            <div class="col-md-4">
+                <a href={% url 'colleges:professors' college.slug %}>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                <img src="{% static 'colleges/person.svg' %}" alt="professors"/>
+                                Professors
+                            </h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-          </div>
-          <div class="col-md-4">
-              <a href={% url 'colleges:classes' college.slug %}>
-                <div class="card mb-4 box-shadow">
-                  <div class="card-body">
-                    <h5 class="card-title text-center">
-                      <img src="{% static 'colleges/house.svg' %}" alt="classes"/>
-                      Classes
-                    </h5>
-                    <div class="d-flex justify-content-between align-items-center">
+            <div class="col-md-4">
+                <a href={% url 'colleges:classes' college.slug %}>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                <img src="{% static 'colleges/house.svg' %}" alt="classes"/>
+                                Classes
+                            </h5>
+                            <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                       </div>
                     </div>
