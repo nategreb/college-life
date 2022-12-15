@@ -6,14 +6,29 @@ from .colleges import College
 from .courses import CollegeClass
 from .departments import Department
 
-
+ 
 class Professor(models.Model):
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['college', 'department', 'first_name', 'last_name'],
-                                    name='class_subject_alt_key')
+    class Meta: 
+        constraints = [ 
+            models.UniqueConstraint(
+                fields=['college', 'department', 'first_name', 'last_name'],
+                name='class_subject_alt_key'
+            ),
+            models.CheckConstraint(
+                name='check_professor',
+                check=models.Q(
+                    grading_difficulty__range=(1, 5),
+                    grading_difficulty__isnull=False,
+                    take_again__range=(1, 5),
+                    take_again__isnull=False,
+                    teaching_quality__range=(1, 5),
+                    teaching_quality__isnull=False,
+                    personality__range=(1, 5),
+                    personality__isnull=False
+                )
+            )
         ]
-
+        
     college = models.ForeignKey(
         College,
         on_delete=models.CASCADE
@@ -26,12 +41,19 @@ class Professor(models.Model):
     last_name = models.CharField(max_length=20)
     classes = models.ManyToManyField(CollegeClass)
 
+    # review fields
+    grading_difficulty = models.PositiveSmallIntegerField(default=1)
+    take_again = models.PositiveSmallIntegerField(default=1)
+    teaching_quality = models.PositiveSmallIntegerField(default=1)
+    personality = models.PositiveSmallIntegerField(default=1)
+
+    # url field
     slug = models.SlugField(max_length=40, blank=True, null=False)
 
     # add slug by converting white spaces to hyphens
     def save(self, *args, **kwargs):
         self.slug = slugify(f'{self.first_name} {self.last_name}')
-        # call full clean to validte
+        # call full clean to validate
         self.full_clean()
         super().save(*args, **kwargs)
 

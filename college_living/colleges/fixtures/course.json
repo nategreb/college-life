@@ -1,0 +1,32 @@
+[
+  {
+    "model": "colleges.CollegeClasses",
+    "pk": "1",
+    "fields": {
+      "college": "umass.edu",
+      "department": "1",
+      "class_id": "COMPSCI 1",
+      "class_name": "Test 1"
+    }
+  },
+  {
+    "model": "colleges.CollegeClasses",
+    "pk": "2",
+    "fields": {
+      "college": "umass.edu",
+      "department": "1",
+      "class_id": "COMPSCI 2",
+      "class_name": "Test 2"
+    }
+  },
+  {
+    "model": "colleges.CollegeClasses",
+    "pk": "3",
+    "fields": {
+      "college": "umass.edu",
+      "department": "1",
+      "class_id": "COMPSCI 3",
+      "class_name": "Test 3"
+    }
+  }
+]
