@@ -24,6 +24,7 @@
               <td> {{ r.take_again }} </td>
               {% if r.user.id == user %}
                   <td><a class="button delete" href="{% url 'reviews:delete_class_review' college course.id r.id %}">DELETE</a></td>
+                  <td><a class="button" href="{% url 'reviews:edit_class_review' college course.id r.id %}">EDIT</a></td>
               {% endif %}
             </tr>
         {% endfor %}

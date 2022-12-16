@@ -51,11 +51,17 @@ def list_course_review(request, college_name, course_id):
 def edit_course_review(request, college_name, course_id, course_review_id):
     try:
         review = CourseReview.objects.get(pk=course_review_id, course_id=course_id, user_id=request.user.id)
-        form = AddCourseReviewForm(instance=review)
-        if request.POST and request.user.is_authenticated and form.is_valid():
-            form.save()
-            return redirect(list_course_review, college_name=college_name, course_id=course_id)
-        return render(request, 'course_reviews/AddCourseReview.html', {'form': form})
+        form = AddCourseReviewForm(request.POST)
+        if request.method == 'POST' and request.user.is_authenticated and form.is_valid():
+            review.comment = form.cleaned_data['comment']
+            review.test_heavy = form.cleaned_data['test_heavy']
+            review.usefulness = form.cleaned_data['usefulness']
+            review.theoretical = form.cleaned_data['theoretical']
+            review.take_again = form.cleaned_data['take_again']
+            review.term = form.cleaned_data['term']
+            review.save()
+            return redirect('reviews:class_review_home', college_name=college_name, course_id=course_id)
+        return render(request, 'course_reviews/AddCourseReview.html', {'form': AddCourseReviewForm(instance=review)})
     except CourseReview.DoesNotExist:
         # TODO: pop up show error message
         return redirect('reviews:class_review_home', college_name=college_name, course_id=course_id)
