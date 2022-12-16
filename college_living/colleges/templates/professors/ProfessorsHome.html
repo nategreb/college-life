@@ -18,7 +18,8 @@
         {#  we probably want a list of deparments but also a search based on department and professor#}
         <div class="album py-5 bg-light">
             <div class="container">
-                <input type="professorSearch" class="form-control" id="autoComplete" placeholder="Search Professors">
+                <input type="professorSearch" class="form-control align-middle" id="autoComplete"
+                       placeholder="Search Professors">
             </div>
         </div>
 
@@ -52,14 +53,14 @@
                         autoCompleteJS.input.value = selection;
 
 
-                        if (selection != null)
+                        if (selection != null) {
                             {% for prof in professors %}
-                                if ("{{prof.first_name}}-{{prof.last_name}}, {{ prof.department.name }}" === selection) {
+                                if ("{{prof.first_name}} {{prof.last_name}}, {{ prof.department.name }}" === selection) {
                                     window.location.href = "{% url 'colleges:professor' college.slug prof.id prof.slug%}"
                                 }
                             {% endfor %}
+                        }
                     }
-
                 },
             },
             submit: true,
@@ -71,7 +72,7 @@
         function get_readable_professors() {
             var readable = [
                 {% for prof in professors %}
-                    "{{prof.first_name}}-{{prof.last_name}}, {{ prof.department.name }}",
+                    "{{prof.first_name}} {{prof.last_name}}, {{ prof.department.name }}",
                 {% endfor %}
             ];
             return readable

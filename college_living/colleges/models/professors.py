@@ -6,10 +6,10 @@ from .colleges import College
 from .courses import CollegeClass
 from .departments import Department
 
- 
+
 class Professor(models.Model):
-    class Meta: 
-        constraints = [ 
+    class Meta:
+        constraints = [
             models.UniqueConstraint(
                 fields=['college', 'department', 'first_name', 'last_name'],
                 name='class_subject_alt_key'
@@ -28,7 +28,7 @@ class Professor(models.Model):
                 )
             )
         ]
-        
+
     college = models.ForeignKey(
         College,
         on_delete=models.CASCADE
@@ -68,3 +68,15 @@ class Professor(models.Model):
             raise ValidationError({
                 'last_name': ('Last Name can\'t be empty')
             })
+
+    # calculates and scales the overall statistics of the professor
+    def get_statistics(self):
+        statistics = {
+            'grading_difficulty': float(self.grading_difficulty / 5) * 100,
+            'take_again': float(self.grading_difficulty / 5) * 100,
+            'teaching_quality': float(self.teaching_quality / 5) * 100,
+            'personality': float(self.personality / 5) * 100
+        }
+        overall = sum(statistics.values()) / len(statistics.keys())
+        statistics['overall'] = overall
+        return statistics
