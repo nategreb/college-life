@@ -26,7 +26,7 @@ class ProfessorReview(models.Model):
         Professor,
         on_delete=models.CASCADE
     )
-    term = models.ManyToManyField(SemesterYear)
+    term = models.ForeignKey(SemesterYear, on_delete=models.CASCADE)
 
     # date
     date_created = models.DateTimeField(auto_now_add=True)
