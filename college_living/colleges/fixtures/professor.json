@@ -3,7 +3,7 @@
     "model": "colleges.Professor",
     "pk": "1",
     "fields": {
-      "college": "bc.edu",
+      "college": "umass.edu",
       "department": 1,
       "first_name": "First1",
       "last_name": "Last1",
@@ -14,7 +14,7 @@
     "model": "colleges.Professor",
     "pk": "2",
     "fields": {
-      "college": "bc.edu",
+      "college": "umass.edu",
       "department": 1,
       "first_name": "First2",
       "last_name": "Last2",

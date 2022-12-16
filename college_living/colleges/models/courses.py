@@ -42,3 +42,6 @@ class SemesterYear(models.Model):
     term = models.CharField(
         max_length=11,
     )
+
+    def __str__(self):
+        return self.term
