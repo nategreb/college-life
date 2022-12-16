@@ -84,7 +84,6 @@ def get_moderated_resAreas(request, college_name, country='US'):
 def get_all_college_professors(request, college_name, country='US'):
     college = College.approved_colleges.get(slug=college_name, country=country)
     professors = Professor.objects.filter(college=college)
-
     return render(
         request,
         'professors/ProfessorsHome.html',
@@ -100,8 +99,15 @@ def get_college_professor(request, college_name, professor_id, professor_slug, c
     try:
         professor = Professor.objects.get(id=professor_id)
         college = College.approved_colleges.get(email_domain=professor.college_id)
+        statistics = professor.get_statistics()
     except Professor.DoesNotExist:
         # TODO: redirect and add informative message
         return Http404('Professor Does not exist')
-    return render(request, 'professors/ProfessorProfile.html',
-                  {'college': professor.college_id, 'professor': professor})
+    return render(
+        request, 'professors/ProfessorProfile.html',
+        {
+            'college': professor.college_id,
+            'professor': professor,
+            'statistics': statistics
+        }
+    )
