@@ -89,10 +89,10 @@ def create_professor_review(request, college_name, professor_id):
                     professor=professor,
                     user=user,
                     comment=form.cleaned_data['comment'],
-                    test_heavy=form.cleaned_data['grading_difficulty'],
-                    usefulness=form.cleaned_data['take_again'],
-                    theoretical=form.cleaned_data['teaching_quality'],
-                    take_again=form.cleaned_data['personality'],
+                    grading_difficulty=form.cleaned_data['grading_difficulty'],
+                    take_again=form.cleaned_data['take_again'],
+                    teaching_quality=form.cleaned_data['teaching_quality'],
+                    personality=form.cleaned_data['personality'],
                     term=form.cleaned_data['term']
                 )
         return redirect('reviews:professor_review_home', college_name=college_name, professor_id=professor_id)
@@ -117,10 +117,10 @@ def edit_professor_review(request, college_name, professor_id, professor_review_
         form = AddProfessorReviewForm(request.POST)
         if request.method == 'POST' and request.user.is_authenticated and form.is_valid():
             review.comment = form.cleaned_data['comment']
-            review.test_heavy = form.cleaned_data['grading_difficulty']
-            review.usefulness = form.cleaned_data['take_again']
-            review.theoretical = form.cleaned_data['teaching_quality']
-            review.take_again = form.cleaned_data['personality']
+            review.grading_difficulty = form.cleaned_data['grading_difficulty']
+            review.take_again = form.cleaned_data['take_again']
+            review.teaching_quality = form.cleaned_data['teaching_quality']
+            review.personality = form.cleaned_data['personality']
             review.term = form.cleaned_data['term']
             review.save()
             return redirect('reviews:professor_review_home', college_name=college_name, professor_id=professor_id)
