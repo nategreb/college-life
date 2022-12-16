@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{ course.class_id }}: {{ course.class_name }} </h1>
+<table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Term</th>
+        <th>Comment</th>
+        <th>Test Heavy</th>
+        <th>Usefulness</th>
+        <th>Theoretical</th>
+        <th>Take Again</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for r in reviews%}
+            <tr>
+              <td> {{ r.term }} </td>
+              <td> {{ r.comment }} </td>
+              <td> {{ r.test_heavy }} </td>
+              <td> {{ r.usefulness }} </td>
+              <td> {{ r.theoretical }} </td>
+              <td> {{ r.take_again }} </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

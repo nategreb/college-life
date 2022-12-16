@@ -11,4 +11,5 @@ urlpatterns = [
     # apps
     path('', home, name='home'),
     path('colleges/', include('colleges.urls'), name='colleges'),
+    path('colleges/', include('college_reviews.urls'), name='reviews'),
 ]
