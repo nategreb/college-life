@@ -1,5 +1,5 @@
 from django.http import Http404, HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from colleges.models import College, CollegeClass, Professor, Dorms, ResidentialArea
 
@@ -49,6 +49,12 @@ def college_classes(request, college_name, country='US'):
         }
     )
 
+"""
+    get the page for a given class
+"""
+def college_class(request, college_name, id, country='US'):
+
+    return redirect('reviews:class_review_home', college_name=college_name, course_id=id)
 
 def edit_college(request, college_name, country='US'):
     pass
@@ -77,13 +83,16 @@ def get_moderated_resAreas(request, college_name, country='US'):
 # get list of colleges professors
 def get_all_college_professors(request, college_name, country='US'):
     college = College.approved_colleges.get(slug=college_name, country=country)
-
-    arr = []
     professors = Professor.objects.filter(college=college)
-    for professor in professors:
-        arr.append(f'{professor.first_name} {professor.last_name} - {professor.department.name}')
 
-    return render(request, 'professors/ProfessorsHome.html', {'college': college, 'professors': arr})
+    return render(
+        request,
+        'professors/ProfessorsHome.html',
+        {
+            'college': college,
+            'professors': professors
+        }
+    )
 
 
 # gets the specific professor

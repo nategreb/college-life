@@ -19,7 +19,7 @@
         <div class="container">
             <input type="classSearch" class="form-control" id="autoComplete" placeholder="Search Classes">
         </div>
-    </div
+    </div>
 
     <footer class="text-muted">
         <div class="container">
@@ -47,6 +47,15 @@
                     selection: (event) => {
                         const selection = event.detail.selection.value;
                         autoCompleteJS.input.value = selection;
+
+
+                        if (selection != null) {
+                            {% for class in course_objects %}
+                                if ("{{class.class_name}}" === selection) {
+                                    window.location.href = "{% url 'colleges:class' college.slug class.id %}"
+                                }
+                            {% endfor %}
+                        }
                     }
                 }
             }
