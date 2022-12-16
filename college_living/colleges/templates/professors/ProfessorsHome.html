@@ -39,7 +39,7 @@
         const autoCompleteJS = new autoComplete({
             placeHolder: "Search for Professors",
             data: {
-                src: {{ professors|safe }},
+                src: get_readable_professors(),
                 cache: true,
             },
             resultItem: {
@@ -50,9 +50,32 @@
                     selection: (event) => {
                         const selection = event.detail.selection.value;
                         autoCompleteJS.input.value = selection;
+
+
+                        if (selection != null)
+                            {% for prof in professors %}
+                                if ("{{prof.first_name}}-{{prof.last_name}}, {{ prof.department.name }}" === selection) {
+                                    window.location.href = "{% url 'colleges:professor' college.slug prof.id prof.slug%}"
+                                }
+                            {% endfor %}
                     }
-                }
-            }
+
+                },
+            },
+            submit: true,
         });
+
+        /**
+         returns a readable version of the professor JSON
+         */
+        function get_readable_professors() {
+            var readable = [
+                {% for prof in professors %}
+                    "{{prof.first_name}}-{{prof.last_name}}, {{ prof.department.name }}",
+                {% endfor %}
+            ];
+            return readable
+        }
+
     </script>
 {% endblock %}
