@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1> {{ professor.class_id }}: {{ professor.class_name }} </h1>
+<h1> {{ professor.first_name }}, {{ professor.last_name }} </h1>
 <table class="table table-dark table-striped">
     <thead>
       <tr>
@@ -23,12 +23,12 @@
               <td> {{ r.personality }} </td>
               <td> {{ r.take_again }} </td>
               {% if r.user.id == user %}
-                  <td><a class="button delete" href="{% url 'reviews:delete_professor_review' professor professor.id r.id %}">DELETE</a></td>
-                  <td><a class="button" href="{% url 'reviews:edit_class_review' professor professor.id r.id %}">EDIT</a></td>
+                  <td><a class="button delete" href="{% url 'reviews:delete_professor_review' college professor.id r.id %}">DELETE</a></td>
+                  <td><a class="button" href="{% url 'reviews:edit_class_review' college professor.id r.id %}">EDIT</a></td>
               {% endif %}
             </tr>
         {% endfor %}
     </tbody>
 </table>
-<a class="button add" href="{% url 'reviews:add_class_review' professor professor.id %}">Add review</a>
+<a class="button add" href="{% url 'reviews:add_class_review' college professor.id %}">Add review</a>
 {% endblock %}

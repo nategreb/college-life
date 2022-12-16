@@ -11,7 +11,7 @@ urlpatterns = [
         path('<int:course_review_id>/edit/', views.edit_course_review, name='edit_class_review'),
         path('<int:course_review_id>/delete/', views.delete_course_review, name='delete_class_review'),
     ])),
-    path('<slug:prefessor_name>/reviews/', include([
+    path('<slug:college_name>/professors/<int:professor_id>/reviews/', include([
         path('', views.list_professor_review, name='professor_review_home'),
         path('create/', views.create_professor_review, name='add_professor_review'),
         path('<int:professor_review_id>/edit/', views.edit_professor_review, name='edit_professor_review'),

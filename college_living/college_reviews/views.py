@@ -76,7 +76,7 @@ def delete_course_review(request, college_name, course_id, course_review_id):
         pass
     return redirect('reviews:class_review_home', college_name=college_name, course_id=course_id)
 
-def create_professor_review(request, professor_name, professor_id):
+def create_professor_review(request, college_name, professor_id):
     if request.POST:
         form = AddProfessorReviewForm(request.POST)
         if request.user.is_authenticated and form.is_valid():
@@ -95,23 +95,23 @@ def create_professor_review(request, professor_name, professor_id):
                     take_again=form.cleaned_data['personality'],
                     term=form.cleaned_data['term']
                 )
-        return redirect('reviews:professor_review_home', college_name=professor_name, professor_id=professor_id)
+        return redirect('reviews:professor_review_home', college_name=college_name, professor_id=professor_id)
     return render(request, 'professor_reviews/AddProfessorReview.html', {'form': AddProfessorReviewForm})
 
 
-def list_professor_review(request, professor_name, professor_id):
+def list_professor_review(request, college_name, professor_id):
     professor = Professor.objects.get(pk=professor_id)
     reviews = ProfessorReview.objects.filter(professor=professor)
     content = {
         'reviews': reviews,
         'professor': professor,
         'user': request.user.id,
-        'college': professor_name
+        'college': college_name
     }
     return render(request, 'professor_reviews/ProfessorReviewHome.html', content)
 
 
-def edit_professor_review(request, professor_name, professor_id, professor_review_id):
+def edit_professor_review(request, college_name, professor_id, professor_review_id):
     try:
         review = ProfessorReview.objects.get(pk=professor_review_id, professor_id=professor_id, user_id=request.user.id)
         form = AddProfessorReviewForm(request.POST)
@@ -123,18 +123,18 @@ def edit_professor_review(request, professor_name, professor_id, professor_revie
             review.take_again = form.cleaned_data['personality']
             review.term = form.cleaned_data['term']
             review.save()
-            return redirect('reviews:professor_review_home', professor_name=professor_name, professor_id=professor_id)
+            return redirect('reviews:professor_review_home', college_name=college_name, professor_id=professor_id)
         return render(request, 'professor_reviews/AddProfessorReview.html', {'form': AddProfessorReviewForm(instance=review)})
     except ProfessorReview.DoesNotExist:
         # TODO: pop up show error message
-        return redirect('reviews:professor_review_home', professor_name=professor_name, professor_id=professor_id)
+        return redirect('reviews:professor_review_home', college_name=college_name, professor_id=professor_id)
 
 
-def delete_professor_review(request, professor_name, professor_id, professor_review_id):
+def delete_professor_review(request, college_name, professor_id, professor_review_id):
     try:
         review = ProfessorReview.objects.get(pk=professor_review_id, professor_id=professor_id)
         review.delete()
     except ProfessorReview.DoesNotExist:
         # TODO: pop up show error message
         pass
-    return redirect('reviews:professor_review_home', professor_name=professor_name, professor_id=professor_id)
+    return redirect('reviews:professor_review_home', college_name=college_name, professor_id=professor_id)
