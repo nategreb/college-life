@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{ professor.first_name }}, {{ professor.last_name }} </h1>
+<table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Term</th>
+        <th>Comment</th>
+        <th>Grading Difficulty</th>
+        <th>Teaching Quality</th>
+        <th>Personality</th>
+        <th>Take Again</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for r in reviews%}
+            <tr>
+              <td> {{ r.term }} </td>
+              <td> {{ r.comment }} </td>
+              <td> {{ r.grading_difficulty }} </td>
+              <td> {{ r.teaching_quality }} </td>
+              <td> {{ r.personality }} </td>
+              <td> {{ r.take_again }} </td>
+              {% if r.user.id == user %}
+                  <td><a class="button delete" href="{% url 'reviews:delete_professor_review' college professor.id r.id %}">DELETE</a></td>
+                  <td><a class="button" href="{% url 'reviews:edit_professor_review' college professor.id r.id %}">EDIT</a></td>
+              {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="button add" href="{% url 'reviews:add_professor_review' college professor.id %}">Add review</a>
+{% endblock %}
