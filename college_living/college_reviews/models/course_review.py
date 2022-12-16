@@ -30,7 +30,7 @@ class CourseReview(models.Model):
     # Foreign key
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     course = models.ForeignKey(CollegeClass, on_delete=models.CASCADE)
-    term = models.ManyToManyField(SemesterYear)
+    term = models.ForeignKey(SemesterYear,on_delete=models.CASCADE)
 
     # date
     date_created = models.DateTimeField(auto_now_add=True)
