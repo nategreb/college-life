@@ -1,5 +1,5 @@
 from django.http import Http404, HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from colleges.models import College, CollegeClass, Professor, Dorms, ResidentialArea
 
@@ -49,6 +49,12 @@ def college_classes(request, college_name, country='US'):
         }
     )
 
+"""
+    get the page for a given class
+"""
+def college_class(request, college_name, id, country='US'):
+
+    return redirect('reviews:class_review_home', college_name=college_name, course_id=id)
 
 def edit_college(request, college_name, country='US'):
     pass

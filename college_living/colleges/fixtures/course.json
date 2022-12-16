@@ -5,7 +5,7 @@
     "fields": {
       "college": "umass.edu",
       "department": "1",
-      "class_id": "COMPSCI 1",
+      "class_id": "COMPSCI1",
       "class_name": "Test 1"
     }
   },
@@ -15,7 +15,7 @@
     "fields": {
       "college": "umass.edu",
       "department": "1",
-      "class_id": "COMPSCI 2",
+      "class_id": "COMPSCI2",
       "class_name": "Test 2"
     }
   },
@@ -25,7 +25,7 @@
     "fields": {
       "college": "umass.edu",
       "department": "1",
-      "class_id": "COMPSCI 3",
+      "class_id": "COMPSCI3",
       "class_name": "Test 3"
     }
   }
