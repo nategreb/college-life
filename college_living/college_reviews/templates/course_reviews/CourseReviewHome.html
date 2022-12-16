@@ -22,8 +22,12 @@
               <td> {{ r.usefulness }} </td>
               <td> {{ r.theoretical }} </td>
               <td> {{ r.take_again }} </td>
+              {% if r.user.id == user %}
+                  <td><a class="button delete" href="{% url 'reviews:delete_class_review' college course.id r.id %}">DELETE</a></td>
+              {% endif %}
             </tr>
         {% endfor %}
     </tbody>
 </table>
+<a class="button add" href="{% url 'reviews:add_class_review' college course.id %}">Add review</a>
 {% endblock %}
