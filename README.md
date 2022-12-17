@@ -46,6 +46,10 @@ To run this app, you will need the following softwares:
    `python manage.py runserver`
 9. Go to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) and start exploring!
 
+##
+If you want to add a review to the professors, then go to the following url, because we don't have the mapping yet
+http://127.0.0.1:8000/colleges/university-of-massachusetts-amherst/professors/1/reviews/
+
 ## What's inside?
 
 The application is separated into separate modularized 'apps'.
