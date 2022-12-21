@@ -4,7 +4,7 @@ from . import views
 app_name = 'colleges'
 
 urlpatterns = [
-    path('<slug:college_name>/', include([
+    path('<int:college_id>/<slug:college_slug>/', include([
         path('', views.college_home, name='college_home'),
         path('dorms/', views.college_on_campus_living, name='dorms'),
 
@@ -20,6 +20,6 @@ urlpatterns = [
 
         # classes
         path('classes/', views.college_classes, name='classes'),
-        path('classes/<int:id>/', views.college_class, name='class')
+        path('classes/<int:course_id>/', views.college_class, name='class')
     ])),
 ]

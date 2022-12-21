@@ -25,24 +25,24 @@
       {% endblock %}
   </div>
 
-{%  if colleges|length > 0 %}
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                {% for college in colleges %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href={% url 'colleges:college_home' college.slug %}
-                            <img class="card-img-top"
-                                 data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">
-                                    {{ college.college_name }}
-                                    {% comment %} TODO: make this dynamic {% endcomment %}
-                                </h5>
-                            </div>
-                            </a>
+    {% if colleges|length > 0 %}
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    {% for college in colleges %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <a href={% url 'colleges:college_home' college.id college.slug %}
+                                           <img class="card-img-top"
+                                   data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                                   alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">
+                                            {{ college.college_name }}
+                                            {% comment %} TODO: make this dynamic {% endcomment %}
+                                        </h5>
+                                    </div>
+                                </a>
                         </div>
                     </div>
                 {% endfor %}
