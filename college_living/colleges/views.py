@@ -95,7 +95,8 @@ def get_all_college_professors(request, college_name, country='US'):
 
 
 # gets the specific professor
-def get_college_professor(request, college_name, professor_id, professor_slug, country='US'):
+# TODO: change to get_object_or_404
+def get_college_professor(request, college_name, professor_id, professor_slug=None, country='US'):
     try:
         professor = Professor.objects.get(id=professor_id)
         college = College.approved_colleges.get(email_domain=professor.college_id)

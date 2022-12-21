@@ -14,11 +14,12 @@ urlpatterns = [
         path('edit/dorms', views.get_moderated_dorms),
 
         # professors
-        path('professors', views.get_all_college_professors, name='professors'),
-        path('professors/<int:professor_id>/<slug:professor_slug>', views.get_college_professor, name='professor'),
+        path('professors/', views.get_all_college_professors, name='professors'),
+        path('professors/<int:professor_id>/', views.get_college_professor, name='professor'),
+        path('professors/<int:professor_id>/<slug:professor_slug>/', views.get_college_professor, name='professor'),
 
         # classes
         path('classes/', views.college_classes, name='classes'),
-        path('classes/<int:id>', views.college_class, name='class')
+        path('classes/<int:id>/', views.college_class, name='class')
     ])),
 ]
