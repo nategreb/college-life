@@ -16,7 +16,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='College',
             fields=[
-                ('email_domain', models.CharField(max_length=50, primary_key=True, serialize=False)),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('email_domain', models.CharField(max_length=50)),
                 ('college_name', models.CharField(help_text='Please capitalize the name', max_length=100)),
                 ('state_province', models.CharField(max_length=20)),
                 ('country', models.CharField(max_length=2)),
@@ -53,7 +54,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddConstraint(
             model_name='college',
-            constraint=models.UniqueConstraint(fields=('college_name', 'state_province', 'country'), name='college_alt_key'),
+            constraint=models.UniqueConstraint(fields=('college_name', 'state_province', 'country'),
+                                               name='college_alt_key'),
         ),
         migrations.AddConstraint(
             model_name='residentialarea',
@@ -62,5 +64,9 @@ class Migration(migrations.Migration):
         migrations.AddConstraint(
             model_name='dorms',
             constraint=models.UniqueConstraint(fields=('college', 'dorm_name'), name='dorms_alt_key'),
+        ),
+        migrations.AddConstraint(
+            model_name='college',
+            constraint=models.UniqueConstraint(fields=('email_domain',), name='email_unique'),
         ),
     ]

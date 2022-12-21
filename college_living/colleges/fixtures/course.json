@@ -3,7 +3,7 @@
     "model": "colleges.CollegeClass",
     "pk": "1",
     "fields": {
-      "college": "umass.edu",
+      "college": 6,
       "department": "1",
       "class_id": "COMPSCI1",
       "class_name": "Test 1"
@@ -13,7 +13,7 @@
     "model": "colleges.CollegeClass",
     "pk": "2",
     "fields": {
-      "college": "umass.edu",
+      "college": 6,
       "department": "1",
       "class_id": "COMPSCI2",
       "class_name": "Test 2"
@@ -23,7 +23,7 @@
     "model": "colleges.CollegeClass",
     "pk": "3",
     "fields": {
-      "college": "umass.edu",
+      "college": 6,
       "department": "1",
       "class_id": "COMPSCI3",
       "class_name": "Test 3"
