@@ -1,7 +1,9 @@
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 
 from colleges.models import College, CollegeClass, Professor, Dorms, ResidentialArea
+from college_reviews.models import ProfessorReview
 
 
 # TODO: fix requests to ensure they're unique for colleges
@@ -104,11 +106,16 @@ def get_all_college_professors(request, college_id, college_slug=None):
 
 # gets the specific professor
 # TODO: change to get_object_or_404
+# TODO: optimize query if there are lots of reviews - breaking it up with caching
 def get_college_professor(request, college_id, professor_id, college_slug=None, professor_slug=None):
     try:
         professor = Professor.objects.get(id=professor_id)
         college = College.approved_colleges.get(id=college_id)
         statistics = professor.get_statistics()
+        reviews = ProfessorReview.objects.filter(professor=professor_id)
+        paginate = Paginator(reviews, 15)  # show 15 reviews per page
+        page_number = request.GET.get('page')
+        page_obj = paginate.get_page(page_number)
     except Professor.DoesNotExist:
         # TODO: redirect and add informative message
         return Http404('Professor Does not exist')
@@ -117,6 +124,7 @@ def get_college_professor(request, college_id, professor_id, college_slug=None, 
         {
             'college': professor.college_id,
             'professor': professor,
-            'statistics': statistics
+            'statistics': statistics,
+            'page_obj': page_obj
         }
     )
