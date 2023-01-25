@@ -7,6 +7,7 @@ urlpatterns = [
 
     # third party
     path('accounts/', include('allauth.urls')),
+    path('reviews/', include('reviews.urls')),
 
     # apps
     path('', home, name='home'),

@@ -42,15 +42,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    #third party
+    # third party
     'crispy_forms',
-    #'moderation.apps.ModerationConfig',
+    'reviews.apps.ReviewsConfig',
+    # 'moderation.apps.ModerationConfig',
     'allauth_ui',
     'widget_tweaks',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #oauth provider for google
+    # oauth provider for google
     'allauth.socialaccount.providers.google',
     'rest_framework',
     'dj_rest_auth',

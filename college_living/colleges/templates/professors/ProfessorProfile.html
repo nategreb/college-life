@@ -52,14 +52,20 @@
                         </div>
                     </div>
                 </div>
-                <ul class="list-group">
-                    {% for professor_review in page_obj %}
-                        <li class="list-group-item">
-                            {{ professor_review.comment|upper }}
-                        </li>
-                    {% endfor %}
-                </ul>
-                <div class="pagination">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="{% url "review_create" content_type='professor' object_id=professor.pk %}">Review this
+                            professor</a>
+                    </div>
+                    <div>
+                        <ul class="list-group">
+                            {% for professor_review in page_obj %}
+                                <li class="list-group-item">
+                                    {{ professor_review.comment|upper }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="pagination">
                     <span class="step-links">
                         {% if page_obj.has_previous %}
                             <a href="?page=1">&laquo; first</a>
