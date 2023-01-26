@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load review_tags %}
 
 {% block head %}
     <link rel="stylesheet"
@@ -16,16 +17,62 @@
         </section>
 
         {#  we probably want a list of deparments but also a search based on department and professor#}
-        <div class="album py-5 bg-light">
-            <div class="container">
+        <div class="album py-5">
+            <div class="container text-center">
                 <input type="professorSearch" class="form-control align-middle" id="autoComplete"
                        placeholder="Search Professors">
             </div>
         </div>
 
+        <div style="width: 50% !important; margin: auto">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <tbody>
+                    {% for professor in page_obj %}
+                        {% get_review_average professor as review_average %}
+                        <tr>
+                            <td class="product">
+                                <a href="{% url 'colleges:professor' college.id college.slug professor.id professor.slug %}">
+                                    <strong>{{ professor.first_name }} {{ professor.last_name }}</strong>
+                                    <br>
+                                </a>
+                            </td>
+                            <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    <i class="fa fa-star">{{ professor.department.name }}</i>
+                                    <i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
+                            {% if review_average %}
+                                <td class="price text-right">{{ review_average }}</td>
+                            {% else %}
+                                <td class="price text-right"> N/A</td>
+                            {% endif %}
+                            </a>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
     </main>
 
-    <footer class="text-muted">
+
+    <footer class="text-muted album py-5">
         <div class="container">
             <p class="float-right">
                 <a href="#">Back to top</a>

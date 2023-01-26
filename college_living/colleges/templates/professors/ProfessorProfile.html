@@ -14,8 +14,8 @@
                             <h5 class="my-3">{{ professor.first_name }} {{ professor.last_name }}</h5>
                             <p class="text-muted mb-1">{{ professor.department.name }} </p>
                             <p class="text-muted mb-4">{{ college.college_name }}</p>
-                            {% total_review_average professor 100 as percentage %}
-                            <p class="text-muted mb-4">Overall Rating: {{ percentage }}/100.0 </p>
+                            {% total_review_average professor 5 as stars %}
+                            <p class="text-muted mb-4">Overall Rating: {{ stars }}/5.0 </p>
 
                         </div>
                     </div>
@@ -25,55 +25,62 @@
                         <div class="col-md-6">
                             <div class="card mb-4 mb-md-0">
                                 <div class="card-body">
-                                    <p class="mb-4"> Category Statistics </p>
-                                    {% render_category_averages professor 100 %}
+                                    <p class="mb-4"> By feature </p>
+                                    {% render_category_averages professor 5 %}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="{% url "review_create" content_type='professor' object_id=professor.id %}">Review this
-                            professor</a>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4 mb-md-0">
+                                <a href="{% url "review_create" content_type='professor' object_id=professor.id %}">
+                                    <div class="card-body">
+                                        <h6 class="mb-4"> Review this professor</h6>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <ul class="list-group">
-
-                            {% for review in page_obj %}
-                                <li class="list-group-item">
-                                    <p>
-                                        {{ review.get_average_rating }}
-                                    </p>
-                                    <p>
-                                        {% if review.content %}
-                                            {{ review.content|truncatewords:'70' }}
-                                        {% else %}
-                                            Reviewed without description.
-                                        {% endif %}
-                                        <a href="{% url "review_detail" pk=professor.id %}">Review details</a>
-                                    </p>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                        <div class="pagination">
-                    <span class="step-links">
-                        {% if page_obj.has_previous %}
-                            <a href="?page=1">&laquo; first</a>
-                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                        </span>
-
-                        {% if page_obj.has_next %}
-                            <a href="?page={{ page_obj.next_page_number }}">next</a>
-                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                        {% endif %}
-                    </span>
                 </div>
-            </div>
-        </div>
     </section>
+    <div class="container">
+        <div>
+            <ul class="list-group list-group-light mb-3">
+                {% for review in page_obj %}
+                    <li class="list-group-item">
+                        <h5 class="fw-bold">
+                            {{ review.get_average_rating }}/5.0
+                        </h5>
+                        <p class="text-muted mb-0">
+                            {% if review.content %}
+                                {{ review.content|truncatewords:'70' }}
+                            {% else %}
+                                Reviewed without description.
+                            {% endif %}
+                            <a href="{% url "review_detail" pk=professor.id %}">Review details</a>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+        </div>
+    </div>
+    </div>
 {% endblock %}

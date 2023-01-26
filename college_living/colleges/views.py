@@ -93,12 +93,16 @@ def get_moderated_resAreas(request, college_id, college_slug=None):
 def get_all_college_professors(request, college_id, college_slug=None):
     college = College.approved_colleges.get(id=college_id)
     professors = Professor.objects.filter(college=college)
+    paginate = Paginator(professors, 15)
+    page_number = request.GET.get('page')
+    page_obj = paginate.get_page(page_number)
     return render(
         request,
         'professors/ProfessorsHome.html',
         {
             'college': college,
-            'professors': professors
+            'professors': professors,
+            'page_obj': page_obj
         }
     )
 
