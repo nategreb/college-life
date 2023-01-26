@@ -1,6 +1,6 @@
-{% load review_tags i18n %}
+{% load review_tags %}
 <table>
-    {% for category, average_rating in category_averages.iteritems %}
+    {% for category, average_rating in category_averages.items %}
         <tr>
             <th>{{ category.name }}:</th>
             <td>{{ average_rating|floatformat:1 }}</td>
@@ -8,7 +8,7 @@
     {% endfor %}
     <tr>
         {% get_review_count reviewed_item as review_amount %}
-        <th>{% trans "Amount of reviews" %}:</th>
+        <th> "Number of reviews":</th>
         <td>{{ review_amount }}</td>
     </tr>
 </table>
