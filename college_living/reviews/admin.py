@@ -27,8 +27,12 @@ class ReviewCategoryChoiceAdmin(admin.ModelAdmin):
     get_label.short_description = 'Label'
 
 
+class ReviewCategoryAdmin(admin.ModelAdmin):
+    pass
+
+
 admin.site.register(models.Rating, RatingAdmin)
 admin.site.register(models.Review, ReviewAdmin)
-admin.site.register(models.RatingCategory)
+admin.site.register(models.RatingCategory, ReviewCategoryAdmin)
 admin.site.register(models.ReviewExtraInfo, ReviewExtraInfoAdmin)
 admin.site.register(models.RatingCategoryChoice, ReviewCategoryChoiceAdmin)

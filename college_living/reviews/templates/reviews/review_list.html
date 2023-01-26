@@ -1,10 +1,9 @@
 {% extends "base.html" %}
-{% load i18n %}
 
-{% block title %}{% trans "Reviews" %}{% endblock %}
+{% block title %} Reviews {% endblock %}
 
-{% block main %}
-    <h1>{% trans "Reviews" %}</h1>
+{% block content %}
+    <h1> Reviews </h1>
     <ul>
         {% for review in object_list %}
             <li>

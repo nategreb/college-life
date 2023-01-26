@@ -263,8 +263,8 @@ class RatingCategory(models.Model):
         verbose_name='Counts for average rating',
         default=True,
     )
-    name = models.CharField(max_length=256),
-    question = models.CharField(max_length=512, blank=True, null=True),
+    name = models.CharField(max_length=256, null=False)
+    question = models.CharField(max_length=512, blank=True, null=True)
 
     @property
     def required(self):
@@ -285,6 +285,9 @@ class RatingCategory(models.Model):
         if not choices:
             return DEFAULT_CHOICES
         return choices
+
+    # def __str__(self):
+    #     return self.name
 
     def get_rating_max_from_choices(self):
         """Returns the maximun value a rating can have in this catgory."""
@@ -321,6 +324,9 @@ class RatingCategoryChoice(models.Model):
         verbose_name='Label',
         max_length=128,
     )
+
+    def __str__(self):
+        return self.label
 
     class Meta:
         ordering = ('-value',)

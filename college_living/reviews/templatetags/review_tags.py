@@ -1,10 +1,10 @@
 """Template tags for the ``reviews`` app."""
 from django.contrib.contenttypes.models import ContentType
-from django.template import Library
+from django import template
 
 from .. import models
 
-register = Library()
+register = template.Library()
 
 
 @register.simple_tag
