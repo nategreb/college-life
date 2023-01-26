@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     #own
     'colleges.apps.CollegesConfig',
     'users.apps.UsersConfig',
-    'college_reviews.apps.CollegeReviewsConfig',
 ]
 
 SITE_ID = 1

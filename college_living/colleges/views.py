@@ -3,8 +3,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 
 from colleges.models import College, CollegeClass, Professor, Dorms, ResidentialArea
-from college_reviews.models import ProfessorReview
-
+from reviews.templatetags.review_tags import get_reviews
 
 # TODO: fix requests to ensure they're unique for colleges
 # TODO: store college in cache
@@ -110,9 +109,7 @@ def get_all_college_professors(request, college_id, college_slug=None):
 def get_college_professor(request, college_id, professor_id, college_slug=None, professor_slug=None):
     try:
         professor = Professor.objects.get(id=professor_id)
-        college = College.approved_colleges.get(id=college_id)
-        statistics = professor.get_statistics()
-        reviews = ProfessorReview.objects.filter(professor=professor_id)
+        reviews = get_reviews(professor)
         paginate = Paginator(reviews, 15)  # show 15 reviews per page
         page_number = request.GET.get('page')
         page_obj = paginate.get_page(page_number)
@@ -124,7 +121,6 @@ def get_college_professor(request, college_id, professor_id, college_slug=None, 
         {
             'college': professor.college_id,
             'professor': professor,
-            'statistics': statistics,
             'page_obj': page_obj
         }
     )
