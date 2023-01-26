@@ -27,13 +27,6 @@
                                 <div class="card-body">
                                     <p class="mb-4"> Category Statistics </p>
                                     {% render_category_averages professor 100 %}
-                                    {#                                    {% for category in category_average %}#}
-                                    {#                                         <div class="progress rounded" style="height: 5px;">#}
-                                    {#                                            <div class="progress-bar" role="progressbar"#}
-                                    {#                                                 style="width: {{ category }}%" aria-valuenow="80"#}
-                                    {#                                                 aria-valuemin="0" aria-valuemax="5"></div>#}
-                                    {#                                        </div>#}
-                                    {#                                    {% endfor %}#}
                                 </div>
                             </div>
                         </div>
@@ -46,9 +39,20 @@
                     </div>
                     <div>
                         <ul class="list-group">
-                            {% for professor_review in page_obj %}
+
+                            {% for review in page_obj %}
                                 <li class="list-group-item">
-                                    {{ professor_review.comment|upper }}
+                                    <p>
+                                        {{ review.get_average_rating }}
+                                    </p>
+                                    <p>
+                                        {% if review.content %}
+                                            {{ review.content|truncatewords:'70' }}
+                                        {% else %}
+                                            Reviewed without description.
+                                        {% endif %}
+                                        <a href="{% url "review_detail" pk=professor.id %}">Review details</a>
+                                    </p>
                                 </li>
                             {% endfor %}
                         </ul>
