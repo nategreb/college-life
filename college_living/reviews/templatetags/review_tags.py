@@ -1,5 +1,6 @@
 """Template tags for the ``reviews`` app."""
 from django.contrib.contenttypes.models import ContentType
+from django.db.models import Avg
 from django import template
 
 from .. import models
@@ -94,3 +95,15 @@ def user_has_reviewed(obj, user):
     except models.Review.DoesNotExist:
         return False
     return True
+
+
+@register.simple_tag
+def optimized_total_review_average(obj):
+    """
+    #Assumes the review average uses the same scale from 0-5
+    :return: None or the average for all reviews of the given object.
+    """
+    ctype = ContentType.objects.get_for_model(obj)
+    avg_rating = models.Review.objects.filter(
+        content_type=ctype, object_id=obj.id).aggregate(Avg('average_rating'))
+    return avg_rating['average_rating__avg']

@@ -286,8 +286,8 @@ class RatingCategory(models.Model):
             return DEFAULT_CHOICES
         return choices
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
 
     def get_rating_max_from_choices(self):
         """Returns the maximun value a rating can have in this catgory."""
