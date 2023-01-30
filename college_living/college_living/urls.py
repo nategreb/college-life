@@ -12,4 +12,7 @@ urlpatterns = [
     # apps
     path('', home, name='home'),
     path('colleges/', include('colleges.urls'), name='colleges'),
+
+    # debugging
+    path('__debug__/', include('debug_toolbar.urls')),
 ]

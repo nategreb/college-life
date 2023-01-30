@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     # third party
     'crispy_forms',
     'reviews.apps.ReviewsConfig',
+    "debug_toolbar",
+
     # 'moderation.apps.ModerationConfig',
     'allauth_ui',
     'widget_tweaks',
@@ -65,6 +67,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -198,11 +201,15 @@ ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
-#authorized email domains
+# authorized email domains
 ACCOUNT_ADAPTER = 'users.adapter.RestrictEmailAdapter'
 SOCIALACCOUNT_ADAPTER = "users.adapter.SocialAccountAdapter"
 
-#configuration for AllAuth
+# configuration for AllAuth
 ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomSignupForm',
 }
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
