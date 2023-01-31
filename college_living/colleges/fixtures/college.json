@@ -1,8 +1,9 @@
 [
 {
     "model": "colleges.college",
-    "pk": "bc.edu",
+    "pk": 1,
     "fields": {
+        "email_domain": "bc.edu",
         "college_name": "Boston College",
         "state_province": "Massachusetts",
         "country": "US",
@@ -11,142 +12,171 @@
         "date_modified": "2022-11-24",
         "slug": "boston-college",
         "is_approved": false,
-        "departments": [1, 2, 3]
+        "departments": [
+            1,
+            2,
+            3
+        ]
     }
 },
-{
-    "model": "colleges.college",
-    "pk": "bu.edu",
-    "fields": {
-        "college_name": "Boston University",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "boston-university",
-        "is_approved": false,
-        "departments": [1, 2, 3]
-    }
+    {
+        "model": "colleges.college",
+        "pk": 2,
+        "fields": {
+            "email_domain": "bu.edu",
+            "college_name": "Boston University",
+            "state_province": "Massachusetts",
+            "country": "US",
+            "nickname": null,
+            "date_created": "2022-11-24",
+            "date_modified": "2022-11-24",
+            "slug": "boston-university",
+            "is_approved": false,
+            "departments": [
+                1,
+                2,
+                3
+            ]
+        }
 },
-{
-    "model": "colleges.college",
-    "pk": "harvard.edu",
-    "fields": {
-        "college_name": "Harvard University",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "harvard-university",
-        "is_approved": false,
-        "departments": [1, 2, 3]
-    }
+    {
+        "model": "colleges.college",
+        "pk": 3,
+        "fields": {
+            "email_domain": "harvard.edu",
+            "college_name": "Harvard University",
+            "state_province": "Massachusetts",
+            "country": "US",
+            "nickname": null,
+            "date_created": "2022-11-24",
+            "date_modified": "2022-11-24",
+            "slug": "harvard-university",
+            "is_approved": false,
+            "departments": [
+                1,
+                2,
+                3
+            ]
+        }
 },
-{
-    "model": "colleges.college",
-    "pk": "massbay.edu",
-    "fields": {
-        "college_name": "Massachusetts Bay Community College",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "massachusetts-bay-community-college",
-        "is_approved": false,
-        "departments": [1, 2, 3]
-    }
+    {
+        "model": "colleges.college",
+        "pk": 4,
+        "fields": {
+            "email_domain": "mit.edu",
+            "college_name": "Massachusetts Institute of Technology",
+            "state_province": "Massachusetts",
+            "country": "US",
+            "nickname": null,
+            "date_created": "2022-11-24",
+            "date_modified": "2022-11-24",
+            "slug": "massachusetts-institute-of-technology",
+            "is_approved": false,
+            "departments": [
+                1,
+                2,
+                3
+            ]
+        }
 },
-{
-    "model": "colleges.college",
-    "pk": "mit.edu",
-    "fields": {
-        "college_name": "Massachusetts Institute of Technology",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "massachusetts-institute-of-technology",
-        "is_approved": false,
-        "departments": [1, 2, 3]
-    }
+    {
+        "model": "colleges.college",
+        "pk": 5,
+        "fields": {
+            "email_domain": "umassd.edu",
+            "college_name": "University of Massachusetts Dartmouth",
+            "state_province": "Massachusetts",
+            "country": "US",
+            "nickname": null,
+            "date_created": "2022-11-24",
+            "date_modified": "2022-11-24",
+            "slug": "university-of-massachusetts-dartmouth",
+            "is_approved": false,
+            "departments": [
+                1,
+                2,
+                3
+            ]
+        }
 },
-{
-    "model": "colleges.college",
-    "pk": "umassd.edu",
-    "fields": {
-        "college_name": "University of Massachusetts Dartmouth",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "university-of-massachusetts-dartmouth",
-        "is_approved": false,
-        "departments": [1, 2, 3]
-    }
+    {
+        "model": "colleges.college",
+        "pk": 6,
+        "fields": {
+            "email_domain": "umass.edu",
+            "college_name": "University of Massachusetts Amherst",
+            "state_province": "Massachusetts",
+            "country": "US",
+            "nickname": null,
+            "date_created": "2022-11-24",
+            "date_modified": "2022-11-24",
+            "slug": "university-of-massachusetts-amherst",
+            "is_approved": true,
+            "departments": [
+                1,
+                2,
+                3
+            ]
+        }
 },
-{
-    "model": "colleges.college",
-    "pk": "umass.edu",
-    "fields": {
-        "college_name": "University of Massachusetts Amherst",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "university-of-massachusetts-amherst",
-        "is_approved": true,
-        "departments": [1, 2, 3]
-    }
+    {
+        "model": "colleges.college",
+        "pk": 7,
+        "fields": {
+            "email_domain": "umb.edu",
+            "college_name": "University of Massachusetts Boston",
+            "state_province": "Massachusetts",
+            "country": "US",
+            "nickname": null,
+            "date_created": "2022-11-24",
+            "date_modified": "2022-11-24",
+            "slug": "university-of-massachusetts-boston",
+            "is_approved": false,
+            "departments": [
+                1,
+                2,
+                3
+            ]
+        }
 },
-{
-    "model": "colleges.college",
-    "pk": "umb.edu",
-    "fields": {
-        "college_name": "University of Massachusetts Boston",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "university-of-massachusetts-boston",
-        "is_approved": false,
-        "departments": [1, 2, 3]
-    }
+    {
+        "model": "colleges.college",
+        "pk": 8,
+        "fields": {
+            "email_domain": "uml.edu",
+            "college_name": "University of Massachusetts Lowell",
+            "state_province": "Massachusetts",
+            "country": "US",
+            "nickname": null,
+            "date_created": "2022-11-24",
+            "date_modified": "2022-11-24",
+            "slug": "university-of-massachusetts-lowell",
+            "is_approved": false,
+            "departments": [
+                1,
+                2,
+                3
+            ]
+        }
 },
-{
-    "model": "colleges.college",
-    "pk": "uml.edu",
-    "fields": {
-        "college_name": "University of Massachusetts Lowell",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "university-of-massachusetts-lowell",
-        "is_approved": false,
-        "departments": [1, 2, 3]
-    }
-},
-{
-    "model": "colleges.college",
-    "pk": "wpi.edu",
-    "fields": {
-        "college_name": "Worcester Polytechnic Institute",
-        "state_province": "Massachusetts",
-        "country": "US",
-        "nickname": null,
-        "date_created": "2022-11-24",
-        "date_modified": "2022-11-24",
-        "slug": "worcester-polytechnic-institute",
-        "is_approved": false,
-        "departments": [1, 2, 3]
-    }
+    {
+        "model": "colleges.college",
+        "pk": 9,
+        "fields": {
+            "email_domain": "wpi.edu",
+            "college_name": "Worcester Polytechnic Institute",
+            "state_province": "Massachusetts",
+            "country": "US",
+            "nickname": null,
+            "date_created": "2022-11-24",
+            "date_modified": "2022-11-24",
+            "slug": "worcester-polytechnic-institute",
+            "is_approved": false,
+            "departments": [
+                1,
+                2,
+                3
+            ]
+        }
 }
 ]

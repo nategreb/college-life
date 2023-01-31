@@ -56,7 +56,7 @@
                         if (selection != null) {
                             {% for prof in professors %}
                                 if ("{{prof.first_name}} {{prof.last_name}}, {{ prof.department.name }}" === selection) {
-                                    window.location.href = "{% url 'colleges:professor' college.slug prof.id prof.slug%}"
+                                    window.location.href = "{% url 'colleges:professor' college.id college.slug prof.id prof.slug%}"
                                 }
                             {% endfor %}
                         }

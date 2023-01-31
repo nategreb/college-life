@@ -1,39 +1,45 @@
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 
 from colleges.models import College, CollegeClass, Professor, Dorms, ResidentialArea
+from college_reviews.models import ProfessorReview
 
 
 # TODO: fix requests to ensure they're unique for colleges
 # TODO: store college in cache
 # TODO; professor slugs?
 
-def college_home(request, college_name, country='US'):
+def college_home(request, college_id, college_slug=None):
     """
     College Name
         Residential Hall
                 Dorms
         Other Dorms
     """
-    college = College.approved_colleges.get(slug=college_name, country=country)
+    college = College.approved_colleges.get(id=college_id)
     return render(request, 'colleges/CollegeHome.html', {'college': college})
 
 """
     get all the dorms for the college
 """
-def college_on_campus_living(request, college_name, country='US'):
-    college = College.approved_colleges.get(slug=college_name, country=country)
+
+
+def college_on_campus_living(request, college_id, college_slug=None):
+    college = College.approved_colleges.get(id=college_id)
     dorms = []
     for dorm in college.dorms_set.order_by('dorm_name'):
         dorms.append(dorm.dorm_name)
 
-    return render(request,'colleges/CollegeDorms.html', {'college': college, 'dorms': dorms})
+    return render(request, 'colleges/CollegeDorms.html', {'college': college, 'dorms': dorms})
 
 """
     get all classes for the college
 """
-def college_classes(request, college_name, country='US'):
-    college = College.approved_colleges.get(slug=college_name, country=country)
+
+
+def college_classes(request, college_id, college_slug=None):
+    college = College.approved_colleges.get(id=college_id)
     course_objects = CollegeClass.objects.filter(college=college)
     course_names = []
     # TODO: try to make only one query work with javascript
@@ -52,11 +58,13 @@ def college_classes(request, college_name, country='US'):
 """
     get the page for a given class
 """
-def college_class(request, college_name, id, country='US'):
 
-    return redirect('reviews:class_review_home', college_name=college_name, course_id=id)
 
-def edit_college(request, college_name, country='US'):
+def college_class(request, college_id, course_id, college_slug=None):
+    return redirect('reviews:class_review_home', college_id=college_id, college_slug=college_slug, course_id=course_id)
+
+
+def edit_college(request, college_id, college_slug=None):
     pass
 """
 moderation view
@@ -67,22 +75,24 @@ moderation view
     
     /moderation
 """
-def get_moderated_dorms(request, college_name, country='US'):
+
+
+def get_moderated_dorms(request, college_id, college_slug=None):
     try:
-        college = College.approved_colleges.get(slug=college_name, country=country)
+        college = College.approved_colleges.get(id=college_id)
         Dorms.unmoderated_objects.filter(college=college)
     except College.DoesNotExist:
         raise Http404('College does not exist')
     return HttpResponse('<h1>Page was found</h1>')
 
 
-def get_moderated_resAreas(request, college_name, country='US'):
+def get_moderated_resAreas(request, college_id, college_slug=None):
     pass
 
 
 # get list of colleges professors
-def get_all_college_professors(request, college_name, country='US'):
-    college = College.approved_colleges.get(slug=college_name, country=country)
+def get_all_college_professors(request, college_id, college_slug=None):
+    college = College.approved_colleges.get(id=college_id)
     professors = Professor.objects.filter(college=college)
     return render(
         request,
@@ -95,11 +105,17 @@ def get_all_college_professors(request, college_name, country='US'):
 
 
 # gets the specific professor
-def get_college_professor(request, college_name, professor_id, professor_slug, country='US'):
+# TODO: change to get_object_or_404
+# TODO: optimize query if there are lots of reviews - breaking it up with caching
+def get_college_professor(request, college_id, professor_id, college_slug=None, professor_slug=None):
     try:
         professor = Professor.objects.get(id=professor_id)
-        college = College.approved_colleges.get(email_domain=professor.college_id)
+        college = College.approved_colleges.get(id=college_id)
         statistics = professor.get_statistics()
+        reviews = ProfessorReview.objects.filter(professor=professor_id)
+        paginate = Paginator(reviews, 15)  # show 15 reviews per page
+        page_number = request.GET.get('page')
+        page_obj = paginate.get_page(page_number)
     except Professor.DoesNotExist:
         # TODO: redirect and add informative message
         return Http404('Professor Does not exist')
@@ -108,6 +124,7 @@ def get_college_professor(request, college_name, professor_id, professor_slug, c
         {
             'college': professor.college_id,
             'professor': professor,
-            'statistics': statistics
+            'statistics': statistics,
+            'page_obj': page_obj
         }
     )

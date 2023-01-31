@@ -14,21 +14,24 @@
       </tr>
     </thead>
     <tbody>
-        {% for r in reviews%}
-            <tr>
-              <td> {{ r.term }} </td>
-              <td> {{ r.comment }} </td>
-              <td> {{ r.test_heavy }} </td>
-              <td> {{ r.usefulness }} </td>
-              <td> {{ r.theoretical }} </td>
-              <td> {{ r.take_again }} </td>
-              {% if r.user.id == user %}
-                  <td><a class="button delete" href="{% url 'reviews:delete_class_review' college course.id r.id %}">DELETE</a></td>
-                  <td><a class="button" href="{% url 'reviews:edit_class_review' college course.id r.id %}">EDIT</a></td>
-              {% endif %}
-            </tr>
-        {% endfor %}
+    {% for r in reviews %}
+        <tr>
+            <td> {{ r.term }} </td>
+            <td> {{ r.comment }} </td>
+            <td> {{ r.test_heavy }} </td>
+            <td> {{ r.usefulness }} </td>
+            <td> {{ r.theoretical }} </td>
+            <td> {{ r.take_again }} </td>
+            {% if r.user.id == user %}
+                <td><a class="button delete"
+                       href="{% url 'reviews:delete_class_review' college_id college_slug course.id r.id %}">DELETE</a>
+                </td>
+                <td><a class="button"
+                       href="{% url 'reviews:edit_class_review' college_id college_slug course.id r.id %}">EDIT</a></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
     </tbody>
 </table>
-<a class="button add" href="{% url 'reviews:add_class_review' college course.id %}">Add review</a>
+    <a class="button add" href="{% url 'reviews:add_class_review' college_id college_slug course.id %}">Add review</a>
 {% endblock %}

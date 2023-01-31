@@ -3,7 +3,11 @@ from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
 from allauth.exceptions import ImmediateHttpResponse
 import logging
 from django.forms import ValidationError
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect
+from django.contrib import messages
+from django.urls import reverse
+
 from colleges.models import College
 
 
@@ -21,7 +25,7 @@ class RestrictEmailAdapter(DefaultAccountAdapter):
             raise ValidationError(
                 """
                     You are restricted from registering. 
-                    Your college hasn\'t been approved yet. Please contact admin
+                    Your college hasn\'t been approved yet. Please contact admin.
                 """
             )
         return email
@@ -45,13 +49,9 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         try:
             RestrictEmailAdapter().clean_email(email)
         except ValidationError:
-            raise ImmediateHttpResponse(
-                HttpResponse(
-                    """
-                        You are restricted from registering. 
-                        Your college hasn\'t been approved yet. Please contact admin
-                    """
-                )
+            # add a one-time notification of the cause of failure
+            messages.add_message(
+                request, messages.ERROR,
+                'You are restricted from registering. Your college hasn\'t been approved yet. Please contact admin.'
             )
-
-        # sociallogin.connect(request, user)
+            raise ImmediateHttpResponse(HttpResponseRedirect(reverse('home')))

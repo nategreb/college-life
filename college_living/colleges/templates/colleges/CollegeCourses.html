@@ -52,7 +52,7 @@
                         if (selection != null) {
                             {% for class in course_objects %}
                                 if ("{{class.class_name}}" === selection) {
-                                    window.location.href = "{% url 'colleges:class' college.slug class.id %}"
+                                    window.location.href = "{% url 'colleges:class' college.id college.slug class.id %}"
                                 }
                             {% endfor %}
                         }
