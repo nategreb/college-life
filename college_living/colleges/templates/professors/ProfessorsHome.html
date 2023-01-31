@@ -42,7 +42,7 @@
                                     <i class="fa fa-star">{{ professor.department.name }}</i>
                                     <i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
                             {% if review_average %}
-                                <td class="price text-right">{{ review_average }}</td>
+                                <td class="price text-right">{{ review_average|floatformat:1 }}/5.0</td>
                             {% else %}
                                 <td class="price text-right"> N/A</td>
                             {% endif %}

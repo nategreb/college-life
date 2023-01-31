@@ -64,8 +64,7 @@ def render_category_averages(obj, normalize_to=100):
                     review__object_id=obj.id).exclude(value='').count()
     else:
         category_averages = {}
-        for category in models.RatingCategory.objects.filter(
-                counts_for_average=True):
+        for category in models.RatingCategory.objects.filter(counts_for_average=True, content_type=ctype):
             category_averages[category] = 0.0
     context.update({'category_averages': category_averages})
     return context
@@ -107,3 +106,47 @@ def optimized_total_review_average(obj):
     avg_rating = models.Review.objects.filter(
         content_type=ctype, object_id=obj.id).aggregate(Avg('average_rating'))
     return avg_rating['average_rating__avg']
+
+
+# @register.inclusion_tag('reviews/partials/category_averages.html')
+# def optimized_render_category_averages(obj):
+"""
+- ctype, professor id
+ ctype = ContentType.objects.get_for_model(obj)
+ RatingCategory.objects.all()
+- get all categories for the review of this professor
+- aggregation(Avg(each category))
+"""
+
+# @register.inclusion_tag('reviews/partials/category_averages.html')
+# def optimized_render_category_averages(obj):
+#     """Renders all the sub-averages for each category."""
+#     context = {'reviewed_item': obj}
+#     ctype = ContentType.objects.get_for_model(obj)
+#     reviews = models.Review.objects.filter(
+#         content_type=ctype, object_id=obj.id)
+#     category_averages = {}
+#     for review in reviews:
+#         review_category_averages = review.get_category_averages(normalize_to)
+#         if review_category_averages:
+#             for category, average in review_category_averages.items():
+#                 if category not in category_averages:
+#                     category_averages[category] = review_category_averages[
+#                         category]
+#                 else:
+#                     category_averages[category] += review_category_averages[
+#                         category]
+#     if reviews and category_averages:
+#         for category, average in category_averages.items():
+#             category_averages[category] = \
+#                 category_averages[category] / models.Rating.objects.filter(
+#                     category=category, value__isnull=False,
+#                     review__content_type=ctype,
+#                     review__object_id=obj.id).exclude(value='').count()
+#     else:
+#         category_averages = {}
+#         for category in models.RatingCategory.objects.filter(
+#                 counts_for_average=True):
+#             category_averages[category] = 0.0
+#     context.update({'category_averages': category_averages})
+#     return context

@@ -14,8 +14,12 @@
                             <h5 class="my-3">{{ professor.first_name }} {{ professor.last_name }}</h5>
                             <p class="text-muted mb-1">{{ professor.department.name }} </p>
                             <p class="text-muted mb-4">{{ college.college_name }}</p>
-                            {% total_review_average professor 5 as stars %}
-                            <p class="text-muted mb-4">Overall Rating: {{ stars }}/5.0 </p>
+                            {% optimized_total_review_average professor as review_average %}
+                            {% if review_average %}
+                                <p class="text-muted mb-4">Overall Rating: {{ review_average|floatformat:1 }}/5.0 </p>
+                            {% else %}
+                                <p class="text-muted mb-4"> N/A </p>
+                            {% endif %}
 
                         </div>
                     </div>
@@ -50,7 +54,11 @@
                 {% for review in page_obj %}
                     <li class="list-group-item">
                         <h5 class="fw-bold">
-                            {{ review.get_average_rating }}/5.0
+                            {% if review.average_rating %}
+                                {{ review.average_rating }}/5.0
+                            {% else %}
+                                N/A
+                            {% endif %}
                         </h5>
                         <p class="text-muted mb-0">
                             {% if review.content %}
@@ -58,7 +66,7 @@
                             {% else %}
                                 Reviewed without description.
                             {% endif %}
-                            <a href="{% url "review_detail" pk=professor.id %}">Review details</a>
+                            <a href="{% url "review_detail" pk=review.id %}">Review details</a>
                         </p>
                     </li>
                 {% endfor %}

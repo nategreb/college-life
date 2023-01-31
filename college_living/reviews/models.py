@@ -4,6 +4,7 @@ from django.contrib.contenttypes import fields
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 
 DEFAULT_CHOICES = (
     ('5', '5'),
@@ -113,7 +114,9 @@ class Review(models.Model):
         category_maximums = {}
         category_averages = {}
         categories = RatingCategory.objects.filter(counts_for_average=True,
-                                                   rating__review=self)
+                                                   rating__review=self,
+                                                   content_type=self.content_type
+                                                   )
         # find the highest rating possible across all categories
         for category in categories:
             category_max = category.get_rating_max_from_choices()
@@ -161,10 +164,11 @@ class Review(models.Model):
 
         """
         total_average, category_averages = self.get_averages(
-            max_value=max_value)
+            max_value=max_value
+        )
         return total_average
 
-    def get_category_averages(self, max_value=None):
+    def get_category_averages(self, content_type, max_value=None):
         """
         Returns the average ratings for every category of this reviews.
 
@@ -172,7 +176,8 @@ class Review(models.Model):
 
         """
         total_average, category_averages = self.get_averages(
-            max_value=max_value)
+            max_value=max_value
+        )
         return category_averages
 
     def is_editable(self):
@@ -253,6 +258,14 @@ class RatingCategory(models.Model):
       calculate the average rating. Default is True.
 
     """
+
+    class Meta:
+        # https://github.com/hipo/university-domains-list college names are unique
+        constraints = [
+            models.UniqueConstraint(fields=['identifier', 'content_type'],
+                                    name='object_rating_categories')
+        ]
+
     identifier = models.SlugField(
         max_length=32,
         verbose_name='Identifier',
@@ -265,6 +278,11 @@ class RatingCategory(models.Model):
     )
     name = models.CharField(max_length=256, null=False)
     question = models.CharField(max_length=512, blank=True, null=True)
+
+    content_type = models.ForeignKey(
+        ContentType,
+        on_delete=models.CASCADE
+    )
 
     @property
     def required(self):
@@ -292,6 +310,10 @@ class RatingCategory(models.Model):
     def get_rating_max_from_choices(self):
         """Returns the maximun value a rating can have in this catgory."""
         return int(list(self.get_choices())[0][0])
+
+    def save(self, *args, **kwargs):
+        self.identifier = slugify(self.name)
+        super(RatingCategory, self).save(*args, **kwargs)
 
 
 class RatingCategoryChoice(models.Model):
@@ -362,6 +384,10 @@ class Rating(models.Model):
         verbose_name='Category',
         on_delete=models.CASCADE,
     )
+
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    reviewed_item = fields.GenericForeignKey('content_type', 'object_id')
 
     class Meta:
         ordering = ['category', 'review']
