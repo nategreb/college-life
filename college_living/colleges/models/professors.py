@@ -47,6 +47,9 @@ class Professor(models.Model):
     teaching_quality = models.PositiveSmallIntegerField(default=1)
     personality = models.PositiveSmallIntegerField(default=1)
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
     # url field
     slug = models.SlugField(max_length=40, blank=True, null=False)
 

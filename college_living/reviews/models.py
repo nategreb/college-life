@@ -90,7 +90,7 @@ class Review(models.Model):
     def get_user(self):
         """Returns the user who wrote this reviews or ``Anonymous``."""
         if self.user:
-            return self.user.email
+            return self.user.username
         return 'Anonymous'
 
     def get_averages(self, max_value=None):

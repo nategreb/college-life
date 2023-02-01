@@ -32,6 +32,8 @@ class CollegeClass(models.Model):
         verbose_name='name of course'
     )
 
+    def __str__(self):
+        return self.class_name
 
 """
  SemesterYear are the possible semesters and year at a university

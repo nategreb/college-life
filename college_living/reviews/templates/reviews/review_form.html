@@ -1,12 +1,15 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block title %} Create reviews {% endblock %}
 
 {% block content %}
-    <h1> Create reviews</h1>
-    <form method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save"/>
-    </form>
+    <div class="container vertical-center">
+        <h1> Create a review</h1>
+        <form method="post" action=".">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Save"/>
+        </form>
+    </div>
 {% endblock %}
