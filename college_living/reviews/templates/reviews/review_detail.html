@@ -10,7 +10,7 @@
         <h3>{{ object.get_user }} wrote:</h3>
         <p>{{ object.content }}</p>
     {% else %}
-        <p>{{ user }} reviewed without description.</p>
+        <p>{{ user.username }} reviewed without description.</p>
     {% endif %}
     {% if object.ratings.all %}
         <h3>Ratings {% if object.get_average_rating %} ({{ object.get_average_rating }} of

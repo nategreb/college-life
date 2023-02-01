@@ -2,7 +2,7 @@
 <table>
     {% for category, average_rating in category_averages.items %}
         <tr>
-            <th>{{ category.name }}:</th>
+            <th>{{ category }}:</th>
             <td>{{ average_rating|floatformat:1 }}</td>
         </tr>
     {% endfor %}

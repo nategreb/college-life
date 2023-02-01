@@ -1,0 +1,68 @@
+[
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 2,
+        "fields": {
+            "identifier": "take-again",
+            "counts_for_average": true,
+            "name": "Take Again",
+            "question": null,
+            "content_type": 18
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 3,
+        "fields": {
+            "identifier": "grading-difficulty",
+            "counts_for_average": true,
+            "name": "Grading Difficulty",
+            "question": null,
+            "content_type": 18
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 4,
+        "fields": {
+            "identifier": "teaching-quality",
+            "counts_for_average": true,
+            "name": "Teaching Quality",
+            "question": null,
+            "content_type": 18
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 5,
+        "fields": {
+            "identifier": "personality",
+            "counts_for_average": true,
+            "name": "Personality",
+            "question": null,
+            "content_type": 18
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 6,
+        "fields": {
+            "identifier": "usefulness",
+            "counts_for_average": true,
+            "name": "Usefulness",
+            "question": null,
+            "content_type": 20
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 7,
+        "fields": {
+            "identifier": "theoretical",
+            "counts_for_average": true,
+            "name": "Theoretical",
+            "question": null,
+            "content_type": 20
+        }
+    }
+]
