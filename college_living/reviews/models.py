@@ -7,11 +7,11 @@ from django.utils import timezone
 from django.utils.text import slugify
 
 DEFAULT_CHOICES = (
-    ('5', '5'),
-    ('4', '4'),
-    ('3', '3'),
-    ('2', '2'),
-    ('1', '1'),
+    (5, 5),
+    (4, 4),
+    (3, 3),
+    (2, 2),
+    (1, 1),
 )
 
 
@@ -132,7 +132,7 @@ class Review(models.Model):
             category_average = None
             ratings = Rating.objects.filter(
                 review=self,
-                category=category, value__isnull=False).exclude(value='')
+                category=category, value__isnull=False)
             category_max = category_maximums[category]
             for rating in ratings:
                 if category_average is None:
@@ -168,7 +168,7 @@ class Review(models.Model):
         )
         return total_average
 
-    def get_category_averages(self, content_type, max_value=None):
+    def get_category_averages(self, max_value=None):
         """
         Returns the average ratings for every category of this reviews.
 
@@ -336,9 +336,8 @@ class RatingCategoryChoice(models.Model):
         on_delete=models.CASCADE
     )
 
-    value = models.CharField(
+    value = models.IntegerField(
         verbose_name='Value',
-        max_length=20,
         blank=True, null=True,
     )
 
@@ -363,12 +362,9 @@ class Rating(models.Model):
     :category: The rating category the rating belongs to.
 
     """
-    rating_choices = DEFAULT_CHOICES
 
-    value = models.CharField(
-        max_length=20,
+    value = models.IntegerField(
         verbose_name='Value',
-        choices=getattr(settings, 'REVIEW_RATING_CHOICES', rating_choices),
         blank=True, null=True,
     )
 
