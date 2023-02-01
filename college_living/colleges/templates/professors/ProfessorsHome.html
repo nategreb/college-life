@@ -27,26 +27,36 @@
         <div style="width: 50% !important; margin: auto">
             <div class="table-responsive">
                 <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Reviews</th>
+                        <th scope="col">Overall</th>
+                    </tr>
+                    </thead>
                     <tbody>
                     {% for professor in page_obj %}
-                        {#                        {% total_review_average professor 5 as review_average %}#}
-                        {% optimized_total_review_average professor as review_average %}
-                        <tr>
-                            <td class="product">
-                                <a href="{% url 'colleges:professor' college.id college.slug professor.id professor.slug %}">
-                                    <strong>{{ professor.first_name }} {{ professor.last_name }}</strong>
-                                    <br>
-                                </a>
+                        <tr class="table-row clickable-row"
+                            data-href="{% url 'colleges:professor' college.id college.slug professor.id professor.slug %}"
+                            style="cursor:pointer;"
+                        >
+                            <td>
+                                <strong>{{ professor.first_name }} {{ professor.last_name }}</strong>
                             </td>
-                            <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    <i class="fa fa-star">{{ professor.department.name }}</i>
-                                    <i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
+                            <td>
+                                <i class="fa fa-star">{{ professor.department.name }}</i>
+                            </td>
+                            {% get_review_count professor as review_amount %}
+                            <td>
+                                {{ review_amount }}
+                            </td>
+                            {% optimized_total_review_average professor as review_average %}
                             {% if review_average %}
-                                <td class="price text-right">{{ review_average|floatformat:1 }}/5.0</td>
+                                <td>{{ review_average|floatformat:1 }}/5.0</td>
                             {% else %}
-                                <td class="price text-right"> N/A</td>
+                                <td>N/A</td>
                             {% endif %}
-                            </a>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -82,7 +92,7 @@
         </div>
     </footer>
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
     <script>
         const autoCompleteJS = new autoComplete({
@@ -126,5 +136,14 @@
             return readable
         }
 
+        jQuery(document).ready(function () {
+            $(".clickable-row").click(function () {
+
+                thisdata = $(this).attr('data-href');
+                console.log(thisdata);
+
+                window.location.href = thisdata;
+            });
+        });
     </script>
 {% endblock %}
