@@ -46,7 +46,7 @@ def college_classes(request, college_id, college_slug=None):
         course_names.append(course.class_name)
 
     return render(
-        request, 'colleges/CollegeCourses.html',
+        request, 'courses/CoursesHome.html',
         {
             'college': college,
             'course_objects': course_objects,

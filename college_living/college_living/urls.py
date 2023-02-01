@@ -12,6 +12,7 @@ urlpatterns = [
     # apps
     path('', home, name='home'),
     path('colleges/', include('colleges.urls'), name='colleges'),
+    path('users/', include('users.urls'), name='users'),
 
     # debugging
     path('__debug__/', include('debug_toolbar.urls')),
