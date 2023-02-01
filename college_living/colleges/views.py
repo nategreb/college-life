@@ -1,9 +1,13 @@
-from django.http import Http404, HttpResponse, JsonResponse
+from allauth.exceptions import ImmediateHttpResponse
+from django.http import Http404, HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
+from django.contrib import messages
+from django.urls import reverse
 
 from colleges.models import College, CollegeClass, Professor, Dorms, ResidentialArea
 from reviews.templatetags.review_tags import get_reviews
+
 
 # TODO: fix requests to ensure they're unique for colleges
 # TODO: store college in cache
@@ -54,13 +58,31 @@ def college_classes(request, college_id, college_slug=None):
         }
     )
 
-"""
-    get the page for a given class
-"""
-
 
 def college_class(request, college_id, course_id, college_slug=None):
-    return redirect('reviews:class_review_home', college_id=college_id, college_slug=college_slug, course_id=course_id)
+    """
+        get the profile for a given class
+    """
+    try:
+        course = CollegeClass.objects.get(id=course_id)
+        reviews = get_reviews(course)
+        paginate = Paginator(reviews, 15)  # show 15 reviews per page
+        page_number = request.GET.get('page')
+        page_obj = paginate.get_page(page_number)
+    except College.DoesNotExist:
+        # add a one-time notification of the cause of failure
+        messages.add_message(
+            request, messages.ERROR,
+            'This specific class doesn\'t exist'
+        )
+        raise ImmediateHttpResponse(HttpResponseRedirect(reverse('colleges:classes')))
+    return render(
+        request, 'courses/CourseProfile.html',
+        {
+            'course': course,
+            'page_obj': page_obj
+        }
+    )
 
 
 def edit_college(request, college_id, college_slug=None):
@@ -81,7 +103,7 @@ def get_moderated_dorms(request, college_id, college_slug=None):
         college = College.approved_colleges.get(id=college_id)
         Dorms.unmoderated_objects.filter(college=college)
     except College.DoesNotExist:
-        raise Http404('College does not exist')
+        pass
     return HttpResponse('<h1>Page was found</h1>')
 
 
