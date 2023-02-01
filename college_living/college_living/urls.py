@@ -7,9 +7,13 @@ urlpatterns = [
 
     # third party
     path('accounts/', include('allauth.urls')),
+    path('reviews/', include('reviews.urls')),
 
     # apps
     path('', home, name='home'),
     path('colleges/', include('colleges.urls'), name='colleges'),
-    path('colleges/', include('college_reviews.urls'), name='reviews'),
+    path('users/', include('users.urls'), name='users'),
+
+    # debugging
+    path('__debug__/', include('debug_toolbar.urls')),
 ]

@@ -1,8 +1,6 @@
 from django.urls import path, include
-from django.conf import settings
-from . import views
-from django.conf.urls.static import static
+import users.views as views
 
-# urlpatterns = [
-# 		path('', views.index, name ='index'),
-# ]
+urlpatterns = [
+    path('profile/', views.get_user_profile, name='profile'),
+]

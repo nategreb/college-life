@@ -42,15 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    #third party
+    # third party
     'crispy_forms',
-    #'moderation.apps.ModerationConfig',
+    'reviews.apps.ReviewsConfig',
+    "debug_toolbar",
+
+    # 'moderation.apps.ModerationConfig',
     'allauth_ui',
     'widget_tweaks',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #oauth provider for google
+    # oauth provider for google
     'allauth.socialaccount.providers.google',
     'rest_framework',
     'dj_rest_auth',
@@ -59,12 +62,12 @@ INSTALLED_APPS = [
     #own
     'colleges.apps.CollegesConfig',
     'users.apps.UsersConfig',
-    'college_reviews.apps.CollegeReviewsConfig',
 ]
 
 SITE_ID = 1
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -198,11 +201,15 @@ ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
-#authorized email domains
+# authorized email domains
 ACCOUNT_ADAPTER = 'users.adapter.RestrictEmailAdapter'
 SOCIALACCOUNT_ADAPTER = "users.adapter.SocialAccountAdapter"
 
-#configuration for AllAuth
+# configuration for AllAuth
 ACCOUNT_FORMS = {
     'signup': 'users.forms.CustomSignupForm',
 }
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div style="background-color: #eee;">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-7">
+                        <ul class="nav nav-pills nav-fill">
+                            {#                              <li class="nav-item">#}
+                            {#                                <a class="nav-link" href="{% url 'account_change_password' %}">Change Password</a>#}
+                            {#                              </li>#}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'account_reset_password' %}">Reset Password</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Name</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ user.first_name }} {{ user.last_name }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Email</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ user.email }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">School</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"> {{ college.college_name }} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <div>
+            <ul class="list-group list-group-light mb-3">
+                {% for review in page_obj %}
+                    <li class="list-group-item">
+                        <h5 class="fw-bold">
+                            {% if review.average_rating %}
+                                {{ review.average_rating }}/5.0
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </h5>
+                        <p class="text-muted mb-0">
+                            {% if review.content %}
+                                {{ review.content|truncatewords:'70' }}
+                            {% else %}
+                                Reviewed without description.
+                            {% endif %}
+                            <a href="{% url "review_detail" pk=review.id %}">Review details</a>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+        </div>
+
+    </div>
+{% endblock %}
