@@ -1,5 +1,5 @@
 from django.urls import path, include
-from . import views
+from .views import views, professor_view, courses_view
 
 app_name = 'colleges'
 
@@ -14,12 +14,14 @@ urlpatterns = [
         path('edit/dorms', views.get_moderated_dorms),
 
         # professors
-        path('professors/', views.get_all_college_professors, name='professors'),
-        path('professors/<int:professor_id>/', views.get_college_professor, name='professor'),
-        path('professors/<int:professor_id>/<slug:professor_slug>/', views.get_college_professor, name='professor'),
+        # path('professors/', professor_view.get_all_college_professors, name='professors'),
+        path('professors/', professor_view.ProfessorSearchView.as_view(), name='professors'),
+        path('professors/<int:professor_id>/', professor_view.get_college_professor, name='professor'),
+        path('professors/<int:professor_id>/<slug:professor_slug>/', professor_view.get_college_professor,
+             name='professor'),
 
         # classes
-        path('classes/', views.college_classes, name='classes'),
-        path('classes/<int:course_id>/', views.college_class, name='class')
+        path('classes/', courses_view.ClassesSearchView.as_view(), name='classes'),
+        path('classes/<int:course_id>/', courses_view.college_class, name='class')
     ])),
 ]

@@ -4,6 +4,8 @@
 {% block head %}
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
 {% endblock %}
 
 {% load static %}
@@ -12,129 +14,83 @@
 
         <section class="jumbotron text-center">
             <div class="container">
-                <h1 class="jumbotron-heading">{{ college.college_name }}</h1>
+                <h1 class="jumbotron-heading">{{ college }}</h1>
             </div>
         </section>
 
-        {#  we probably want a list of deparments but also a search based on department and professor#}
+
         <div class="album py-5">
-            <div class="d-flex justify-content-center">
-                <input type="professorSearch" class="form-control align-middle" id="autoComplete"
-                       placeholder="Search Professors">
-            </div>
-        </div>
-
-        <div style="width: 50% !important; margin: auto">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">Reviews</th>
-                        <th scope="col">Overall</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for professor in page_obj %}
-                        <tr class="table-row clickable-row"
-                            data-href="{% url 'colleges:professor' college.id college.slug professor.id professor.slug %}"
-                            style="cursor:pointer;"
-                        >
-                            <td>
-                                <strong>{{ professor.first_name }} {{ professor.last_name }}</strong>
-                            </td>
-                            <td>
-                                <i class="fa fa-star">{{ professor.department.name }}</i>
-                            </td>
-                            {% get_review_count professor as review_amount %}
-                            <td>
-                                {{ review_amount }}
-                            </td>
-                            {% optimized_total_review_average professor as review_average %}
-                            {% if review_average %}
-                                <td>{{ review_average|floatformat:1 }}/5.0</td>
-                            {% else %}
-                                <td>N/A</td>
-                            {% endif %}
-                        </tr>
+            <div class="d-flex justify-content-center autoComplete_wrapper">
+                <input list="objects" type="professorSearch" class="form-control align-middle" id="autoComplete"
+                       placeholder="Search for a {{ model_name }}">
+                <datalist id="objects">
+                    {% for obj in objects %}
+                        <option value="{{ obj }}"></option>
                     {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="pagination">
-                <span class="step-links">
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                    {% endif %}
+                </datalist>
 
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                    </span>
-
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
             </div>
         </div>
+
+
+        {#        <div style="width: 50% !important; margin: auto">#}
+        {#            <div class="table-responsive">#}
+        {#                <table class="table table-hover">#}
+        {#                    <thead>#}
+        {#                    <tr>#}
+        {#                        <th scope="col">Name</th>#}
+        {#                        <th scope="col">Department</th>#}
+        {#                        <th scope="col">Reviews</th>#}
+        {#                        <th scope="col">Overall</th>#}
+        {#                    </tr>#}
+        {#                    </thead>#}
+        {#                    <tbody>#}
+        {#                    {% for professor in page_obj %}#}
+        {#                        <tr class="table-row clickable-row"#}
+        {#                            data-href="{% url 'colleges:professor' college.id college.slug professor.id professor.slug %}"#}
+        {#                            style="cursor:pointer;"#}
+        {#                        >#}
+        {#                            <td>#}
+        {#                                <strong>{{ professor.first_name }} {{ professor.last_name }}</strong>#}
+        {#                            </td>#}
+        {#                            <td>#}
+        {#                                <i class="fa fa-star">{{ professor.department.name }}</i>#}
+        {#                            </td>#}
+        {#                            {% get_review_count professor as review_amount %}#}
+        {#                            <td>#}
+        {#                                {{ review_amount }}#}
+        {#                            </td>#}
+        {#                            {% optimized_total_review_average professor as review_average %}#}
+        {#                            {% if review_average %}#}
+        {#                                <td>{{ review_average|floatformat:1 }}/5.0</td>#}
+        {#                            {% else %}#}
+        {#                                <td>N/A</td>#}
+        {#                            {% endif %}#}
+        {#                        </tr>#}
+        {#                    {% endfor %}#}
+        {#                    </tbody>#}
+        {#                </table>#}
+        {#            </div>#}
+        {#            <div class="pagination">#}
+        {#                <span class="step-links">#}
+        {#                    {% if page_obj.has_previous %}#}
+        {#                        <a href="?page=1">&laquo; first</a>#}
+        {#                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>#}
+        {#                    {% endif %}#}
+        {##}
+        {#                    <span class="current">#}
+        {#                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
+        {#                    </span>#}
+        {##}
+        {#                    {% if page_obj.has_next %}#}
+        {#                        <a href="?page={{ page_obj.next_page_number }}">next</a>#}
+        {#                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>#}
+        {#                    {% endif %}#}
+        {#                </span>#}
+        {#            </div>#}
+        {#        </div>#}
     </main>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
-    <script>
-        const autoCompleteJS = new autoComplete({
-            placeHolder: "Search for Professors",
-            data: {
-                src: get_readable_professors(),
-                cache: true,
-            },
-            resultItem: {
-                highlight: true
-            },
-            events: {
-                input: {
-                    selection: (event) => {
-                        const selection = event.detail.selection.value;
-                        autoCompleteJS.input.value = selection;
-
-
-                        if (selection != null) {
-                            {% for prof in professors %}
-                                if ("{{prof.first_name}} {{prof.last_name}}, {{ prof.department.name }}" === selection) {
-                                    window.location.href = "{% url 'colleges:professor' college.id college.slug prof.id prof.slug%}"
-                                }
-                            {% endfor %}
-                        }
-                    }
-                },
-            },
-            submit: true,
-        });
-
-        /**
-         returns a readable version of the professor JSON
-         */
-        function get_readable_professors() {
-            var readable = [
-                {% for prof in professors %}
-                    "{{prof.first_name}} {{prof.last_name}}, {{ prof.department.name }}",
-                {% endfor %}
-            ];
-            return readable
-        }
-
-        jQuery(document).ready(function () {
-            $(".clickable-row").click(function () {
-
-                thisdata = $(this).attr('data-href');
-                console.log(thisdata);
-
-                window.location.href = thisdata;
-            });
-        });
-    </script>
 {% endblock %}
