@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load review_tags %}
+
+{% block head %}
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
+{% endblock %}
+
+{% load static %}
+{% block content %}
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">{{ college }}</h1>
+            </div>
+        </section>
+
+
+        <div class="album py-5">
+            <div class="d-flex justify-content-center autoComplete_wrapper">
+                <form method="post" action="{% url 'colleges:search' college.id college.slug %}">
+                    <div class="d-flex justify-content-center autoComplete_wrapper">
+                        {#                        <input type="text" list="objects" class="form-control align-middle" id="autoComplete"#}
+                        {#                               placeholder="Search for a {{ model_name }}"/>#}
+                        {% csrf_token %}
+                        {{ form.search }}
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+{% endblock %}

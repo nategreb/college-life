@@ -1,7 +1,8 @@
-# from dal import autocomplete
-
 from django import forms
-from colleges.models import ResidentialArea, College, Dorms, Professor
+
+from colleges.models import ResidentialArea, Dorms, Professor
+from templates.django.forms.fields import DatalistField
+from templates.django.forms.widgets import CustomDataList
 
 
 class NewResidentialAreaForm(forms.ModelForm):
@@ -16,10 +17,5 @@ class NewDorm(forms.ModelForm):
         fields = ['dorm_name']
 
 
-class SearchForm(forms.ModelForm):
-    """
-    - get contentype of request
-    - search for objects in the table
-
-    """
-    pass
+class SearchForm(forms.Form):
+    search = DatalistField(widget=CustomDataList(attrs={'class': 'autoComplete'}))

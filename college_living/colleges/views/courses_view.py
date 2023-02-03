@@ -9,13 +9,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from colleges.models import CollegeClass, College
-from colleges.views.professor_view import ProfessorSearchView
 from reviews.templatetags.review_tags import get_reviews
-
-
-class ClassesSearchView(ProfessorSearchView):
-    template_name = 'professors/ProfessorsHome.html'
-    model = CollegeClass
 
 
 def college_classes(request, college_id, college_slug=None):

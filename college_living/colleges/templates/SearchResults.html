@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% load review_tags %}
+    <h1> Search Results ... </h1>
+    {% for object in objects %}
+        {{ object.id }}
+    {% endfor %}
+
+{% endblock %}

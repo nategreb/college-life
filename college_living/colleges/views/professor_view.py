@@ -48,26 +48,3 @@ def get_college_professor(request, college_id, professor_id, college_slug=None, 
     )
 
 
-class ProfessorSearchView(ListView):
-    """
-    filter objects and autocomplete
-    get and post method
-    - get filters based on the naem
-    - post takes the name + id to get the object
-
-    """
-    template_name = 'professors/ProfessorsHome.html'
-    model = Professor
-    context_object_name = 'objects'
-
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
-        context['college'] = self.college
-        context['model_name'] = self.model.__name__.lower()
-        return context
-
-    def get_queryset(self):
-        self.college = get_object_or_404(College, id=self.kwargs['college_id'])
-        return self.model.objects.filter(college=self.college)
