@@ -14,10 +14,10 @@
         "model": "reviews.ratingcategory",
         "pk": 3,
         "fields": {
-            "identifier": "grading-difficulty",
+            "identifier": "difficulty",
             "counts_for_average": true,
-            "name": "Grading Difficulty",
-            "question": null,
+            "name": "Difficulty",
+            "question": "How difficult was this professor?",
             "content_type": 18
         }
     },
@@ -63,6 +63,127 @@
             "name": "Theoretical",
             "question": null,
             "content_type": 20
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 8,
+        "fields": {
+            "identifier": "academics",
+            "counts_for_average": true,
+            "name": "Academics",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 9,
+        "fields": {
+            "identifier": "diversity",
+            "counts_for_average": true,
+            "name": "Diversity",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 10,
+        "fields": {
+            "identifier": "athletics",
+            "counts_for_average": true,
+            "name": "Athletics",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 11,
+        "fields": {
+            "identifier": "professors",
+            "counts_for_average": true,
+            "name": "Professors",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 12,
+        "fields": {
+            "identifier": "dorms",
+            "counts_for_average": true,
+            "name": "Dorms",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 13,
+        "fields": {
+            "identifier": "student-life",
+            "counts_for_average": true,
+            "name": "Student Life",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 14,
+        "fields": {
+            "identifier": "campus",
+            "counts_for_average": true,
+            "name": "Campus",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 15,
+        "fields": {
+            "identifier": "party-scene",
+            "counts_for_average": true,
+            "name": "Party Scene",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 16,
+        "fields": {
+            "identifier": "location",
+            "counts_for_average": true,
+            "name": "Location",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 17,
+        "fields": {
+            "identifier": "campus-food",
+            "counts_for_average": true,
+            "name": "Campus Food",
+            "question": null,
+            "content_type": 1
+        }
+    },
+    {
+        "model": "reviews.ratingcategory",
+        "pk": 18,
+        "fields": {
+            "identifier": "safety",
+            "counts_for_average": true,
+            "name": "Safety",
+            "question": null,
+            "content_type": 1
         }
     }
 ]

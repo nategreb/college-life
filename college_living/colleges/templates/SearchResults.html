@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load review_tags %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'colleges/SearchResults.css' %}">
+</head>
+
+{% block content %}
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">{{ college }}</h1>
+            </div>
+        </section>
+
+
+        <div style="width: 50% !important; margin: auto">
+            <div class="container">
+                {% for object in page_obj %}
+                    <div class="row ng-scope">
+                        <section class="search-result-item">
+                            <div class="search-result-item-body">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <h4 class="search-result-item-heading">
+                                            {% if content_type == 'professor' %}
+                                                <a href="{% url 'colleges:professor' college.id college.slug object.id object.slug %}">{{ object }}</a>
+                                                </h4>
+                                            {% else %}
+                                                <a href="{% url 'colleges:class' college.id college.slug object.id %}">{{ object }}</a>
+                                                </h4>
+                                            {% endif %}
+                                        <p class="info">{{ object.department.name }}</p>
+                                    </div>
+                                    <div class="col text-align-center">
+                                        {% optimized_total_review_average object as review_average %}
+                                        <p class="value3 mt-sm">Average Review
+                                            Rating: {{ review_average|floatformat:1 }}</p>
+                                        {% if content_type == 'professor' %}
+                                            <a class="btn btn-primary btn-info btn-sm"
+                                               href="{% url 'colleges:professor' college.id college.slug object.id object.slug %}">Learn
+                                                More</a>
+                                        {% else %}
+                                            <a class="btn btn-primary btn-info btn-sm"
+                                               href="{% url 'colleges:class' college.id college.slug object.id %}">Learn
+                                                More</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </section>
+                    </div>
+                {% endfor %}
+
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    </main>
+{% endblock %}
