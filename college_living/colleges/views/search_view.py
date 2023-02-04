@@ -26,8 +26,8 @@ class ProfessorSearchView(ListView):
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
         context['college'] = self.college
-        context['model_name'] = self.model.__name__.lower()
         context['form'] = SearchForm()
+        context['form'].fields['search'].widget.attrs['placeholder'] = f'Search for a {self.model.__name__.lower()}'
 
         # transform queryset into choices for form
         arr = []
