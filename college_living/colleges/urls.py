@@ -16,8 +16,8 @@ urlpatterns = [
         # professors
         # path('professors/', professor_view.get_all_college_professors, name='professors'),
         path('professors/', search_view.ProfessorSearchView.as_view(), name='professors'),
-        path('professors/<int:professor_id>/', professor_view.get_college_professor, name='professor'),
-        path('professors/<int:professor_id>/<slug:professor_slug>/', professor_view.get_college_professor,
+        path('professor/<int:professor_id>/', professor_view.get_college_professor, name='professor'),
+        path('professor/<int:professor_id>/<slug:professor_slug>/', professor_view.get_college_professor,
              name='professor'),
 
         # classes

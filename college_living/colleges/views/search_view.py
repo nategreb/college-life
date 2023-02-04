@@ -1,4 +1,5 @@
 from django.contrib.postgres.search import SearchVector
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse_lazy
@@ -48,16 +49,25 @@ class ProfessorSearchView(ListView):
 
             objs = self.model.objects.annotate(
                 search=SearchVector('first_name', 'last_name')
-            ).filter(search=search_query)
+            ).filter(search__icontains=search_query)
 
             if objs.count() == 1:
                 kwargs.update({'professor_id': objs[0].id, 'professor_slug': objs[0].slug})
                 return redirect(reverse_lazy('colleges:professor', kwargs=kwargs))
             else:
+
+                paginate = Paginator(objs, 15)  # show 15 reviews per page
+                page_number = request.GET.get('page')
+                page_obj = paginate.get_page(page_number)
+
                 return TemplateResponse(
                     request=request,
                     template='SearchResults.html',
-                    context={'objects': objs}
+                    context={
+                        'page_obj': page_obj,
+                        'college': College.approved_colleges.get(id=self.kwargs['college_id']),
+                        'content_type': 'professor'
+                    }
                 )
         else:
             return super(ProfessorSearchView, self).dispatch(request, *args, **kwargs)
@@ -78,10 +88,20 @@ class ClassesSearchView(ProfessorSearchView):
                 kwargs.update({'course_id': objs[0].id})  # , 'course_slug': objs[0].slug})
                 return redirect(reverse_lazy('colleges:class', kwargs=kwargs))
             else:
+
+                paginate = Paginator(objs, 15)  # show 15 reviews per page
+                page_number = request.GET.get('page')
+                page_obj = paginate.get_page(page_number)
+
                 return TemplateResponse(
                     request=request,
                     template='SearchResults.html',
-                    context={'objects': objs}
+                    context={
+                        'page_obj': page_obj,
+                        'college': College.approved_colleges.get(id=self.kwargs['college_id']),
+                        'content_type': 'class'
+
+                    }
                 )
         else:
             return super(ProfessorSearchView, self).dispatch(request, *args, **kwargs)
