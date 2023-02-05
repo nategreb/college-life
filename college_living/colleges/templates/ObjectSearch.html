@@ -19,14 +19,19 @@
 
         <div class="album py-5">
             <div class="d-flex justify-content-center autoComplete_wrapper">
-                <form method="post" action="{% url 'colleges:search' college.id college.slug %}">
-                    <div class="d-flex justify-content-center autoComplete_wrapper">
-                        {#                        <input type="text" list="objects" class="form-control align-middle" id="autoComplete"#}
-                        {#                               placeholder="Search for a {{ model_name }}"/>#}
-                        {% csrf_token %}
-                        {{ form.search }}
-                    </div>
-                </form>
+                {% if object_type == 'professors' %}
+                    <form method="get" action="{% url 'colleges:professor_search' college.id college.slug %}">
+                        <div class="d-flex justify-content-center autoComplete_wrapper">
+                            {{ form.search }}
+                        </div>
+                    </form>
+                {% else %}
+                    <form method="get" action="{% url 'colleges:course_search' college.id college.slug %}">
+                        <div class="d-flex justify-content-center autoComplete_wrapper">
+                            {{ form.search }}
+                        </div>
+                    </form>
+                {% endif %}
             </div>
         </div>
 
