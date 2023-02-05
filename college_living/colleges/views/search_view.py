@@ -2,7 +2,6 @@ from django.contrib.postgres.search import SearchVector
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect
-from django.template.response import TemplateResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 
@@ -11,13 +10,7 @@ from colleges.forms import SearchForm
 
 
 class ProfessorSearchView(ListView):
-    """
-    filter objects and autocomplete
-    get and post method
-    - get filters based on the naem
-    - post takes the name + id to get the object
-
-    """
+    # TODO make pagination faster
     template_name = 'ObjectSearch.html'
     object_type = 'professors'
     model = Professor
@@ -42,7 +35,10 @@ class ProfessorSearchView(ListView):
                 arr.append((obj.__str__, obj.id))
             context['form'].fields['search'].choices = arr
         else:
+            context['search'] = self.request.GET.get('search', None)
+            self.template_name = self.search_results_template
             objs = context['objects']
+
             paginate = Paginator(objs, 15)  # show 15 reviews per page
             page_number = self.request.GET.get('page')
             page_obj = paginate.get_page(page_number)
@@ -66,7 +62,6 @@ class ProfessorSearchView(ListView):
             if objects.count() == 1:
                 kwargs.update({'professor_id': objects[0].id, 'professor_slug': objects[0].slug})
                 return redirect(reverse_lazy('colleges:professor', kwargs=kwargs))
-            self.template_name = self.search_results_template
         return super(ProfessorSearchView, self).dispatch(request, *args, **kwargs)
 
 
@@ -89,5 +84,4 @@ class ClassesSearchView(ProfessorSearchView):
             if objects.count() == 1:
                 kwargs.update({'course_id': objects[0].id})
                 return redirect(reverse_lazy('colleges:class', kwargs=kwargs))
-            self.template_name = self.search_results_template
         return super(ClassesSearchView, self).get(request, *args, **kwargs)
