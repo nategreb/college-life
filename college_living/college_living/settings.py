@@ -42,11 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.forms',
+    'django_browser_reload',
 
     # third party
     'crispy_forms',
     'reviews.apps.ReviewsConfig',
     "debug_toolbar",
+    "tailwind",
+    'compressor',
 
     # 'moderation.apps.ModerationConfig',
     'allauth_ui',
@@ -78,6 +81,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'college_living.urls'
@@ -216,3 +220,9 @@ ACCOUNT_FORMS = {
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+COMPRESS_ROOT = BASE_DIR / 'static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
