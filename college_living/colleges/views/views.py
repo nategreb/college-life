@@ -1,20 +1,26 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib.contenttypes.models import ContentType
 
 from colleges.models import College, Dorms
+from reviews.models import Review
 
 
-# TODO: fix requests to ensure they're unique for colleges
-# TODO: store college in cache
-# TODO; professor slugs?
+def get_colleges(request):
+    colleges = College.approved_colleges.all()
+    # get the latest review
+    rev = Review.objects.order_by('creation_date').last()
+    if rev:
+        ct = ContentType.objects.get(id=rev.content_type.id)
+        obj = ct.get_object_for_this_type(id=rev.object_id)
+    return render(
+        request,
+        'colleges/Colleges.html',
+        {'colleges': colleges, 'review': rev, 'object': obj}
+    )
+
 
 def college_home(request, college_id, college_slug=None):
-    """
-    College Name
-        Residential Hall
-                Dorms
-        Other Dorms
-    """
     college = College.approved_colleges.get(id=college_id)
     return render(request, 'colleges/CollegeHome.html', {'college': college})
 

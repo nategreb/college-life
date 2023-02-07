@@ -13,6 +13,6 @@ def get_user_profile(request):
     page_obj = paginate.get_page(page_number)
     return render(
         request,
-        'ProfileHome.html',
+        'users/ProfileHome.html',
         {'college': college, 'reviews': reviews, 'page_obj': page_obj}
     )

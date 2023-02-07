@@ -4,6 +4,7 @@ from .views import views, professor_view, courses_view, search_view
 app_name = 'colleges'
 
 urlpatterns = [
+    path('', views.get_colleges, name='all_colleges'),
     path('<int:college_id>/<slug:college_slug>/', include([
         path('', views.college_home, name='college_home'),
         path('dorms/', views.college_on_campus_living, name='dorms'),
