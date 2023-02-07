@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'reviews.apps.ReviewsConfig',
     "debug_toolbar",
-    "tailwind",
     'compressor',
 
     # 'moderation.apps.ModerationConfig',
