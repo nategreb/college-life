@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     # third party
     'crispy_forms',
+    'crispy_tailwind',
     'reviews.apps.ReviewsConfig',
     "debug_toolbar",
     'compressor',
@@ -172,9 +173,6 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#third party settings
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 #gmail_send/settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -225,3 +223,7 @@ COMPRESS_ROOT = BASE_DIR / 'static'
 COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"

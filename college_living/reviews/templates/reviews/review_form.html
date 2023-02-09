@@ -1,15 +1,18 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
+{% load tailwind_filters %}
 
 {% block title %} Create reviews {% endblock %}
 
 {% block content %}
-    <div class="container vertical-center">
-        <h1> Create a review</h1>
-        <form method="post" action=".">
-            {% csrf_token %}
+
+    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"> Create a review </h2>
+    <form method="post" action=".">
+        {% csrf_token %}
             {{ form|crispy }}
-            <input type="submit" value="Save"/>
-        </form>
-    </div>
+        <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Submit
+        </button>
+    </form>
+
 {% endblock %}
