@@ -1,75 +1,93 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load review_tags %}
 {% block content %}
 
-    {% load review_tags %}
-    <section style="background-color: #eee;">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <h5 class="my-3">{{ course.class_name }}</h5>
-                            <p class="text-muted mb-4">{{ course.college_id.college_name }}</p>
-                            {% optimized_total_review_average course as review_average %}
-                            {% if review_average %}
-                                <p class="text-muted mb-4">Overall Rating: {{ review_average|floatformat:1 }}/5.0 </p>
-                            {% else %}
-                                <p class="text-muted mb-4"> N/A </p>
-                            {% endif %}
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <div class="max-w-screen-md mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ course.class_name }}</h2>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"> By feature </p>
-                                    {% optimized_render_category_averages course %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <a href="{% url "review_create" content_type='collegeclass' object_id=course.id %}">
-                                    <div class="card-body">
-                                        <h6 class="mb-4">Review this class</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </section>
-    <div class="container">
-        <div>
-            <ul class="list-group list-group-light mb-3">
+
+                <a href="{% url "review_create" content_type='collegeclass' object_id=course.id %}"
+                   class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="w-full">Review {{ course.class_name }}</span>
+                    <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+
+            </div>
+            <div>
+                {% optimized_all_statistics course %}
+            </div>
+
+
+            <section>
                 {% for review in page_obj %}
-                    <li class="list-group-item">
-                        <h5 class="fw-bold">
-                            {% if review.average_rating %}
-                                {{ review.average_rating }}/5.0
-                            {% else %}
-                                N/A
-                            {% endif %}
-                        </h5>
-                        <p class="text-muted mb-0">
+                    <article
+                            class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex justify-between items-center mb-5 text-gray-500">
+                            <span class="text-sm">{{ review.creation_date }}</span>
+                        </div>
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
+                                href="{% url 'review_detail' review.id %}">{{ object }}</a></h2>
+                        <div class="flex items-center">
+
+                            <div class="flex items-center">
+                                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor"
+                                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Rating star</title>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                {% if review.average_rating %}
+                                    <p class="ml-2 text-sm font-bold text-gray-900 dark:text-white">{{ review.average_rating|floatformat }}</p>
+                                {% else %}
+                                    <p class="ml-2 text-sm font-bold text-gray-900 dark:text-white"> N/A </p>
+                                {% endif %}
+                                <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"></span>
+                            </div>
+                        </div>
+                        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
                             {% if review.content %}
                                 {{ review.content|truncatewords:'70' }}
                             {% else %}
                                 Reviewed without description.
                             {% endif %}
-                            <a href="{% url "review_detail" pk=review.id %}">Review details</a>
                         </p>
-                    </li>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-4">
+                                <svg class="w-7 h-7 rounded-full text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="font-medium dark:text-white">
+                              {{ review.user }}
+                          </span>
+                            </div>
+                            <a href="{% url 'review_detail' review.id %}"
+                               class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
+                                Read more
+                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                          clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
                 {% endfor %}
-            </ul>
+            </section>
         </div>
+    </section>
+
+    <div class="container">
         <div class="pagination">
-                <span class="step-links">
+                <span class="step-links inline-flex items-center -space-x-px ">
                     {% if page_obj.has_previous %}
                         <a href="?page=1">&laquo; first</a>
                         <a href="?page={{ page_obj.previous_page_number }}">previous</a>
