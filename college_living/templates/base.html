@@ -144,9 +144,12 @@
 </nav>
 
 <body>
-{% block content %}
-    {% comment %} where other pages content will be plugged in {% endcomment %}
-{% endblock %}
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        {% block content %}
+        {% endblock %}
+    </div>
+</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
