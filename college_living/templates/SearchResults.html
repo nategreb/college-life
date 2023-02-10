@@ -64,23 +64,7 @@
                     {% endfor %}
 
 
-                    <div class="pagination">
-                        <span class="step-links">
-                            {% if page_obj.has_previous %}
-                                <a href="?search={{ search }}&page=1">&laquo; first</a>
-                                <a href="?search={{ search }}&page={{ page_obj.previous_page_number }}">previous</a>
-                            {% endif %}
-
-                            <span class="current">
-                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                            </span>
-
-                            {% if page_obj.has_next %}
-                                <a href="?search={{ search }}&page={{ page_obj.next_page_number }}">next</a>
-                                <a href="?search={{ search }}&page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                            {% endif %}
-                        </span>
-                    </div>
+                        {% include 'Pagination.html' %}
                     </div>
                 {% else %}
                     <h3> No results found ... </h3>
