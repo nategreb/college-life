@@ -1,9 +1,11 @@
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.contenttypes.models import ContentType
 
 from colleges.models import College, Dorms
 from reviews.models import Review
+from reviews.templatetags.review_tags import get_reviews
 
 
 def get_colleges(request):
@@ -22,7 +24,11 @@ def get_colleges(request):
 
 def college_home(request, college_id, college_slug=None):
     college = College.approved_colleges.get(id=college_id)
-    return render(request, 'colleges/CollegeHome.html', {'college': college})
+    reviews = get_reviews(college)
+    paginate = Paginator(reviews, 15)
+    page_number = request.GET.get('page')
+    page_obj = paginate.get_page(page_number)
+    return render(request, 'colleges/CollegeHome.html', {'college': college, 'page_obj': page_obj})
 
 """
     get all the dorms for the college
