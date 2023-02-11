@@ -17,6 +17,10 @@ class RestrictEmailAdapter(DefaultAccountAdapter):
         approved colleges can sign up.
     """
 
+    # only use social accounts
+    def is_open_for_signup(self, request):
+        return False
+
     def clean_email(self, email):
         # get all approved email domains
         allowed_email_domains = College.approved_colleges.values_list('email_domain', flat=True)
@@ -52,6 +56,18 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
             # add a one-time notification of the cause of failure
             messages.add_message(
                 request, messages.ERROR,
-                'You are restricted from registering. Your college hasn\'t been approved yet. Please contact admin.'
+                """
+                   You are restricted from registering. 
+                   Your college hasn\'t been approved yet. Please contact admin.
+               """
             )
             raise ImmediateHttpResponse(HttpResponseRedirect(reverse('home')))
+
+    def is_open_for_signup(self, request, socialaccount):
+        return True
+
+    def save_user(self, request, sociallogin, form=None):
+        user = sociallogin.user
+        # we know the email exists in approved colleges based on the pre_social_login
+        user.college = College.approved_colleges.get_college(user.email)
+        super(SocialAccountAdapter, self).save_user(request, sociallogin)
