@@ -6,7 +6,9 @@ from reviews.models import Review
 
 
 def get_user_profile(request):
-    college = College.all_colleges.get(id=request.user.college_id)
+    college = None
+    if request.user.college:
+        college = College.all_colleges.get(id=request.user.college_id)
     reviews = Review.objects.filter(user_id=request.user.id)
     paginate = Paginator(reviews, 15)
     page_number = request.GET.get('page')
