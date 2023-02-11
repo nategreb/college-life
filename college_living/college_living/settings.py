@@ -227,7 +227,12 @@ COMPRESS_ROOT = BASE_DIR / 'static'
 
 COMPRESS_ENABLED = True
 
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',
+                       'django.contrib.staticfiles.finders.FileSystemFinder',
+                       'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+                       )
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
@@ -235,8 +240,7 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    os.path.join(BASE_DIR, "static"),
-    # BASE_DIR
+    os.path.join(BASE_DIR, "static")
 ]
 
 ### Reviews Settings
@@ -244,3 +248,4 @@ REVIEW_AVOID_MULTIPLE_REVIEWS = True
 
 # permission if user's college is that college or the item is associated to the same college
 REVIEW_PERMISSION_FUNCTION = lambda u, item: u.college and (u.college == item or u.college == item.college)
+
