@@ -6,6 +6,7 @@ from .views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', TemplateView.as_view(template_name='About.html'), name='about'),
+    path('contact/', TemplateView.as_view(template_name='Contact.html'), name='contact'),
 
     # third party
     path('accounts/', include('allauth.urls')),
