@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.db.models import ObjectDoesNotExist
 from django.http import Http404, HttpResponseRedirect
 from django.utils import timezone
+from django.contrib import messages
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 
 from .forms import ReviewForm
@@ -111,7 +112,9 @@ class ReviewCreateView(ReviewViewMixin, CreateView):
             has_perm = getattr(settings, 'REVIEW_PERMISSION_FUNCTION', None)
             if (callable(has_perm) and not has_perm(
                     request.user, self.reviewed_item)):
-                raise Http404
+                messages.add_message(request, messages.ERROR, 'You don\'t have permission to review this.')
+                # raise Http404
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
         return super(ReviewCreateView, self).dispatch(request, *args, **kwargs)
 
 

@@ -1,0 +1,11 @@
+{% if messages %}
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <ul>
+            {% for message in messages %}
+                <span class="font-medium">
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </span>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
