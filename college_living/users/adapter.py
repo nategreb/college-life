@@ -17,9 +17,6 @@ class RestrictEmailAdapter(DefaultAccountAdapter):
         approved colleges can sign up.
     """
 
-    # only use social accounts
-    def is_open_for_signup(self, request):
-        return False
 
     def clean_email(self, email):
         # get all approved email domains
