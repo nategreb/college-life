@@ -227,3 +227,15 @@ STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    os.path.join(BASE_DIR, "static"),
+    # BASE_DIR
+]
+
+### Reviews Settings
+REVIEW_AVOID_MULTIPLE_REVIEWS = True
+
+# permission if user's college is that college or the item is associated to the same college
+REVIEW_PERMISSION_FUNCTION = lambda u, item: u.college and (u.college == item or u.college == item.college)
