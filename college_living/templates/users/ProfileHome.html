@@ -1,101 +1,49 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load review_tags %}
 {% block content %}
-    <div style="background-color: #eee;">
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-7">
-                        <ul class="nav nav-pills nav-fill">
-                            {#                              <li class="nav-item">#}
-                            {#                                <a class="nav-link" href="{% url 'account_change_password' %}">Change Password</a>#}
-                            {#                              </li>#}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_reset_password' %}">Reset Password</a>
-                            </li>
-                        </ul>
+
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <div class="max-w-screen-md mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Profile</h2>
+
+                <dl class="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
+                    <div class="flex flex-col py-3">
+                        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Username</dt>
+                        <dd class="text-lg font-semibold">{{ user.username }}</dd>
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Name</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0">{{ user.first_name }} {{ user.last_name }}</p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Email</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0">{{ user.email }}</p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">School</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0"> {{ college.college_name }} </p>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="flex flex-col pb-3">
+                        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Email address</dt>
+                        <dd class="text-lg font-semibold">{{ user.email }}</dd>
+                    </div>
+                    <div class="flex flex-col py-3">
+                        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">College</dt>
+                        <dd class="text-lg font-semibold">{{ user.college }}</dd>
+                    </div>
+                    {% if user.major %}
+                        <div class="flex flex-col pt-3">
+                            <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Major</dt>
+                            <dd class="text-lg font-semibold">{{ user.major }}</dd>
                         </div>
-                    </div>
-                </div>
+                    {% endif %}
+                </dl>
+
+
+                <a href="{% url 'account_reset_password' %}"
+                   class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="w-full">Reset Password</span>
+                    <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+
             </div>
-        </div>
-    </div>
-    </div>
-    <div class="container">
-        <div>
-            <ul class="list-group list-group-light mb-3">
-                {% for review in page_obj %}
-                    <li class="list-group-item">
-                        <h5 class="fw-bold">
-                            {% if review.average_rating %}
-                                {{ review.average_rating }}/5.0
-                            {% else %}
-                                N/A
-                            {% endif %}
-                        </h5>
-                        <p class="text-muted mb-0">
-                            {% if review.content %}
-                                {{ review.content|truncatewords:'70' }}
-                            {% else %}
-                                Reviewed without description.
-                            {% endif %}
-                            <a href="{% url "review_detail" pk=review.id %}">Review details</a>
-                        </p>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="pagination">
-                <span class="step-links">
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                    {% endif %}
 
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                    </span>
-
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
+            {% include 'Pagination.html' %}
         </div>
-
-    </div>
+    </section>
 {% endblock %}
