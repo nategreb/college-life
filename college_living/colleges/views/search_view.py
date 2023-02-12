@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.contrib import messages
 
-from colleges.models import Professor, College, CollegeClass
+from colleges.models import Professor, College, CollegeCourse
 from colleges.forms import SearchForm
 
 
@@ -60,7 +60,10 @@ class ProfessorSearchView(ListView):
         if request.GET.get('search', None):
             objects = self.get_queryset()
             if objects.count() == 1:
-                kwargs.update({'professor_id': objects[0].id, 'professor_slug': objects[0].slug})
+                kwargs.update({'professor_id': objects[0].id})
+                slug = objects[0].slug
+                if slug:
+                    kwargs.update({'professor_slug': slug})
                 return redirect(reverse_lazy('colleges:professor', kwargs=kwargs))
             elif objects.count() == 0:
                 # add info label that search didn't find anything and return to search
@@ -69,8 +72,8 @@ class ProfessorSearchView(ListView):
         return super(ProfessorSearchView, self).dispatch(request, *args, **kwargs)
 
 
-class ClassesSearchView(ProfessorSearchView):
-    model = CollegeClass
+class CoursesSearchView(ProfessorSearchView):
+    model = CollegeCourse
     object_type = 'courses'
 
     def get_queryset(self):
@@ -78,7 +81,7 @@ class ClassesSearchView(ProfessorSearchView):
         search_query = self.request.GET.get('search', None)
 
         if search_query:
-            return self.model.objects.filter(class_name__icontains=search_query)
+            return self.model.objects.filter(course_name__icontains=search_query)
         else:
             return self.model.objects.filter(college=self.college)
 
@@ -90,9 +93,12 @@ class ClassesSearchView(ProfessorSearchView):
                 if objects.count() == 0:
                     messages.add_message(self.request, messages.INFO, 'No results founds')
                 kwargs.update({'course_id': objects[0].id})
+                slug = objects[0].slug
+                if slug:
+                    kwargs.update({'course_slug': slug})
                 return redirect(reverse_lazy('colleges:class', kwargs=kwargs))
             elif objects.count() == 0:
                 # add info label that search didn't find anything and return to search
                 messages.add_message(self.request, messages.INFO, 'No results founds')
                 return redirect(reverse_lazy('colleges:course_search', kwargs=kwargs))
-        return super(ClassesSearchView, self).get(request, *args, **kwargs)
+        return super(CoursesSearchView, self).get(request, *args, **kwargs)
