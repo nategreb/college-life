@@ -1,32 +1,450 @@
 [
-  {
-    "model": "colleges.Professor",
-    "pk": "1",
-    "fields": {
-      "college": 6,
-      "department": 1,
-      "first_name": "First1",
-      "last_name": "Last1",
-      "classes": [
-        1,
-        2
-      ],
-      "slug": "First1-Last1"
+    {
+        "model": "colleges.professor",
+        "pk": 1,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Gordon",
+            "last_name": "Anderson",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "gordon-anderson",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 2,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "David",
+            "last_name": "Barrington",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "david-barrington",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 3,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Marvin",
+            "last_name": "Cable",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "marvin-cable",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 4,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Joe",
+            "last_name": "Chiu",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "joe-chiu",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 5,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Parviz",
+            "last_name": "Kermani",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "parviz-kermani",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 6,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "James",
+            "last_name": "Kurose",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "james-kurose",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 7,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Andrew",
+            "last_name": "Lan",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "andrew-lan",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 8,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Siobhan",
+            "last_name": "Mei",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "siobhan-mei",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 9,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Ghazaleh",
+            "last_name": "Parvini",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "ghazaleh-parvini",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 10,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Tim",
+            "last_name": "Richard",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "tim-richard",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 11,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Matthew",
+            "last_name": "Rattigan",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "matthew-rattigan",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 12,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Ramesh",
+            "last_name": "Sitaraman",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "ramesh-sitaraman",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 13,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Philip",
+            "last_name": "Thomas",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "philip-thomas",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 14,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Neena",
+            "last_name": "Thota",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "neena-thota",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 15,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Donald",
+            "last_name": "Townsley",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "donald-townsley",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 16,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Marius",
+            "last_name": "Minea",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "marius-minea",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 17,
+        "fields": {
+            "college": 1,
+            "department": 24,
+            "first_name": "Ethan",
+            "last_name": "Zuckerman",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "ethan-zuckerman",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 18,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Farshid",
+            "last_name": "Abdi",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "farshid-abdi",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 19,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Sandiip",
+            "last_name": "Bhammer",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "sandiip-bhammer",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 20,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Keith",
+            "last_name": "Black",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "keith-black",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 21,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Ben",
+            "last_name": "Branch",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "ben-branch",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 22,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Fousseni",
+            "last_name": "Chabi-Yo",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "fousseni-chabi-yo",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 23,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Jeffrey",
+            "last_name": "Clark",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "jeffrey-clark",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 24,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Robert",
+            "last_name": "Feingold",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "robert-feingold",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 25,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Ginnie",
+            "last_name": "Gardiner",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "ginnie-gardiner",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 26,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Simon",
+            "last_name": "Huang",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "simon-huang",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 28,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Nikunj",
+            "last_name": "Kapadia",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "nikunj-kapadia",
+            "courses": []
+        }
+    },
+    {
+        "model": "colleges.professor",
+        "pk": 29,
+        "fields": {
+            "college": 1,
+            "department": 32,
+            "first_name": "Sanjay",
+            "last_name": "Nawalkha",
+            "grading_difficulty": 1,
+            "take_again": 1,
+            "teaching_quality": 1,
+            "personality": 1,
+            "slug": "sanjay-nawalkha",
+            "courses": []
+        }
     }
-  },
-  {
-    "model": "colleges.Professor",
-    "pk": "2",
-    "fields": {
-      "college": 6,
-      "department": 1,
-      "first_name": "First2",
-      "last_name": "Last2",
-      "classes": [
-        1,
-        3
-      ],
-      "slug": "First2-Last2"
-    }
-  }
 ]

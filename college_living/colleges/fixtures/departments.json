@@ -1,30 +1,604 @@
 [
   {
     "model": "colleges.Department",
-    "pk": "1",
+    "pk": 1,
+    "fields": {
+      "name": "Accounting"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 2,
+    "fields": {
+      "name": "Afro-American Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 3,
+    "fields": {
+      "name": "Animal Science"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 4,
+    "fields": {
+      "name": "Anthropology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 5,
+    "fields": {
+      "name": "Arboriculture and Community Forest Management"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 6,
+    "fields": {
+      "name": "Architecture"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 7,
+    "fields": {
+      "name": "Art"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 8,
+    "fields": {
+      "name": "Art Education"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 9,
+    "fields": {
+      "name": "Art History"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 10,
+    "fields": {
+      "name": "Astronomy"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 12,
+    "fields": {
+      "name": "Biochemistry and Molecular Biology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 13,
+    "fields": {
+      "name": "Biology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 14,
+    "fields": {
+      "name": "Biomedical Engineering"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 15,
+    "fields": {
+      "name": "Building and Construction Technology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 16,
+    "fields": {
+      "name": "Chemical Engineering"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 17,
+    "fields": {
+      "name": "Chemistry"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 18,
+    "fields": {
+      "name": "Chinese Language and Literature"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 19,
+    "fields": {
+      "name": "Civil Engineering"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 20,
+    "fields": {
+      "name": "Classics"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 21,
+    "fields": {
+      "name": "Communication"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 22,
+    "fields": {
+      "name": "Communication Disorders"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 23,
+    "fields": {
+      "name": "Comparative Literature"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 24,
     "fields": {
       "name": "Computer Science"
     }
   },
   {
     "model": "colleges.Department",
-    "pk": "2",
+    "pk": 25,
+    "fields": {
+      "name": "Dance"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 26,
+    "fields": {
+      "name": "Economics"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 27,
+    "fields": {
+      "name": "Education"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 28,
+    "fields": {
+      "name": "Electrical and Computer Engineering"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 29,
+    "fields": {
+      "name": "English"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 30,
+    "fields": {
+      "name": "Environmental Science"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 31,
+    "fields": {
+      "name": "Film Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 32,
+    "fields": {
+      "name": "Finance"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 33,
+    "fields": {
+      "name": "Food Science"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 34,
+    "fields": {
+      "name": "French & Francophone Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 35,
+    "fields": {
+      "name": "Geography"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 36,
+    "fields": {
+      "name": "Geology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 37,
+    "fields": {
+      "name": "Geosciences"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 38,
+    "fields": {
+      "name": "German and Scandinavian Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 39,
+    "fields": {
+      "name": "History"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 40,
+    "fields": {
+      "name": "History of Art and Architecture"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 41,
+    "fields": {
+      "name": "Horticultural Science"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 42,
+    "fields": {
+      "name": "Hospitality and Tourism Management"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 43,
+    "fields": {
+      "name": "Industrial Engineering"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 44,
+    "fields": {
+      "name": "Informatics"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 45,
+    "fields": {
+      "name": "Italian Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 46,
+    "fields": {
+      "name": "Japanese Language & Literature"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 47,
+    "fields": {
+      "name": "Journalism"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 48,
+    "fields": {
+      "name": "Judaic Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 49,
+    "fields": {
+      "name": "Kinesiology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 50,
+    "fields": {
+      "name": "Landscape Architecture"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 51,
+    "fields": {
+      "name": "Landscape Contracting"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 52,
+    "fields": {
+      "name": "Legal Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 53,
+    "fields": {
+      "name": "Linguistics"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 54,
+    "fields": {
+      "name": "Management"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 55,
+    "fields": {
+      "name": "Marketing"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 56,
     "fields": {
       "name": "Mathematics"
     }
   },
   {
     "model": "colleges.Department",
-    "pk": "3",
+    "pk": 57,
+    "fields": {
+      "name": "Mechanical Engineering"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 58,
+    "fields": {
+      "name": "Microbiology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 59,
+    "fields": {
+      "name": "Middle Eastern Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 60,
+    "fields": {
+      "name": "Music"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 61,
+    "fields": {
+      "name": "Natural Resource Conservation"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 62,
+    "fields": {
+      "name": "Nursing"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 63,
+    "fields": {
+      "name": "Nutrition"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 64,
+    "fields": {
+      "name": "Operations and Information Management"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 65,
+    "fields": {
+      "name": "Philosophy"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 66,
     "fields": {
       "name": "Physics"
     }
   },
   {
     "model": "colleges.Department",
-    "pk": "4",
+    "pk": 67,
     "fields": {
-      "name": "History"
+      "name": "Plant and Soil Science"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 68,
+    "fields": {
+      "name": "Political Science"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 69,
+    "fields": {
+      "name": "Portuguese"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 70,
+    "fields": {
+      "name": "Pre-Medical, Pre-Health"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 71,
+    "fields": {
+      "name": "Pre-Veterinary"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 72,
+    "fields": {
+      "name": "Psychology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 73,
+    "fields": {
+      "name": "Public Health Sciences"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 74,
+    "fields": {
+      "name": "Public Policy and Administration"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 75,
+    "fields": {
+      "name": "Resource Economics"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 76,
+    "fields": {
+      "name": "Russian and East European Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 77,
+    "fields": {
+      "name": "Social Thought and Political Economy"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 78,
+    "fields": {
+      "name": "Sociology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 79,
+    "fields": {
+      "name": "Spanish"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 80,
+    "fields": {
+      "name": "Sport Management"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 81,
+    "fields": {
+      "name": "Sustainable Food and Farming"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 82,
+    "fields": {
+      "name": "Sustainable Horticulture"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 83,
+    "fields": {
+      "name": "Theater"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 84,
+    "fields": {
+      "name": "Turfgrass Management"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 85,
+    "fields": {
+      "name": "University Without Walls Interdisciplinary Studies"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 86,
+    "fields": {
+      "name": "Veterinary Technology"
+    }
+  },
+  {
+    "model": "colleges.Department",
+    "pk": 87,
+    "fields": {
+      "name": "Women, Gender, Sexuality Studies"
     }
   }
 ]
