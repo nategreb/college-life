@@ -83,7 +83,7 @@ class Review(models.Model):
         ordering = ['-creation_date']
 
     def __str__(self):
-        return '{0} - {1}'.format(self.reviewed_item, self.get_user())
+        return '{0}'.format(self.reviewed_item)
 
     # TODO: Add magic to get ReviewExtraInfo content objects here
 

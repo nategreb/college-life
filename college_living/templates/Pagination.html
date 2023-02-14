@@ -38,9 +38,15 @@
                                   clip-rule="evenodd"></path>
                         </svg>
                         {% if review.user %}
-                            <span class="font-medium dark:text-white">
-                                      {{ review.user }}
-                            </span>
+                            {% if review.user.college.nickname %}
+                                <span class="font-medium dark:text-white">
+                                          {{ review.user.college.nickname }} Student
+                                </span>
+                            {% else %}
+                                <span class="font-medium dark:text-white">
+                                          {{ review.user.college }} Student
+                                </span>
+                            {% endif %}
                         {% else %}
                             <span class="font-medium dark:text-white">
                                    Account Doesn't Exist

@@ -43,9 +43,20 @@
                 </a>
 
             </div>
-            <div>
+            {% get_review_count college as review_count %}
+            {% if review_count %}
                 {% optimized_all_statistics college %}
-            </div>
+            {% else %}
+                <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
+                        <div class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="stats" role="tabpanel"
+                             aria-labelledby="stats-tab">
+                            <h3 class="text-3xl font-bold dark:text-white"> Be the first to review... </h3>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            {% endif %}
 
 
         </div>

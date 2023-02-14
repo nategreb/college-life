@@ -1,16 +1,16 @@
 {% load review_tags %}
+{% if overall_average %}
 <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
         <div class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="stats" role="tabpanel"
              aria-labelledby="stats-tab">
-            {% if overall_average %}
+
                 <div class="flex flex-col items-center justify-center rating-value mb-2 text-3xl font-extrabold">
                     <dt class="mb-2 text-3xl font-extrabold"><span
                             class="rating-value">{{ overall_average|floatformat:1 }}</span><span
                             class="mb-2 text-3xl font-extrabold text-gray-500 dark:text-gray-400"> / 5.0 </span></dt>
                     <dd class="font-light text-gray-500 dark:text-gray-400">Overall</dd>
                 </div>
-            {% endif %}
             <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
                 {% for category, average_rating in category_averages.items %}
                     <div class="flex flex-col items-center center justify-center">
@@ -27,6 +27,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 <script>
     var els = document.getElementsByClassName('rating-value');

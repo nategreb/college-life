@@ -63,9 +63,21 @@
                                 <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                                       clip-rule="evenodd"></path>
                             </svg>
-                            <span class="font-medium dark:text-white">
-                              {{ review.user }}
-                          </span>
+                            {% if review.user %}
+                                {% if review.user.college.nickname %}
+                                    <span class="font-medium dark:text-white">
+                                                  {{ review.user.college.nickname }} Student
+                                        </span>
+                                {% else %}
+                                    <span class="font-medium dark:text-white">
+                                                  {{ review.user.college }} Student
+                                        </span>
+                                {% endif %}
+                            {% else %}
+                                <span class="font-medium dark:text-white">
+                                    Account Doesn't Exist
+                                </span>
+                            {% endif %}
                         </div>
                         <a href="{% url 'review_detail' review.id %}"
                            class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
