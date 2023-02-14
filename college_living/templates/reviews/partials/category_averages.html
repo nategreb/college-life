@@ -1,0 +1,47 @@
+{% load crispy_forms_filters %}
+{% load review_tags %}
+{#<table>#}
+{#    {% for category, average_rating in category_averages.items %}#}
+{#        <tr>#}
+{#            <th>{{ category }}:</th>#}
+{#            <td>{{ average_rating|floatformat:1 }}</td>#}
+{#        </tr>#}
+{#    {% endfor %}#}
+{#    <tr>#}
+{#        {% get_review_count reviewed_item as review_amount %}#}
+{#        <th> Number of reviews:</th>#}
+{#        <td>{{ review_amount }}</td>#}
+{#    </tr>#}
+{#</table>#}
+
+<div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
+        <div class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="stats" role="tabpanel"
+             aria-labelledby="stats-tab">
+            <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
+                {% for category, average_rating in category_averages.items %}
+                    <div class="flex flex-col items-center justify-center">
+                        <dt class="rating-value mb-2 text-3xl font-extrabold">{{ average_rating|floatformat:1 }}</dt>
+                        <dd class="font-light text-gray-500 dark:text-gray-400">{{ category }}</dd>
+                    </div>
+                {% endfor %}
+            </dl>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var els = document.getElementsByClassName('rating-value');
+    for (var i = 0; i < els.length; i++) {
+        value = Number(els[i].textContent)
+        if (value <= 2.5) {
+            els[i].style.color = '#dc2626';
+        } else if (2.5 <= value && value <= 3.5) {
+            els[i].style.color = '#d97706';
+        } else {
+            els[i].style.color = '#65a30d'
+        }
+    }
+
+</script>

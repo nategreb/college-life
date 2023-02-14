@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 .DS_Store
-node_modules/
+node_modules/*
 /dist/
 
 # local env files
@@ -154,3 +154,5 @@ yarn-error.log*
 /env.sh
 /google_auth.json
 env.sh
+/college_living/static/node_modules/
+/college_living/static/CACHE/

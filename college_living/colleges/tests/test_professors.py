@@ -4,7 +4,7 @@ from django.test import TestCase
 from colleges.models import (
     College,
     Department,
-    CollegeClass,
+    CollegeCourse,
     Professor
 )
 
@@ -29,18 +29,18 @@ class TestProfessors(TestCase):
 
         self.compsci = Department.objects.create(name='Computer Science')
 
-        self.class1 = CollegeClass.objects.create(
+        self.class1 = CollegeCourse.objects.create(
             college=self.college,
             department=self.compsci,
-            class_id='486',
-            class_name='Machine Learning'
+            course_id='486',
+            course_name='Machine Learning'
         )
 
-        self.class2 = CollegeClass.objects.create(
+        self.class2 = CollegeCourse.objects.create(
             college=self.college,
             department=self.compsci,
-            class_id='100',
-            class_name='Diffs'
+            course_id='100',
+            course_name='Diffs'
         )
 
     """
@@ -78,7 +78,7 @@ class TestProfessors(TestCase):
                 first_name=fname,
                 last_name=lname
             )
-            prof.classes.add(self.class1)
+            prof.courses.add(self.class1)
 
         # professor for diff class
         diff = Professor.objects.create(
@@ -88,9 +88,9 @@ class TestProfessors(TestCase):
             last_name='test'
         )
 
-        diff.classes.add(self.class2)
-        num_profs = Professor.classes.through.objects.filter(
-            collegeclass_id=self.class1.id
+        diff.courses.add(self.class2)
+        num_profs = Professor.courses.through.objects.filter(
+            collegecourse_id=self.class1.id
         ).count()
 
         self.assertEqual(num_profs, 3)
@@ -107,9 +107,9 @@ class TestProfessors(TestCase):
             last_name='test'
         )
 
-        prof.classes.add(self.class2)
+        prof.courses.add(self.class2)
 
-        num_courses = prof.classes.count()
+        num_courses = prof.courses.count()
         self.assertEqual(num_courses, 1)
 
     """
@@ -124,7 +124,7 @@ class TestProfessors(TestCase):
             last_name='test'
         )
 
-        self.assertEqual(prof.classes.count(), 0)
+        self.assertEqual(prof.courses.count(), 0)
 
     """
         get professors from different departments
@@ -138,7 +138,7 @@ class TestProfessors(TestCase):
                 first_name=fname,
                 last_name=lname
             )
-            prof.classes.add(self.class1)
+            prof.courses.add(self.class1)
 
         history = Department.objects.create(name='History')
 
@@ -165,11 +165,11 @@ class TestProfessors(TestCase):
                 first_name=fname,
                 last_name=lname
             )
-            prof.classes.add(self.class1)
+            prof.courses.add(self.class1)
 
         # query many to many table directly
-        num_profs = Professor.classes.through.objects.filter(
-            collegeclass_id=self.class1.id
+        num_profs = Professor.courses.through.objects.filter(
+            collegecourse_id=self.class1.id
         ).count()
 
         self.assertEqual(num_profs, 3)
@@ -187,7 +187,7 @@ class TestProfessors(TestCase):
                     first_name=fname,
                     last_name=lname
                 )
-                prof.classes.add(self.class1)
+                prof.courses.add(self.class1)
 
             self.compsci.delete()
 

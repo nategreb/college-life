@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load review_tags %}
+{% block content %}
+
+    {% include 'AlertMessages.html' %}
+
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <div class="max-w-screen-md mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ college.college_name }}</h2>
+
+                <a href="{% url 'colleges:professors' college.id college.slug %}"
+                   class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="w-full">Professors</span>
+                    <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a href="{% url 'colleges:courses' college.id college.slug %}"
+                   class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="w-full">Courses</span>
+                    <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+
+                <a href="{% url "review_create" content_type='college' object_id=college.id %}"
+                   class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="w-full">Review {{ college.college_name }}</span>
+                    <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+
+            </div>
+            {% get_review_count college as review_count %}
+            {% if review_count %}
+                {% optimized_all_statistics college %}
+            {% else %}
+                <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
+                        <div class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="stats" role="tabpanel"
+                             aria-labelledby="stats-tab">
+                            <h3 class="text-3xl font-bold dark:text-white"> Be the first to review... </h3>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            {% endif %}
+
+
+        </div>
+    </section>
+
+    {% include 'Pagination.html' %}
+
+    </div>
+    </section>
+
+
+
+
+{% endblock %}

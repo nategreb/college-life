@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load review_tags %}
+
+{% block title %}{{ object }}{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"> Review Detail </h2>
+
+    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex justify-between items-center mb-5 text-gray-500">
+            <span class="text-sm">{{ review.creation_date }}</span>
+        </div>
+        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
+                href="{% url 'review_detail' review.id %}">{{ object }}</a></h2>
+        <div class="flex items-center">
+        </div>
+        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
+            {% if review.content %}
+                {{ review.content|truncatewords:'70' }}
+            {% else %}
+                Reviewed without description.
+            {% endif %}
+        </p>
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <svg class="w-7 h-7 rounded-full text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                          clip-rule="evenodd"></path>
+                </svg>
+                {% if review.user %}
+                    {% if review.user.college.nickname %}
+                        <span class="font-medium dark:text-white">
+                                      {{ review.user.college.nickname }} Student
+                            </span>
+                    {% else %}
+                        <span class="font-medium dark:text-white">
+                                      {{ review.user.college }} Student
+                            </span>
+                    {% endif %}
+                {% else %}
+                    <span class="font-medium dark:text-white">
+                        Account Doesn't Exist
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    </article>
+
+    <br>
+    {% if object.ratings.all %}
+        <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
+                <div class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="stats" role="tabpanel"
+                     aria-labelledby="stats-tab">
+                    {% if object.get_average_rating %}
+                        <div class="flex flex-col items-center justify-center rating-value mb-2 text-3xl font-extrabold">
+                            <dt class="mb-2 text-3xl font-extrabold"><span
+                                    class="rating-value">{{ object.get_average_rating|floatformat:1 }}</span><span
+                                    class="mb-2 text-3xl font-extrabold text-gray-500 dark:text-gray-400"> / 5.0 </span>
+                            </dt>
+                            <dd class="font-light text-gray-500 dark:text-gray-400">Overall</dd>
+                        </div>
+                    {% endif %}
+                    <dl class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
+                        {% for rating in object.ratings.all %}
+                            <div class="flex flex-col items-center justify-center">
+                                <dt class="rating-value mb-2 text-3xl font-extrabold">{{ rating.value|floatformat:1 }}</dt>
+                                <dd class="font-light text-gray-500 dark:text-gray-400">{{ rating.category }}</dd>
+                            </div>
+                        {% endfor %}
+                    </dl>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <br>
+    {% if object.user == request.user and object.is_editable %}
+        <a href="{% url "review_update" pk=review.pk %}"
+           class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+            <span class="w-full">Change your review</span>
+            <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+            </svg>
+        </a>
+        <a href="{% url 'colleges:college_home' request.user.college.id request.user.college.slug %}"
+           class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+            <span class="w-full">Go Back</span>
+        </a>
+    {% endif %}
+
+    <script>
+        var els = document.getElementsByClassName('rating-value');
+        for (var i = 0; i < els.length; i++) {
+            value = Number(els[i].textContent)
+            if (value <= 2.5) {
+                els[i].style.color = '#dc2626';
+            } else if (2.5 <= value && value <= 3.5) {
+                els[i].style.color = '#d97706';
+            } else {
+                els[i].style.color = '#65a30d'
+            }
+        }
+    </script>
+
+{% endblock %}
+
+
+
+

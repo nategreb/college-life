@@ -128,3 +128,10 @@ def optimized_render_category_averages(obj):
 
     context.update({'category_averages': category_averages})
     return context
+
+
+@register.inclusion_tag('reviews/partials/all_statistics.html')
+def optimized_all_statistics(obj):
+    context = optimized_render_category_averages(obj)
+    context.update({'overall_average': optimized_total_review_average(obj)})
+    return context

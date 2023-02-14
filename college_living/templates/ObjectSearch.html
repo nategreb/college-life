@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load review_tags %}
+{% block head %}
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
+{% endblock %}
+
+{% block content %}
+
+
+
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+
+            <div class="max-w-screen-md mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ college.college_name }}</h2>
+            </div>
+
+            {% if messages %}
+                <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+                     role="alert">
+                    <ul>
+                        {% for message in messages %}
+                            <span class="font-medium">
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        </span>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+            {% endif %}
+
+            <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+                <div class="autoComplete_wrapper">
+                    {% if object_type == 'professors' %}
+                        <form class="content-center" method="get"
+                              action="{% url 'colleges:professor_search' college.id college.slug %}">
+                            <div class="d-flex justify-content-center autoComplete_wrapper">
+                                {{ form.search }}
+                            </div>
+                        </form>
+                    {% else %}
+                        <form method="get" action="{% url 'colleges:course_search' college.id college.slug %}">
+                            <div class="d-flex justify-content-center autoComplete_wrapper">
+                                {{ form.search }}
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+{% endblock %}

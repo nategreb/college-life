@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Delete reviews {% endblock %}
+
+{% block content %}
+    <h1>Delete reviews</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="submit" value="Delete"/>
+    </form>
+{% endblock %}

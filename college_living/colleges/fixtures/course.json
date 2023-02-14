@@ -1,32 +1,1509 @@
 [
   {
-    "model": "colleges.CollegeClass",
-    "pk": "1",
+    "model": "colleges.collegecourse",
+    "pk": 1,
     "fields": {
-      "college": 6,
-      "department": "1",
-      "class_id": "COMPSCI1",
-      "class_name": "Test 1"
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI119",
+      "course_name": "Introduction to Programming",
+      "slug": "introduction-to-programming"
     }
   },
   {
-    "model": "colleges.CollegeClass",
-    "pk": "2",
+    "model": "colleges.collegecourse",
+    "pk": 2,
     "fields": {
-      "college": 6,
-      "department": "1",
-      "class_id": "COMPSCI2",
-      "class_name": "Test 2"
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI121",
+      "course_name": "Introduction to Problem Solving with Computers",
+      "slug": "introduction-to-problem-solving-with-computers"
     }
   },
   {
-    "model": "colleges.CollegeClass",
-    "pk": "3",
+    "model": "colleges.collegecourse",
+    "pk": 3,
     "fields": {
-      "college": 6,
-      "department": "1",
-      "class_id": "COMPSCI3",
-      "class_name": "Test 3"
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI145",
+      "course_name": "Representing, Storing, and Retrieving Information",
+      "slug": "representing-storing-and-retrieving-information"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 4,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI186",
+      "course_name": "Using Data Structures",
+      "slug": "using-data-structures"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 5,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI187",
+      "course_name": "Programming with Data Structures",
+      "slug": "programming-with-data-structures"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 6,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI198C",
+      "course_name": "Practicum - Introduction to the C Programming Language",
+      "slug": "practicum-introduction-to-the-c-programming-language"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 7,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI220",
+      "course_name": "Programming Methodology",
+      "slug": "programming-methodology"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 8,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI230",
+      "course_name": "Computer Systems Principles",
+      "slug": "computer-systems-principles"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 9,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI240",
+      "course_name": "Reasoning Under Uncertainty",
+      "slug": "reasoning-under-uncertainty"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 10,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI250",
+      "course_name": "Introduction to Computation",
+      "slug": "introduction-to-computation"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 11,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI311",
+      "course_name": "Introduction to Algorithms",
+      "slug": "introduction-to-algorithms"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 12,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI320",
+      "course_name": "Introduction to Software Engineering",
+      "slug": "introduction-to-software-engineering"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 13,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI325",
+      "course_name": "Introduction to Human Computer Interaction",
+      "slug": "introduction-to-human-computer-interaction"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 14,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI326",
+      "course_name": "Web Programming",
+      "slug": "web-programming"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 15,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI328",
+      "course_name": "Mobile Health Sensing and Analytics",
+      "slug": "mobile-health-sensing-and-analytics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 16,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI333",
+      "course_name": "Internet of Things",
+      "slug": "internet-of-things"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 17,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI335",
+      "course_name": "Inside the Box: How Computers Work",
+      "slug": "inside-the-box-how-computers-work"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 18,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI345",
+      "course_name": "Practice and Applications of Data Management",
+      "slug": "practice-and-applications-of-data-management"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 19,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI348",
+      "course_name": "Principles of Data Science",
+      "slug": "principles-of-data-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 20,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI360",
+      "course_name": "Introduction to Computer and Network Security",
+      "slug": "introduction-to-computer-and-network-security"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 21,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI365",
+      "course_name": "Digital Forensics",
+      "slug": "digital-forensics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 22,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI370",
+      "course_name": "Introduction to Computer Vision",
+      "slug": "introduction-to-computer-vision"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 23,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI373",
+      "course_name": "Introduction to Computer Graphics",
+      "slug": "introduction-to-computer-graphics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 24,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI377",
+      "course_name": "Operating Systems",
+      "slug": "operating-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 25,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI383",
+      "course_name": "Artificial Intelligence",
+      "slug": "artificial-intelligence"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 26,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI389",
+      "course_name": "Introducation to Machine Learning",
+      "slug": "introducation-to-machine-learning"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 27,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI391L",
+      "course_name": "Computer Crime Law and the Technologies of Investigation and Privacy",
+      "slug": "computer-crime-law-and-the-technologies-of-investigation-and-privacy"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 28,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI403",
+      "course_name": "Introduction to Robotics: Perception, Mechanics, Dynamics, and Control",
+      "slug": "introduction-to-robotics-perception-mechanics-dynamics-and-control"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 29,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI410",
+      "course_name": "Compiler Techniques",
+      "slug": "compiler-techniques"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 30,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI420",
+      "course_name": "Software Entrepreneurship",
+      "slug": "software-entrepreneurship"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 31,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI429",
+      "course_name": "Software Engineering Project Management",
+      "slug": "software-engineering-project-management"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 32,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI445",
+      "course_name": "Information Systems",
+      "slug": "information-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 33,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI446",
+      "course_name": "Search Engines",
+      "slug": "search-engines"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 34,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI453",
+      "course_name": "Computer Networks",
+      "slug": "computer-networks"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 35,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI461",
+      "course_name": "Secure Distributed Systems",
+      "slug": "secure-distributed-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 36,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI466",
+      "course_name": "Applied Cryptography",
+      "slug": "applied-cryptography"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 37,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI474",
+      "course_name": "Image Synthesis",
+      "slug": "image-synthesis"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 38,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI490A",
+      "course_name": "Applications of Natural Language Processing",
+      "slug": "applications-of-natural-language-processing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 39,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI490U",
+      "course_name": "Introduction to User Experience Research",
+      "slug": "introduction-to-user-experience-research"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 40,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI491G",
+      "course_name": "Seminar - Computer Networking Lab",
+      "slug": "seminar-computer-networking-lab"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 41,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI497S",
+      "course_name": "Special Topics - Scalable Web Systems",
+      "slug": "special-topics-scalable-web-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 42,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI501",
+      "course_name": "Formal Language Theory",
+      "slug": "formal-language-theory"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 43,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI503",
+      "course_name": "Embedded Computing Systems",
+      "slug": "embedded-computing-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 44,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI508",
+      "course_name": "Ethical Considerations in Computing",
+      "slug": "ethical-considerations-in-computing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 45,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI513",
+      "course_name": "Logic in Computer Science",
+      "slug": "logic-in-computer-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 46,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI514",
+      "course_name": "Algorithms for Data Science",
+      "slug": "algorithms-for-data-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 47,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI520",
+      "course_name": "Theory and Practice of Software Engineering",
+      "slug": "theory-and-practice-of-software-engineering"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 48,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI524",
+      "course_name": "Health Informatics and Data Science",
+      "slug": "health-informatics-and-data-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 49,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI528",
+      "course_name": "Mobile and Ubiquitous Computing",
+      "slug": "mobile-and-ubiquitous-computing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 50,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI532",
+      "course_name": "Systems for Data Science",
+      "slug": "systems-for-data-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 51,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI535",
+      "course_name": "Computer Architecture",
+      "slug": "computer-architecture"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 52,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI546",
+      "course_name": "Applied Information Retrieval",
+      "slug": "applied-information-retrieval"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 53,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI550",
+      "course_name": "Introduction to Simulation",
+      "slug": "introduction-to-simulation"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 54,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI560",
+      "course_name": "Introduction to Computer and Network Security",
+      "slug": "introduction-to-computer-and-network-security"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 55,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI563",
+      "course_name": "Internet Law and Policy",
+      "slug": "internet-law-and-policy"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 56,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI564",
+      "course_name": "Cyber Effects: Reverse Engineering, Exploit Analysis, and Capability Development",
+      "slug": "cyber-effects-reverse-engineering-exploit-analysis-and-capability-development"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 57,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI565",
+      "course_name": "Advanced Digital Forensic Systems",
+      "slug": "advanced-digital-forensic-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 58,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI571",
+      "course_name": "Data Visualization and Exploration",
+      "slug": "data-visualization-and-exploration"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 59,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI574",
+      "course_name": "Intelligent Visual Computing",
+      "slug": "intelligent-visual-computing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 60,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI575",
+      "course_name": "Combinatorics and Graph Theory",
+      "slug": "combinatorics-and-graph-theory"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 61,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI576",
+      "course_name": "Game Programming",
+      "slug": "game-programming"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 62,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI578",
+      "course_name": "Distributed Computing and Systems",
+      "slug": "distributed-computing-and-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 63,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI589",
+      "course_name": "Machine Learning",
+      "slug": "machine-learning"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 64,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI590L",
+      "course_name": "Making Predications",
+      "slug": "making-predications"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 65,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI590Q",
+      "course_name": "Quantum Information Systems",
+      "slug": "quantum-information-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 66,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI590T",
+      "course_name": "Algorithmic Fairness and Strategic Behavior",
+      "slug": "algorithmic-fairness-and-strategic-behavior"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 67,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI591CF",
+      "course_name": "Seminar - Cybersecurity Lecture Series",
+      "slug": "seminar-cybersecurity-lecture-series"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 68,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI591NR",
+      "course_name": "Seminar - Neural Networks: Neuroscience and Engineering",
+      "slug": "seminar-neural-networks-neuroscience-and-engineering"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 69,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI601",
+      "course_name": "Computation Theory",
+      "slug": "computation-theory"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 70,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI603",
+      "course_name": "Robotics",
+      "slug": "robotics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 71,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI610",
+      "course_name": "Compiler Techniques",
+      "slug": "compiler-techniques"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 72,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI611",
+      "course_name": "Advanced Algorithms",
+      "slug": "advanced-algorithms"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 73,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI613",
+      "course_name": "Advanced Logic in Computer Science",
+      "slug": "advanced-logic-in-computer-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 74,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI614",
+      "course_name": "Randomized Algorithms with Applications to Data Science",
+      "slug": "randomized-algorithms-with-applications-to-data-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 75,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI621",
+      "course_name": "Advanced Software Engineering: Analysis and Evaluation",
+      "slug": "advanced-software-engineering-analysis-and-evaluation"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 76,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI625",
+      "course_name": "Advanced Methods in Human Computer Interaction",
+      "slug": "advanced-methods-in-human-computer-interaction"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 77,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI630",
+      "course_name": "Systems",
+      "slug": "systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 78,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI631",
+      "course_name": "Programming Languages",
+      "slug": "programming-languages"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 79,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI635",
+      "course_name": "Modern Computer Architecture",
+      "slug": "modern-computer-architecture"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 80,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI645",
+      "course_name": "Database Design and Implementation",
+      "slug": "database-design-and-implementation"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 81,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI646",
+      "course_name": "Information Retrieval",
+      "slug": "information-retrieval"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 82,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI648",
+      "course_name": "Quantum Information Systems",
+      "slug": "quantum-information-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 83,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI650",
+      "course_name": "Applied Information Theory",
+      "slug": "applied-information-theory"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 84,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI651",
+      "course_name": "Optimization in Computer Science",
+      "slug": "optimization-in-computer-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 85,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI653",
+      "course_name": "Computer Networking",
+      "slug": "computer-networking"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 86,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI654",
+      "course_name": "Advanced Wireless Networking and Sensing in IoT",
+      "slug": "advanced-wireless-networking-and-sensing-in-iot"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 87,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI655",
+      "course_name": "Performance Evaluation",
+      "slug": "performance-evaluation"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 88,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI660",
+      "course_name": "Advanced Information Assurance",
+      "slug": "advanced-information-assurance"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 89,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI661",
+      "course_name": "Secure Distributed Systems",
+      "slug": "secure-distributed-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 90,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI670",
+      "course_name": "Computer Vision",
+      "slug": "computer-vision"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 91,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI674",
+      "course_name": "Intelligent Visual Computing",
+      "slug": "intelligent-visual-computing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 92,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI677",
+      "course_name": "Distributed and Operating Systems",
+      "slug": "distributed-and-operating-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 93,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI682",
+      "course_name": "Neural Networks: A Modern Introduction",
+      "slug": "neural-networks-a-modern-introduction"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 94,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI683",
+      "course_name": "Artificial Intelligence",
+      "slug": "artificial-intelligence"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 95,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI685",
+      "course_name": "Advanced Natural Language Processing",
+      "slug": "advanced-natural-language-processing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 96,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI687",
+      "course_name": "Reinforcement Learning",
+      "slug": "reinforcement-learning"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 97,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI688",
+      "course_name": "Probabilistic Graphical Models",
+      "slug": "probabilistic-graphical-models"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 98,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI689",
+      "course_name": "Machine Learning",
+      "slug": "machine-learning"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 99,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI690AA",
+      "course_name": "Approximation Algorithms and Combinatorial Optimization",
+      "slug": "approximation-algorithms-and-combinatorial-optimization"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 100,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI690C",
+      "course_name": "Foundations of Applied Cryptography",
+      "slug": "foundations-of-applied-cryptography"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 101,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI691DD",
+      "course_name": "Seminar - Research Methods in Empirical Computer Science",
+      "slug": "seminar-research-methods-in-empirical-computer-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 102,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI691NR",
+      "course_name": "Seminar - Neural Networks: Neuroscience and Engineering",
+      "slug": "seminar-neural-networks-neuroscience-and-engineering"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 103,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI691O",
+      "course_name": "Seminar - Tools for Explanatory and Tutoring Systems",
+      "slug": "seminar-tools-for-explanatory-and-tutoring-systems"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 104,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI692J",
+      "course_name": "Seminar - Quantum Algorithms",
+      "slug": "seminar-quantum-algorithms"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 105,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI698W",
+      "course_name": "Practicum - CS Research Writing Practicum",
+      "slug": "practicum-cs-research-writing-practicum"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 106,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI879",
+      "course_name": "Teaching Assistants as Tomorrow's Faculty",
+      "slug": "teaching-assistants-as-tomorrow-s-faculty"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 107,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "COMPSCI891M",
+      "course_name": "Seminar - Theory of Computation",
+      "slug": "seminar-theory-of-computation"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 108,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS108",
+      "course_name": "Foundations of Data Science",
+      "slug": "foundations-of-data-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 109,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS109",
+      "course_name": "Introduction to Data Analysis in R",
+      "slug": "introduction-to-data-analysis-in-r"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 110,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS110",
+      "course_name": "Foundations of Programming",
+      "slug": "foundations-of-programming"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 111,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS160",
+      "course_name": "Object-Oriented Programming",
+      "slug": "object-oriented-programming"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 112,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS191FY1",
+      "course_name": "CICS First Year Seminar",
+      "slug": "cics-first-year-seminar"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 113,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS210",
+      "course_name": "Data Structures",
+      "slug": "data-structures"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 114,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS256",
+      "course_name": "Make: A Hands-on Introduction to Physical Computing",
+      "slug": "make-a-hands-on-introduction-to-physical-computing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 115,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS290A",
+      "course_name": "Introduction to Research in the Discipline",
+      "slug": "introduction-to-research-in-the-discipline"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 116,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS290P",
+      "course_name": "Introduction to Public Interest Technology",
+      "slug": "introduction-to-public-interest-technology"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 117,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS297DP",
+      "course_name": "Special Topics - The Digital Public Sphere",
+      "slug": "special-topics-the-digital-public-sphere"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 118,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS305",
+      "course_name": "Social Issues in Computing",
+      "slug": "social-issues-in-computing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 119,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS396A",
+      "course_name": "Independent Study - Directed Research Group",
+      "slug": "independent-study-directed-research-group"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 120,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS490E",
+      "course_name": "EMBER: Introduction to Research Methods in Computing",
+      "slug": "ember-introduction-to-research-methods-in-computing"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 121,
+    "fields": {
+      "college": 1,
+      "department": 24,
+      "course_id": "CICS580",
+      "course_name": "Introduction to Numerical Computing with Python",
+      "slug": "introduction-to-numerical-computing-with-python"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 122,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO101",
+      "course_name": "Introduction to Informatics",
+      "slug": "introduction-to-informatics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 123,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO150",
+      "course_name": "A Mathematical Foundation for Informatics",
+      "slug": "a-mathematical-foundation-for-informatics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 124,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO203",
+      "course_name": "A Networked World",
+      "slug": "a-networked-world"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 125,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO248",
+      "course_name": "Introduction to Data Science",
+      "slug": "introduction-to-data-science"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 126,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO324",
+      "course_name": "Introduction to Clinical Health Informatics",
+      "slug": "introduction-to-clinical-health-informatics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 127,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO348",
+      "course_name": "Data Analytics with Python",
+      "slug": "data-analytics-with-python"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 128,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO490C",
+      "course_name": "Introduction to Social and Cultural Analytics",
+      "slug": "introduction-to-social-and-cultural-analytics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 129,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO490PI",
+      "course_name": "Personal Health Informatics",
+      "slug": "personal-health-informatics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 130,
+    "fields": {
+      "college": 1,
+      "department": 44,
+      "course_id": "INFO690C",
+      "course_name": "Introducation to Social and Cultural Anayltics",
+      "slug": "introducation-to-social-and-cultural-anayltics"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 131,
+    "fields": {
+      "college": 1,
+      "department": 32,
+      "course_id": "FINANCE301",
+      "course_name": "Corporation Finance",
+      "slug": "corporation-finance"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 132,
+    "fields": {
+      "college": 1,
+      "department": 32,
+      "course_id": "FINANCE304",
+      "course_name": "Financial Modeling",
+      "slug": "financial-modeling"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 133,
+    "fields": {
+      "college": 1,
+      "department": 32,
+      "course_id": "FINANCE305",
+      "course_name": "Investments",
+      "slug": "investments"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 134,
+    "fields": {
+      "college": 1,
+      "department": 32,
+      "course_id": "FINANCE402",
+      "course_name": "Advanced Corporate Finance",
+      "slug": "advanced-corporate-finance"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 135,
+    "fields": {
+      "college": 1,
+      "department": 32,
+      "course_id": "FINANCE403",
+      "course_name": "Capital Markets & Institutions",
+      "slug": "capital-markets-institutions"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 136,
+    "fields": {
+      "college": 1,
+      "department": 32,
+      "course_id": "FINANCE497SA",
+      "course_name": "Securities Analysis",
+      "slug": "securities-analysis"
+    }
+  },
+  {
+    "model": "colleges.collegecourse",
+    "pk": 137,
+    "fields": {
+      "college": 1,
+      "department": 32,
+      "course_id": "FINANCE497U",
+      "course_name": "Cryptocurrencies and Digital Assets",
+      "slug": "cryptocurrencies-and-digital-assets"
     }
   }
 ]
