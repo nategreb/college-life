@@ -4,7 +4,7 @@ from django.db import models as models
 from django.core.validators import validate_email
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
-from colleges.models import College, Department
+from colleges.models import College, Department, CollegeCourse
 
 
 class CustomUserManager(UserManager):
@@ -101,6 +101,7 @@ class User(AbstractUser):
     major = models.ForeignKey(Department, blank=True, null=True, on_delete=models.SET_NULL)
     first_name = None
     last_name = None
+    courses = models.ManyToManyField(CollegeCourse, blank=True)
 
     # default user manager
     objects = CustomUserManager()

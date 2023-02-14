@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.template.defaultfilters import slugify
 
 from .colleges import College
-from .courses import CollegeClass
+from .courses import CollegeCourse
 from .departments import Department
 
 
@@ -39,7 +39,7 @@ class Professor(models.Model):
     )
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
-    classes = models.ManyToManyField(CollegeClass)
+    courses = models.ManyToManyField(CollegeCourse)
 
     # review fields
     grading_difficulty = models.PositiveSmallIntegerField(default=1)

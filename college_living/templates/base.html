@@ -67,8 +67,8 @@
                             <a href="{% url 'colleges:professors' user.college.id user.college.slug %}"
                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Professors</a>
 
-                            <a href="{% url 'colleges:classes' user.college.id user.college.slug %}"
-                               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Classes</a>
+                            <a href="{% url 'colleges:courses' user.college.id user.college.slug %}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Courses</a>
                         {% endif %}
                         <a href="{% url 'contact' %}"
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
@@ -139,8 +139,8 @@
                 <a href="{% url 'colleges:professors' user.college.id user.college.slug %}"
                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Professors</a>
 
-                <a href="{% url 'colleges:classes' user.college.id user.college.slug %}"
-                   class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Classes</a>
+                <a href="{% url 'colleges:courses' user.college.id user.college.slug %}"
+                   class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Courses</a>
             {% endif %}
         </div>
     </div>

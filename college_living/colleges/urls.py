@@ -21,18 +21,17 @@ urlpatterns = [
         path('professor/<int:professor_id>/<slug:professor_slug>/', professor_view.get_college_professor,
              name='professor'),
 
-        # classes
-        path('classes/', search_view.ClassesSearchView.as_view(), name='classes'),
-        path('classes/<int:course_id>/', courses_view.college_class, name='class'),
-        # TODO
-        # path('classes/<int:course_id>/<slug:class_slug>', courses_view.college_class, name='class'),
+        # courses
+        path('courses/', search_view.CoursesSearchView.as_view(), name='courses'),
+        path('courses/<int:course_id>/', courses_view.college_course, name='course'),
+        path('courses/<int:course_id>/<slug:course_slug>/', courses_view.college_course, name='course'),
 
         # search
         path('professors/search/', search_view.ProfessorSearchView.as_view(), name='professor_search'),
         path('professors/search/results/', search_view.ProfessorSearchView.as_view(), name='search_results'),
 
-        path('classes/search/', search_view.ClassesSearchView.as_view(), name='course_search'),
-        path('classes/search/results/', search_view.ClassesSearchView.as_view(), name='search_results'),
+        path('courses/search/', search_view.CoursesSearchView.as_view(), name='course_search'),
+        path('courses/search/results/', search_view.CoursesSearchView.as_view(), name='search_results'),
 
     ])),
 ]

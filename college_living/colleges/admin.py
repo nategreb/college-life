@@ -19,6 +19,11 @@ class CollegeAdmin(admin.ModelAdmin):
     pass
 
 
+class DepartmentAdmin(admin.ModelAdmin):
+    pass
+
+
 admin.site.register(models.College, ProfessorAdmin)
 admin.site.register(models.Professor, CourseAdmin)
-admin.site.register(models.CollegeClass, CollegeAdmin)
+admin.site.register(models.CollegeCourse, CollegeAdmin)
+admin.site.register(models.Department, CollegeAdmin)
