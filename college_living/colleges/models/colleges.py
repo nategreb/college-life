@@ -68,7 +68,8 @@ class College(models.Model):
 
     departments = models.ManyToManyField(
         Department,
-        help_text='Possible Departments in College'
+        help_text='Possible Departments in College',
+        blank=True
     )
 
     # Managers

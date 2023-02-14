@@ -12,8 +12,10 @@ def get_colleges(request):
     colleges = College.approved_colleges.all()
     # get the latest review
     rev = Review.objects.order_by('creation_date').last()
+    obj = None
     if rev:
         ct = ContentType.objects.get(id=rev.content_type.id)
+        # get object reviewed
         obj = ct.get_object_for_this_type(id=rev.object_id)
     return render(
         request,
