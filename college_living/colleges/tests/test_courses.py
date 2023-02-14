@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.test import TestCase
 from colleges.models import (
@@ -42,13 +43,13 @@ class TestCourses(TestCase):
         self.assertEqual(num_dep, 2)
 
     # test duplicate key: department
-    def test_unique_subject_class(self):
+    def test_unique_dep_class(self):
         with self.assertRaises(IntegrityError):
-            Department.object.create('Computer Science')
+            Department.objects.create(name='Computer Science')
 
     # test duplicate key: class and subject
     def test_unique_subject_class(self):
-        with self.assertRaises(IntegrityError):
+        with self.assertRaises(ValidationError):
             CollegeCourse.objects.create(
                 college=self.college,
                 department=self.compsci,
