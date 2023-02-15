@@ -83,7 +83,7 @@ if DEBUG:
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
-SITE_ID = os.getenv('SITE_ID', 1)
+SITE_ID = int(os.getenv('SITE_ID', 1))
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -205,7 +205,6 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
