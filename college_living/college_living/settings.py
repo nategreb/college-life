@@ -29,14 +29,15 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = [
-    'college-ratings.com',
-    'university-ratings.com',
+    'www.college-ratings.com',
+    'www.university-ratings.com',
     'nategreb.pythonanywhere.com',
     'localhost',
 ]
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 # user model
 AUTH_USER_MODEL = 'users.User'
@@ -58,7 +59,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_tailwind',
     'reviews.apps.ReviewsConfig',
-    "debug_toolbar",
     'compressor',
 
     # 'moderation.apps.ModerationConfig',
@@ -78,9 +78,12 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
 ]
 
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
+
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
-SITE_ID = 1
+SITE_ID = os.getenv('SITE_ID', 1)
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -122,11 +125,11 @@ WSGI_APPLICATION = 'college_living.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test_db',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': os.getenv('DB_HOST', '0.0.0.0'),
-        'PORT': '5432',
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ['DB_PORT'],
     }
 }
 
@@ -172,8 +175,8 @@ USE_TZ = False
 
 # set root so that python mana.py collectstatic works
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -202,7 +205,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-SITE_ID = 1
+SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -238,12 +241,11 @@ COMPRESS_ROOT = BASE_DIR / 'static'
 
 COMPRESS_ENABLED = True
 
-ADMIN_MEDIA_PREFIX = '/static/admin/'
-
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',
-                       'django.contrib.staticfiles.finders.FileSystemFinder',
-                       'django.contrib.staticfiles.finders.AppDirectoriesFinder'
-                       )
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
@@ -251,7 +253,7 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "static"),
 ]
 
 ### Reviews Settings
