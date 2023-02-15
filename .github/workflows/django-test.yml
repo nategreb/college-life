@@ -41,4 +41,7 @@ jobs:
         python college_living/manage.py test college_living/
       env:
         DB_HOST: '0.0.0.0'
-        
+        DB_NAME: 'test_db'
+        DB_USER: 'root'
+        DB_PORT: '5432'
+        DB_PASSWORD: 'root'
