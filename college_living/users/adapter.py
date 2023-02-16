@@ -4,7 +4,6 @@ from allauth.exceptions import ImmediateHttpResponse
 import logging
 from django.forms import ValidationError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect
 from django.contrib import messages
 from django.urls import reverse
 
@@ -53,9 +52,9 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
             # add a one-time notification of the cause of failure
             messages.add_message(
                 request, messages.ERROR,
-                """
-                   You are restricted from registering. 
-                   Your college hasn\'t been approved yet. Please contact admin.
+                """                   
+                   You are restricted from registering. You're either not using your school email
+                   or your school hasn't been added yet. Please try again.                     
                """
             )
             raise ImmediateHttpResponse(HttpResponseRedirect(reverse('home')))

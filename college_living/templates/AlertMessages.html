@@ -1,11 +1,20 @@
 {% if messages %}
-    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-        <ul>
-            {% for message in messages %}
-                <span class="font-medium">
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            </span>
-            {% endfor %}
-        </ul>
-    </div>
+    <ul>
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                     role="alert">
+                        <span class="font-medium">
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        </span>
+                </div>
+            {% else %}
+                <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+                     role="alert">
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                </div>
+
+            {% endif %}
+        {% endfor %}
+    </ul>
 {% endif %}
