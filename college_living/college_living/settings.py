@@ -263,19 +263,19 @@ REVIEW_PERMISSION_FUNCTION = lambda u, item: u.college and (u.college == item or
 
 ### Sentry
 
-sentry_sdk.init(
-    dsn="https://2d136de23def48bbb8f4cc9aaf14b322@o4504679836614656.ingest.sentry.io/4504679844741120",
-    integrations=[
-        DjangoIntegration(),
-    ],
+if not DEBUG:
+    sentry_sdk.init(
+        dsn="https://2d136de23def48bbb8f4cc9aaf14b322@o4504679836614656.ingest.sentry.io/4504679844741120",
+        integrations=[
+            DjangoIntegration(),
+        ],
 
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0,
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
 
-    # If you wish to associate users to errors (assuming you are using
-    # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=True
-)
-
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )

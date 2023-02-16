@@ -4,21 +4,10 @@
 {% block head_title %}Sign up{% endblock %}
 
 {% block whitebox %}
-    <h1 class="mb-5 text-3xl text-center">Sign up</h1>
-    {#<form id="signup_form" method="post" action="{% url 'account_signup' %}" novalidate>#}
-    {#    {% csrf_token %}#}
-    {#  {% include "account/_render_form.html" %}#}
-    {#  {% include "account/_button.html" with text="Sign up" %}#}
-    {#</form>#}
-    {#<a class="self-center pt-8 text-xs text-blue-400 justify-self-center hover:text-blue-500" href="{{ login_url }}">Already have an account? Sign in.</a>#}
+    <h1 class="mb-5 text-3xl text-center">Sign up with your school email</h1>
 
     {% get_providers as socialaccount_providers %}
     {% if socialaccount_providers %}
-        {#<div class="flex items-center self-stretch justify-between pt-3 mt-3">#}
-        {#  <hr class="w-full">#}
-        {#  <span class="p-2 mb-1 text-gray-400">OR</span>#}
-        {#  <hr class="w-full">#}
-        {#</div>#}
 
         {% include "socialaccount/snippets/provider_list.html" with process="login" %}
     {% endif %}
