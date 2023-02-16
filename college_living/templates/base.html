@@ -1,10 +1,10 @@
 {% load compress %}
 {% load static %}
-
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Base Page</title>
+    <title>College Life</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -113,9 +113,9 @@
                             <a href="{% url "account_logout" %}" class="block px-4 py-2 text-sm text-gray-700"
                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                         {% else %}
-                            <a href="{% url "account_signup" %}" class="block px-4 py-2 text-sm text-gray-700"
+                            <a href="{% provider_login_url "google" %}" class="block px-4 py-2 text-sm text-gray-700"
                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign up</a>
-                            <a href="{% url "account_login" %}" class="block px-4 py-2 text-sm text-gray-700"
+                            <a href="{% provider_login_url "google" %}" class="block px-4 py-2 text-sm text-gray-700"
                                role="menuitem" tabindex="-1" id="user-menu-item-2">Login</a>
                         {% endif %}
                     </div>

@@ -4,6 +4,8 @@
 {% block title %}{{ object }}{% endblock %}
 
 {% block content %}
+    {% include 'AlertMessages.html' %}
+
     <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"> Review Detail </h2>
 
     <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">

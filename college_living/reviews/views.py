@@ -47,6 +47,7 @@ class ReviewViewMixin(object):
 
     def get_success_url(self):
         success_url = getattr(settings, 'REVIEW_UPDATE_SUCCESS_URL', None)
+        messages.add_message(self.request, messages.INFO, 'Your changes have been saved.')
         if success_url is not None:
             if callable(success_url):
                 return success_url(self.object)
