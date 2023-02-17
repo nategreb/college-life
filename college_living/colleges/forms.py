@@ -46,7 +46,3 @@ class RequestProfessorForm(forms.ModelForm):
         cleaned_data['last_name'] = cleaned_data['last_name'].capitalize()
         return cleaned_data
 
-    courses = forms.ModelMultipleChoiceField(
-        queryset=None,
-        widget=forms.CheckboxSelectMultiple
-    )
