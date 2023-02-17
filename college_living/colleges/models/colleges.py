@@ -82,4 +82,6 @@ class College(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
+        if self.nickname:
+            return self.nickname
         return self.college_name
