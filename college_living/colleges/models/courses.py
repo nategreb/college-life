@@ -14,7 +14,10 @@ class CollegeCourse(models.Model):
         # can have same course at different levels
         constraints = [
             models.UniqueConstraint(fields=['college', 'department', 'course_name', 'course_id'],
-                                    name='college_course_alt_key')
+                                    name='college_course_alt_key'),
+            models.UniqueConstraint(fields=['course_id'],
+                                    name='secondary_course_id_key')
+
         ]
 
     college = models.ForeignKey(
