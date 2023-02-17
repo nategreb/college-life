@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load review_tags %}
+{% load tailwind_filters %}
+
+
+{% block content %}
+    {% include 'AlertMessages.html' %}
+
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+
+            <div class="max-w-screen-md mb-8 lg:mb-16">
+                {% if college.nickname %}
+                    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                        Add {{ content_type }}</h2>
+                {% else %}
+                    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                        Add {{ content_type }}</h2>
+                {% endif %}
+            </div>
+
+
+            {# just need to specify one of the url for request #}
+            {% if content_type == 'course' %}
+                <form method="post" action="{% url 'colleges:request_add_course' college.id college.slug %}">
+                    <div class="d-flex justify-content-center autoComplete_wrapper">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input type="hidden" name="content_type" value="{{ content_type }}">
+                        <button type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            {% else %}
+                <form method="post" action="{% url 'colleges:request_add_professor' college.id college.slug %}">
+                    <div class="d-flex justify-content-center autoComplete_wrapper">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input type="hidden" name="content_type" value="{{ content_type }}">
+                        <button type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+            {% endif %}
+
+        </div>
+    </section>
+
+{% endblock %}

@@ -33,5 +33,9 @@ urlpatterns = [
         path('courses/search/', search_view.CoursesSearchView.as_view(), name='course_search'),
         path('courses/search/results/', search_view.CoursesSearchView.as_view(), name='search_results'),
 
+        # request add object
+        path('courses/add/', views.request_add_course, name='request_add_course'),
+        path('professors/add/', views.request_add_professor, name='request_add_professor'),
+
     ])),
 ]
