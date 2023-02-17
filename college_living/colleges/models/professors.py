@@ -39,7 +39,7 @@ class Professor(models.Model):
     )
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
-    courses = models.ManyToManyField(CollegeCourse)
+    courses = models.ManyToManyField(CollegeCourse, blank=True)
 
     # review fields
     grading_difficulty = models.PositiveSmallIntegerField(default=1)
