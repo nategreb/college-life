@@ -38,6 +38,48 @@
                 {% endif %}
         </div>
 
+
+        <br>
+        {% if professors %}
+            <div class="relative overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Professor
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Average Rating (out of 5)
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Number of Reviews
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for professor in professors %}
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" style="cursor:pointer"
+                            onclick="window.location='{% url 'colleges:professor' college_id college_slug professor.id professor.slug %}'">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ professor }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {% optimized_total_review_average professor as review_avg %}
+                                {{ review_avg }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {% get_review_count professor as review_count %}
+                                {{ review_count }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+
         {% include 'Pagination.html' %}
     </section>
 
