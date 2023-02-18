@@ -81,7 +81,10 @@ class CoursesSearchView(ProfessorSearchView):
         search_query = self.request.GET.get('search', None)
 
         if search_query:
-            return self.model.objects.filter(course_name__icontains=search_query)
+            # check query against course id and course names
+            return self.model.objects.annotate(
+                search=SearchVector('course_id', 'course_name')
+            ).filter(Q(search__icontains=search_query) | Q(search=search_query))
         else:
             return self.model.objects.filter(college=self.college)
 
