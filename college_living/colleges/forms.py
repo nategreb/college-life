@@ -24,7 +24,7 @@ class SearchForm(forms.Form):
 class RequestCourseForm(forms.ModelForm):
     class Meta:
         model = RequestCourse
-        fields = '__all__'
+        fields = ['college', 'department', 'course_id', 'course_name']
 
     def clean(self):
         cleaned_data = super(RequestCourseForm, self).clean()
