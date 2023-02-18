@@ -40,7 +40,7 @@ class CollegeCourse(models.Model):
     slug = models.SlugField(max_length=90, blank=True, null=False)
 
     def __str__(self):
-        return self.course_name
+        return f'{self.course_id} {self.course_name}'
 
     # add slug by converting white spaces to hyphens
     def save(self, *args, **kwargs):
